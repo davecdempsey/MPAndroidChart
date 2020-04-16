@@ -175,14 +175,14 @@ public class CandleStickChartActivity extends DemoBase implements OnSeekBarChang
         ArrayList<CandleEntry> yVals1 = new ArrayList<CandleEntry>();
 
         for (int i = 0; i < prog; i++) {
-            float mult = (mSeekBarY.getProgress() + 1);
-            float val = (float) (Math.random() * 40) + mult;
+            double mult = (mSeekBarY.getProgress() + 1);
+            double val = (Math.random() * 40) + mult;
             
-            float high = (float) (Math.random() * 9) + 8f;
-            float low = (float) (Math.random() * 9) + 8f;
+            double high = (Math.random() * 9) + 8;
+            double low = (Math.random() * 9) + 8;
             
-            float open = (float) (Math.random() * 6) + 1f;
-            float close = (float) (Math.random() * 6) + 1f;
+            double open = (Math.random() * 6) + 1;
+            double close = (Math.random() * 6) + 1;
 
             boolean even = i % 2 == 0;
 
@@ -201,13 +201,13 @@ public class CandleStickChartActivity extends DemoBase implements OnSeekBarChang
         set1.setAxisDependency(AxisDependency.LEFT);
 //        set1.setColor(Color.rgb(80, 80, 80));
         set1.setShadowColor(Color.DKGRAY);
-        set1.setShadowWidth(0.7f);
+        set1.setShadowWidth(0.7);
         set1.setDecreasingColor(Color.RED);
         set1.setDecreasingPaintStyle(Paint.Style.FILL);
         set1.setIncreasingColor(Color.rgb(122, 242, 84));
         set1.setIncreasingPaintStyle(Paint.Style.STROKE);
         set1.setNeutralColor(Color.BLUE);
-        //set1.setHighlightLineWidth(1f);
+        //set1.setHighlightLineWidth(1);
 
         CandleData data = new CandleData(set1);
         

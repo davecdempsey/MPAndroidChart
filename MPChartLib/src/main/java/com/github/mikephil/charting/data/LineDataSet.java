@@ -35,17 +35,17 @@ public class LineDataSet extends LineRadarDataSet<Entry> implements ILineDataSet
     /**
      * the radius of the circle-shaped value indicators
      */
-    private float mCircleRadius = 8f;
+    private double mCircleRadius = 8;
 
     /**
      * the hole radius of the circle-shaped value indicators
      */
-    private float mCircleHoleRadius = 4f;
+    private double mCircleHoleRadius = 4;
 
     /**
      * sets the intensity of the cubic lines
      */
-    private float mCubicIntensity = 0.2f;
+    private double mCubicIntensity = 0.2;
 
     /**
      * the path effect of this DataSet that makes dashed lines possible
@@ -68,8 +68,8 @@ public class LineDataSet extends LineRadarDataSet<Entry> implements ILineDataSet
     public LineDataSet(List<Entry> yVals, String label) {
         super(yVals, label);
 
-        // mCircleRadius = Utils.convertDpToPixel(4f);
-        // mLineWidth = Utils.convertDpToPixel(1f);
+        // mCircleRadius = Utils.convertDpToPixel(4);
+        // mLineWidth = Utils.convertDpToPixel(1);
 
         if (mCircleColors == null) {
             mCircleColors = new ArrayList<Integer>();
@@ -125,36 +125,36 @@ public class LineDataSet extends LineRadarDataSet<Entry> implements ILineDataSet
     }
 
     /**
-     * Sets the intensity for cubic lines (if enabled). Max = 1f = very cubic,
-     * Min = 0.05f = low cubic effect, Default: 0.2f
+     * Sets the intensity for cubic lines (if enabled). Max = 1 = very cubic,
+     * Min = 0.05 = low cubic effect, Default: 0.2
      *
      * @param intensity
      */
-    public void setCubicIntensity(float intensity) {
+    public void setCubicIntensity(double intensity) {
 
-        if (intensity > 1f)
-            intensity = 1f;
-        if (intensity < 0.05f)
-            intensity = 0.05f;
+        if (intensity > 1)
+            intensity = 1;
+        if (intensity < 0.05)
+            intensity = 0.05;
 
         mCubicIntensity = intensity;
     }
 
     @Override
-    public float getCubicIntensity() {
+    public double getCubicIntensity() {
         return mCubicIntensity;
     }
 
 
     /**
      * Sets the radius of the drawn circles.
-     * Default radius = 4f, Min = 1f
+     * Default radius = 4, Min = 1
      *
      * @param radius
      */
-    public void setCircleRadius(float radius) {
+    public void setCircleRadius(double radius) {
 
-        if (radius >= 1f) {
+        if (radius >= 1) {
             mCircleRadius = Utils.convertDpToPixel(radius);
         } else {
             Log.e("LineDataSet", "Circle radius cannot be < 1");
@@ -162,19 +162,19 @@ public class LineDataSet extends LineRadarDataSet<Entry> implements ILineDataSet
     }
 
     @Override
-    public float getCircleRadius() {
+    public double getCircleRadius() {
         return mCircleRadius;
     }
 
     /**
      * Sets the hole radius of the drawn circles.
-     * Default radius = 2f, Min = 0.5f
+     * Default radius = 2, Min = 0.5
      *
      * @param holeRadius
      */
-    public void setCircleHoleRadius(float holeRadius) {
+    public void setCircleHoleRadius(double holeRadius) {
 
-        if (holeRadius >= 0.5f) {
+        if (holeRadius >= 0.5) {
             mCircleHoleRadius = Utils.convertDpToPixel(holeRadius);
         } else {
             Log.e("LineDataSet", "Circle radius cannot be < 0.5");
@@ -182,20 +182,20 @@ public class LineDataSet extends LineRadarDataSet<Entry> implements ILineDataSet
     }
 
     @Override
-    public float getCircleHoleRadius() {
+    public double getCircleHoleRadius() {
         return mCircleHoleRadius;
     }
 
     /**
      * sets the size (radius) of the circle shpaed value indicators,
-     * default size = 4f
+     * default size = 4
      * <p/>
      * This method is deprecated because of unclarity. Use setCircleRadius instead.
      *
      * @param size
      */
     @Deprecated
-    public void setCircleSize(float size) {
+    public void setCircleSize(double size) {
         setCircleRadius(size);
     }
 
@@ -203,7 +203,7 @@ public class LineDataSet extends LineRadarDataSet<Entry> implements ILineDataSet
      * This function is deprecated because of unclarity. Use getCircleRadius instead.
      */
     @Deprecated
-    public float getCircleSize() {
+    public double getCircleSize() {
         return getCircleRadius();
     }
 
@@ -216,8 +216,8 @@ public class LineDataSet extends LineRadarDataSet<Entry> implements ILineDataSet
      * @param spaceLength the length of space in between the pieces
      * @param phase       offset, in degrees (normally, use 0)
      */
-    public void enableDashedLine(float lineLength, float spaceLength, float phase) {
-        mDashPathEffect = new DashPathEffect(new float[]{
+    public void enableDashedLine(double lineLength, double spaceLength, double phase) {
+        mDashPathEffect = new DashPathEffect(new double[]{
                 lineLength, spaceLength
         }, phase);
     }

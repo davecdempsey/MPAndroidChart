@@ -60,7 +60,7 @@ public class LineChartTime extends DemoBase implements OnSeekBarChangeListener {
         // enable touch gestures
         mChart.setTouchEnabled(true);
 
-        mChart.setDragDecelerationFrictionCoef(0.9f);
+        mChart.setDragDecelerationFrictionCoef(0.9);
 
         // enable scaling and dragging
         mChart.setDragEnabled(true);
@@ -70,7 +70,7 @@ public class LineChartTime extends DemoBase implements OnSeekBarChangeListener {
 
         // set an alternative background color
         mChart.setBackgroundColor(Color.WHITE);
-        mChart.setViewPortOffsets(0f, 0f, 0f, 0f);
+        mChart.setViewPortOffsets(0, 0, 0, 0);
 
         // add data
         setData(100, 30);
@@ -83,19 +83,19 @@ public class LineChartTime extends DemoBase implements OnSeekBarChangeListener {
         XAxis xAxis = mChart.getXAxis();
         xAxis.setPosition(XAxis.XAxisPosition.TOP_INSIDE);
         xAxis.setTypeface(mTfLight);
-        xAxis.setTextSize(10f);
+        xAxis.setTextSize(10);
         xAxis.setTextColor(Color.WHITE);
         xAxis.setDrawAxisLine(false);
         xAxis.setDrawGridLines(true);
         xAxis.setTextColor(Color.rgb(255, 192, 56));
         xAxis.setCenterAxisLabels(true);
-        xAxis.setGranularity(1f); // one hour
+        xAxis.setGranularity(1); // one hour
         xAxis.setValueFormatter(new IAxisValueFormatter() {
 
             private SimpleDateFormat mFormat = new SimpleDateFormat("dd MMM HH:mm");
 
             @Override
-            public String getFormattedValue(float value, AxisBase axis) {
+            public String getFormattedValue(double value, AxisBase axis) {
 
                 long millis = TimeUnit.HOURS.toMillis((long) value);
                 return mFormat.format(new Date(millis));
@@ -108,9 +108,9 @@ public class LineChartTime extends DemoBase implements OnSeekBarChangeListener {
         leftAxis.setTextColor(ColorTemplate.getHoloBlue());
         leftAxis.setDrawGridLines(true);
         leftAxis.setGranularityEnabled(true);
-        leftAxis.setAxisMinimum(0f);
-        leftAxis.setAxisMaximum(170f);
-        leftAxis.setYOffset(-9f);
+        leftAxis.setAxisMinimum(0);
+        leftAxis.setAxisMaximum(170);
+        leftAxis.setYOffset(-9);
         leftAxis.setTextColor(Color.rgb(255, 192, 56));
 
         YAxis rightAxis = mChart.getAxisRight();
@@ -261,22 +261,22 @@ public class LineChartTime extends DemoBase implements OnSeekBarChangeListener {
         mChart.invalidate();
     }
 
-    private void setData(int count, float range) {
+    private void setData(int count, double range) {
 
         // now in hours
         long now = TimeUnit.MILLISECONDS.toHours(System.currentTimeMillis());
 
         ArrayList<Entry> values = new ArrayList<Entry>();
 
-        float from = now;
+        double from = now;
 
         // count = hours
-        float to = now + count;
+        double to = now + count;
 
         // increment by 1 hour
-        for (float x = from; x < to; x++) {
+        for (double x = from; x < to; x++) {
 
-            float y = getRandom(range, 50);
+            double y = getRandom(range, 50);
             values.add(new Entry(x, y)); // add one entry per hour
         }
 
@@ -285,7 +285,7 @@ public class LineChartTime extends DemoBase implements OnSeekBarChangeListener {
         set1.setAxisDependency(AxisDependency.LEFT);
         set1.setColor(ColorTemplate.getHoloBlue());
         set1.setValueTextColor(ColorTemplate.getHoloBlue());
-        set1.setLineWidth(1.5f);
+        set1.setLineWidth(1.5);
         set1.setDrawCircles(false);
         set1.setDrawValues(false);
         set1.setFillAlpha(65);
@@ -296,7 +296,7 @@ public class LineChartTime extends DemoBase implements OnSeekBarChangeListener {
         // create a data object with the datasets
         LineData data = new LineData(set1);
         data.setValueTextColor(Color.WHITE);
-        data.setValueTextSize(9f);
+        data.setValueTextSize(9);
 
         // set data
         mChart.setData(data);

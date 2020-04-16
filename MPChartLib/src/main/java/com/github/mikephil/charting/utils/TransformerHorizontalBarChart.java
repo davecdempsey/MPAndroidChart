@@ -31,7 +31,7 @@ public class TransformerHorizontalBarChart extends Transformer {
                     .setTranslate(
                             -(mViewPortHandler.getChartWidth() - mViewPortHandler.offsetRight()),
                             mViewPortHandler.getChartHeight() - mViewPortHandler.offsetBottom());
-            mMatrixOffset.postScale(-1.0f, 1.0f);
+            mMatrixOffset.postScale(-1.0, 1.0);
         }
 
         // mMatrixOffset.set(offset);

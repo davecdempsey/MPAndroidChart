@@ -14,7 +14,7 @@ public interface IPieDataSet extends IDataSet<PieEntry> {
      *
      * @return
      */
-    float getSliceSpace();
+    double getSliceSpace();
 
     /**
      * When enabled, slice spacing will be 0.0 when the smallest value is going to be
@@ -30,7 +30,7 @@ public interface IPieDataSet extends IDataSet<PieEntry> {
      *
      * @return
      */
-    float getSelectionShift();
+    double getSelectionShift();
 
     PieDataSet.ValuePosition getXValuePosition();
     PieDataSet.ValuePosition getYValuePosition();
@@ -48,22 +48,22 @@ public interface IPieDataSet extends IDataSet<PieEntry> {
     /**
      *  When valuePosition is OutsideSlice, indicates line width
      *  */
-    float getValueLineWidth();
+    double getValueLineWidth();
 
     /**
      * When valuePosition is OutsideSlice, indicates offset as percentage out of the slice size
      * */
-    float getValueLinePart1OffsetPercentage();
+    double getValueLinePart1OffsetPercentage();
 
     /**
      * When valuePosition is OutsideSlice, indicates length of first half of the line
      * */
-    float getValueLinePart1Length();
+    double getValueLinePart1Length();
 
     /**
      * When valuePosition is OutsideSlice, indicates length of second half of the line
      * */
-    float getValueLinePart2Length();
+    double getValueLinePart2Length();
 
     /**
      * When valuePosition is OutsideSlice, this allows variable line length

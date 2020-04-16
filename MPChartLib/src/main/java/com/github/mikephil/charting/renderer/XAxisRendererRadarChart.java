@@ -26,18 +26,18 @@ public class XAxisRendererRadarChart extends XAxisRenderer {
         if (!mXAxis.isEnabled() || !mXAxis.isDrawLabelsEnabled())
             return;
 
-        final float labelRotationAngleDegrees = mXAxis.getLabelRotationAngle();
-        final MPPointF drawLabelAnchor = MPPointF.getInstance(0.5f, 0.25f);
+        final double labelRotationAngleDegrees = mXAxis.getLabelRotationAngle();
+        final MPPointF drawLabelAnchor = MPPointF.getInstance(0.5, 0.25);
 
         mAxisLabelPaint.setTypeface(mXAxis.getTypeface());
         mAxisLabelPaint.setTextSize(mXAxis.getTextSize());
         mAxisLabelPaint.setColor(mXAxis.getTextColor());
 
-        float sliceangle = mChart.getSliceAngle();
+        double sliceangle = mChart.getSliceAngle();
 
         // calculate the factor that is needed for transforming the value to
         // pixels
-        float factor = mChart.getFactor();
+        double factor = mChart.getFactor();
 
         MPPointF center = mChart.getCenterOffsets();
         MPPointF pOut = MPPointF.getInstance(0,0);
@@ -45,10 +45,10 @@ public class XAxisRendererRadarChart extends XAxisRenderer {
 
             String label = mXAxis.getValueFormatter().getFormattedValue(i, mXAxis);
 
-            float angle = (sliceangle * i + mChart.getRotationAngle()) % 360f;
+            double angle = (sliceangle * i + mChart.getRotationAngle()) % 360;
 
             Utils.getPosition(center, mChart.getYRange() * factor
-                    + mXAxis.mLabelRotatedWidth / 2f, angle, pOut);
+                    + mXAxis.mLabelRotatedWidth / 2, angle, pOut);
 
             drawLabel(c, label, pOut.x, pOut.y - mXAxis.mLabelRotatedHeight / 2.f,
                     drawLabelAnchor, labelRotationAngleDegrees);

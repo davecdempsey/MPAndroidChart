@@ -258,14 +258,13 @@ public class CubicLineChartActivity extends DemoBase implements OnSeekBarChangeL
 
     }
 
-    private void setData(int count, float range) {
+    private void setData(int count, double range) {
 
         ArrayList<Entry> yVals = new ArrayList<Entry>();
 
         for (int i = 0; i < count; i++) {
-            float mult = (range + 1);
-            float val = (float) (Math.random() * mult) + 20;// + (float)
-                                                           // ((mult *
+            double mult = (range + 1);
+            double val = (Math.random() * mult) + 20;// + ((mult *
                                                            // 0.1) / 10);
             yVals.add(new Entry(i, val));
         }
@@ -283,11 +282,11 @@ public class CubicLineChartActivity extends DemoBase implements OnSeekBarChangeL
             set1 = new LineDataSet(yVals, "DataSet 1");
 
             set1.setMode(LineDataSet.Mode.CUBIC_BEZIER);
-            set1.setCubicIntensity(0.2f);
+            set1.setCubicIntensity(0.2);
             //set1.setDrawFilled(true);
             set1.setDrawCircles(false);
-            set1.setLineWidth(1.8f);
-            set1.setCircleRadius(4f);
+            set1.setLineWidth(1.8);
+            set1.setCircleRadius(4);
             set1.setCircleColor(Color.WHITE);
             set1.setHighLightColor(Color.rgb(244, 117, 117));
             set1.setColor(Color.WHITE);
@@ -296,7 +295,7 @@ public class CubicLineChartActivity extends DemoBase implements OnSeekBarChangeL
             set1.setDrawHorizontalHighlightIndicator(false);
             set1.setFillFormatter(new IFillFormatter() {
                 @Override
-                public float getFillLinePosition(ILineDataSet dataSet, LineDataProvider dataProvider) {
+                public double getFillLinePosition(ILineDataSet dataSet, LineDataProvider dataProvider) {
                     return -10;
                 }
             });
@@ -304,7 +303,7 @@ public class CubicLineChartActivity extends DemoBase implements OnSeekBarChangeL
             // create a data object with the datasets
             LineData data = new LineData(set1);
             data.setValueTypeface(mTfLight);
-            data.setValueTextSize(9f);
+            data.setValueTextSize(9);
             data.setDrawValues(false);
 
             // set data

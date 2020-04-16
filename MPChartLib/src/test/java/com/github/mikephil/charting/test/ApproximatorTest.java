@@ -18,7 +18,7 @@ public class ApproximatorTest {
     @Test
     public void testApproximation() {
 
-        float[] points = new float[]{
+        double[] points = new double[]{
                 10, 20,
                 20, 30,
                 25, 25,
@@ -36,7 +36,7 @@ public class ApproximatorTest {
 
         Approximator a = new Approximator();
 
-        float[] reduced = a.reduceWithDouglasPeucker(points, 2);
+        double[] reduced = a.reduceWithDouglasPeucker(points, 2);
 
         assertEquals(18, reduced.length);
     }

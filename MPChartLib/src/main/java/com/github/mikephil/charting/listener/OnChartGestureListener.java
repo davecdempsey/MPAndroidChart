@@ -54,7 +54,7 @@ public interface OnChartGestureListener {
      * @param velocityX
      * @param velocityY
      */
-    void onChartFling(MotionEvent me1, MotionEvent me2, float velocityX, float velocityY);
+    void onChartFling(MotionEvent me1, MotionEvent me2, double velocityX, double velocityY);
 
     /**
      * Callbacks when the chart is scaled / zoomed via pinch zoom gesture.
@@ -63,7 +63,7 @@ public interface OnChartGestureListener {
      * @param scaleX scalefactor on the x-axis
      * @param scaleY scalefactor on the y-axis
      */
-    void onChartScale(MotionEvent me, float scaleX, float scaleY);
+    void onChartScale(MotionEvent me, double scaleX, double scaleY);
 
     /**
      * Callbacks when the chart is moved / translated via drag gesture.
@@ -72,5 +72,5 @@ public interface OnChartGestureListener {
      * @param dX translation distance on the x-axis
      * @param dY translation distance on the y-axis
      */
-    void onChartTranslate(MotionEvent me, float dX, float dY);
+    void onChartTranslate(MotionEvent me, double dX, double dY);
 }

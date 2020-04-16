@@ -36,7 +36,7 @@ public interface IBarDataSet extends IBarLineScatterCandleBubbleDataSet<BarEntry
      *
      * @return
      */
-    float getBarBorderWidth();
+    double getBarBorderWidth();
 
     /**
      * Returns the color drawing borders around the bars.

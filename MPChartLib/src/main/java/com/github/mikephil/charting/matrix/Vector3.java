@@ -5,9 +5,9 @@ package com.github.mikephil.charting.matrix;
  * Simple 3D vector class. Handles basic vector math for 3D vectors.
  */
 public final class Vector3 {
-    public float x;
-    public float y;
-    public float z;
+    public double x;
+    public double y;
+    public double z;
 
     public static final Vector3 ZERO = new Vector3(0, 0, 0);
     public static final Vector3 UNIT_X = new Vector3(1, 0, 0);
@@ -17,12 +17,12 @@ public final class Vector3 {
     public Vector3() {
     }
 
-    public Vector3(float[] array)
+    public Vector3(double[] array)
     {
         set(array[0], array[1], array[2]);
     }
 
-    public Vector3(float xValue, float yValue, float zValue) {
+    public Vector3(double xValue, double yValue, double zValue) {
         set(xValue, yValue, zValue);
     }
 
@@ -36,7 +36,7 @@ public final class Vector3 {
         z += other.z;
     }
 
-    public final void add(float otherX, float otherY, float otherZ) {
+    public final void add(double otherX, double otherY, double otherZ) {
         x += otherX;
         y += otherY;
         z += otherZ;
@@ -48,14 +48,14 @@ public final class Vector3 {
         z -= other.z;
     }
 
-    public final void subtractMultiple(Vector3 other, float multiplicator)
+    public final void subtractMultiple(Vector3 other, double multiplicator)
     {
         x -= other.x * multiplicator;
         y -= other.y * multiplicator;
         z -= other.z * multiplicator;
     }
 
-    public final void multiply(float magnitude) {
+    public final void multiply(double magnitude) {
         x *= magnitude;
         y *= magnitude;
         z *= magnitude;
@@ -67,8 +67,8 @@ public final class Vector3 {
         z *= other.z;
     }
 
-    public final void divide(float magnitude) {
-        if (magnitude != 0.0f) {
+    public final void divide(double magnitude) {
+        if (magnitude != 0.0) {
             x /= magnitude;
             y /= magnitude;
             z /= magnitude;
@@ -81,13 +81,13 @@ public final class Vector3 {
         z = other.z;
     }
 
-    public final void set(float xValue, float yValue, float zValue) {
+    public final void set(double xValue, double yValue, double zValue) {
         x = xValue;
         y = yValue;
         z = zValue;
     }
 
-    public final float dot(Vector3 other) {
+    public final double dot(Vector3 other) {
         return (x * other.x) + (y * other.y) + (z * other.z);
     }
 
@@ -97,26 +97,26 @@ public final class Vector3 {
                 x * other.y - y * other.x);
     }
 
-    public final float length() {
-        return (float) Math.sqrt(length2());
+    public final double length() {
+        return  Math.sqrt(length2());
     }
 
-    public final float length2() {
+    public final double length2() {
         return (x * x) + (y * y) + (z * z);
     }
 
-    public final float distance2(Vector3 other) {
-        float dx = x - other.x;
-        float dy = y - other.y;
-        float dz = z - other.z;
+    public final double distance2(Vector3 other) {
+        double dx = x - other.x;
+        double dy = y - other.y;
+        double dz = z - other.z;
         return (dx * dx) + (dy * dy) + (dz * dz);
     }
 
-    public final float normalize() {
-        final float magnitude = length();
+    public final double normalize() {
+        final double magnitude = length();
 
         // TODO: I'm choosing safety over speed here.
-        if (magnitude != 0.0f) {
+        if (magnitude != 0.0) {
             x /= magnitude;
             y /= magnitude;
             z /= magnitude;
@@ -126,7 +126,7 @@ public final class Vector3 {
     }
 
     public final void zero() {
-        set(0.0f, 0.0f, 0.0f);
+        set(0.0, 0.0, 0.0);
     }
 
     public final boolean pointsInSameDirection(Vector3 other) {

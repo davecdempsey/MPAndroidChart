@@ -14,7 +14,7 @@ public class MPPointD extends ObjectPool.Poolable {
 
     static {
         pool = ObjectPool.create(64, new MPPointD(0,0));
-        pool.setReplenishPercentage(0.5f);
+        pool.setReplenishPercentage(0.5);
     }
 
     public static MPPointD getInstance(double x, double y){

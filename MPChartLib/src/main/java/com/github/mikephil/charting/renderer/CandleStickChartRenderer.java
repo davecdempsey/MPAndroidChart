@@ -24,11 +24,11 @@ public class CandleStickChartRenderer extends LineScatterCandleRadarRenderer {
 
     protected CandleDataProvider mChart;
 
-    private float[] mShadowBuffers = new float[8];
-    private float[] mBodyBuffers = new float[4];
-    private float[] mRangeBuffers = new float[4];
-    private float[] mOpenBuffers = new float[4];
-    private float[] mCloseBuffers = new float[4];
+    private double[] mShadowBuffers = new double[8];
+    private double[] mBodyBuffers = new double[4];
+    private double[] mRangeBuffers = new double[4];
+    private double[] mOpenBuffers = new double[4];
+    private double[] mCloseBuffers = new double[4];
 
     public CandleStickChartRenderer(CandleDataProvider chart, ChartAnimator animator,
                                     ViewPortHandler viewPortHandler) {
@@ -58,8 +58,8 @@ public class CandleStickChartRenderer extends LineScatterCandleRadarRenderer {
 
         Transformer trans = mChart.getTransformer(dataSet.getAxisDependency());
 
-        float phaseY = mAnimator.getPhaseY();
-        float barSpace = dataSet.getBarSpace();
+        double phaseY = mAnimator.getPhaseY();
+        double barSpace = dataSet.getBarSpace();
         boolean showCandleBar = dataSet.getShowCandleBar();
 
         mXBounds.set(mChart, dataSet);
@@ -75,12 +75,12 @@ public class CandleStickChartRenderer extends LineScatterCandleRadarRenderer {
             if (e == null)
                 continue;
 
-            final float xPos = e.getX();
+            final double xPos = e.getX();
 
-            final float open = e.getOpen();
-            final float close = e.getClose();
-            final float high = e.getHigh();
-            final float low = e.getLow();
+            final double open = e.getOpen();
+            final double close = e.getClose();
+            final double high = e.getHigh();
+            final double low = e.getLow();
 
             if (showCandleBar) {
                 // calculate the shadow
@@ -148,9 +148,9 @@ public class CandleStickChartRenderer extends LineScatterCandleRadarRenderer {
 
                 // calculate the body
 
-                mBodyBuffers[0] = xPos - 0.5f + barSpace;
+                mBodyBuffers[0] = xPos - 0.5 + barSpace;
                 mBodyBuffers[1] = close * phaseY;
-                mBodyBuffers[2] = (xPos + 0.5f - barSpace);
+                mBodyBuffers[2] = (xPos + 0.5 - barSpace);
                 mBodyBuffers[3] = open * phaseY;
 
                 trans.pointValuesToPixel(mBodyBuffers);
@@ -205,12 +205,12 @@ public class CandleStickChartRenderer extends LineScatterCandleRadarRenderer {
                 mRangeBuffers[2] = xPos;
                 mRangeBuffers[3] = low * phaseY;
 
-                mOpenBuffers[0] = xPos - 0.5f + barSpace;
+                mOpenBuffers[0] = xPos - 0.5 + barSpace;
                 mOpenBuffers[1] = open * phaseY;
                 mOpenBuffers[2] = xPos;
                 mOpenBuffers[3] = open * phaseY;
 
-                mCloseBuffers[0] = xPos + 0.5f - barSpace;
+                mCloseBuffers[0] = xPos + 0.5 - barSpace;
                 mCloseBuffers[1] = close * phaseY;
                 mCloseBuffers[2] = xPos;
                 mCloseBuffers[3] = close * phaseY;
@@ -274,10 +274,10 @@ public class CandleStickChartRenderer extends LineScatterCandleRadarRenderer {
 
                 mXBounds.set(mChart, dataSet);
 
-                float[] positions = trans.generateTransformedValuesCandle(
+                double[] positions = trans.generateTransformedValuesCandle(
                         dataSet, mAnimator.getPhaseX(), mAnimator.getPhaseY(), mXBounds.min, mXBounds.max);
 
-                float yOffset = Utils.convertDpToPixel(5f);
+                double yOffset = Utils.convertDpToPixel(5);
 
                 MPPointF iconsOffset = MPPointF.getInstance(dataSet.getIconsOffset());
                 iconsOffset.x = Utils.convertDpToPixel(iconsOffset.x);
@@ -285,8 +285,8 @@ public class CandleStickChartRenderer extends LineScatterCandleRadarRenderer {
 
                 for (int j = 0; j < positions.length; j += 2) {
 
-                    float x = positions[j];
-                    float y = positions[j + 1];
+                    double x = positions[j];
+                    double y = positions[j + 1];
 
                     if (!mViewPortHandler.isInBoundsRight(x))
                         break;
@@ -348,16 +348,16 @@ public class CandleStickChartRenderer extends LineScatterCandleRadarRenderer {
             if (!isInBoundsX(e, set))
                 continue;
 
-            float lowValue = e.getLow() * mAnimator.getPhaseY();
-            float highValue = e.getHigh() * mAnimator.getPhaseY();
-            float y = (lowValue + highValue) / 2f;
+            double lowValue = e.getLow() * mAnimator.getPhaseY();
+            double highValue = e.getHigh() * mAnimator.getPhaseY();
+            double y = (lowValue + highValue) / 2;
 
             MPPointD pix = mChart.getTransformer(set.getAxisDependency()).getPixelForValues(e.getX(), y);
 
-            high.setDraw((float) pix.x, (float) pix.y);
+            high.setDraw( pix.x,  pix.y);
 
             // draw the lines
-            drawHighlightLines(c, (float) pix.x, (float) pix.y, set);
+            drawHighlightLines(c,  pix.x,  pix.y, set);
         }
     }
 }

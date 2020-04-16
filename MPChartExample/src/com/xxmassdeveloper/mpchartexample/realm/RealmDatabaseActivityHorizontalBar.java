@@ -34,7 +34,7 @@ public class RealmDatabaseActivityHorizontalBar extends RealmBaseActivity {
         mChart = (HorizontalBarChart) findViewById(R.id.chart1);
         setup(mChart);
 
-        mChart.getAxisLeft().setAxisMinimum(0f);
+        mChart.getAxisLeft().setAxisMinimum(0);
         mChart.setDrawValueAboveBar(false);
     }
 
@@ -54,7 +54,7 @@ public class RealmDatabaseActivityHorizontalBar extends RealmBaseActivity {
         RealmResults<RealmDemoData> result = mRealm.where(RealmDemoData.class).findAll();
 
         //RealmBarDataSet<RealmDemoData> set = new RealmBarDataSet<RealmDemoData>(result, "stackValues", "xIndex"); // normal entries
-        RealmBarDataSet<RealmDemoData> set = new RealmBarDataSet<RealmDemoData>(result, "xValue", "stackValues", "floatValue"); // stacked entries
+        RealmBarDataSet<RealmDemoData> set = new RealmBarDataSet<RealmDemoData>(result, "xValue", "stackValues", "doubleValue"); // stacked entries
         set.setColors(new int[]{ColorTemplate.rgb("#8BC34A"), ColorTemplate.rgb("#FFC107"), ColorTemplate.rgb("#9E9E9E")});
         set.setLabel("Mobile OS distribution");
         set.setStackLabels(new String[]{"iOS", "Android", "Other"});

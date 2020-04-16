@@ -21,10 +21,10 @@ public interface IRadarDataSet extends ILineRadarDataSet<RadarEntry> {
 
     int getHighlightCircleStrokeAlpha();
 
-    float getHighlightCircleInnerRadius();
+    double getHighlightCircleInnerRadius();
 
-    float getHighlightCircleOuterRadius();
+    double getHighlightCircleOuterRadius();
 
-    float getHighlightCircleStrokeWidth();
+    double getHighlightCircleStrokeWidth();
 
 }

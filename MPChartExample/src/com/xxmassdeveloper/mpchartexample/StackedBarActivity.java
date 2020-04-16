@@ -74,7 +74,7 @@ public class StackedBarActivity extends DemoBase implements OnSeekBarChangeListe
         // change the position of the y-labels
         YAxis leftAxis = mChart.getAxisLeft();
         leftAxis.setValueFormatter(new MyAxisValueFormatter());
-        leftAxis.setAxisMinimum(0f); // this replaces setStartAtZero(true)
+        leftAxis.setAxisMinimum(0); // this replaces setStartAtZero(true)
         mChart.getAxisRight().setEnabled(false);
 
         XAxis xLabels = mChart.getXAxis();
@@ -92,9 +92,9 @@ public class StackedBarActivity extends DemoBase implements OnSeekBarChangeListe
         l.setHorizontalAlignment(Legend.LegendHorizontalAlignment.RIGHT);
         l.setOrientation(Legend.LegendOrientation.HORIZONTAL);
         l.setDrawInside(false);
-        l.setFormSize(8f);
-        l.setFormToTextSpace(4f);
-        l.setXEntrySpace(6f);
+        l.setFormSize(8);
+        l.setFormToTextSpace(4);
+        l.setXEntrySpace(6);
 
         // mChart.setDrawLegend(false);
     }
@@ -196,14 +196,14 @@ public class StackedBarActivity extends DemoBase implements OnSeekBarChangeListe
         ArrayList<BarEntry> yVals1 = new ArrayList<BarEntry>();
 
         for (int i = 0; i < mSeekBarX.getProgress() + 1; i++) {
-            float mult = (mSeekBarY.getProgress() + 1);
-            float val1 = (float) (Math.random() * mult) + mult / 3;
-            float val2 = (float) (Math.random() * mult) + mult / 3;
-            float val3 = (float) (Math.random() * mult) + mult / 3;
+            double mult = (mSeekBarY.getProgress() + 1);
+            double val1 = (Math.random() * mult) + mult / 3;
+            double val2 = (Math.random() * mult) + mult / 3;
+            double val3 = (Math.random() * mult) + mult / 3;
 
             yVals1.add(new BarEntry(
                     i,
-                    new float[]{val1, val2, val3},
+                    new double[]{val1, val2, val3},
                     getResources().getDrawable(R.drawable.star)));
         }
 

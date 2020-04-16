@@ -24,7 +24,7 @@ public class ObjectPool<T extends ObjectPool.Poolable> {
     private Object[] objects;
     private int objectsPointer;
     private T modelObject;
-    private float replenishPercentage;
+    private double replenishPercentage;
 
 
     /**
@@ -59,28 +59,28 @@ public class ObjectPool<T extends ObjectPool.Poolable> {
         this.objects = new Object[this.desiredCapacity];
         this.objectsPointer = 0;
         this.modelObject = object;
-        this.replenishPercentage = 1.0f;
+        this.replenishPercentage = 1.0;
         this.refillPool();
     }
 
     /**
      * Set the percentage of the pool to replenish on empty.  Valid values are between
-     * 0.00f and 1.00f
+     * 0.00 and 1.00
      *
      * @param percentage a value between 0 and 1, representing the percentage of the pool to replenish.
      */
-    public void setReplenishPercentage(float percentage){
-        float p = percentage;
+    public void setReplenishPercentage(double percentage){
+        double p = percentage;
         if(p > 1){
             p = 1;
         }
-        else if(p < 0f){
-            p = 0f;
+        else if(p < 0){
+            p = 0;
         }
         this.replenishPercentage = p;
     }
 
-    public float getReplenishPercentage(){
+    public double getReplenishPercentage(){
         return replenishPercentage;
     }
 
@@ -88,7 +88,7 @@ public class ObjectPool<T extends ObjectPool.Poolable> {
         this.refillPool(this.replenishPercentage);
     }
 
-    private void refillPool(float percentage){
+    private void refillPool(double percentage){
         int portionOfCapacity = (int) (desiredCapacity * percentage);
 
         if(portionOfCapacity < 1){
@@ -112,7 +112,7 @@ public class ObjectPool<T extends ObjectPool.Poolable> {
      */
     public synchronized T get(){
 
-        if(this.objectsPointer == -1 && this.replenishPercentage > 0.0f){
+        if(this.objectsPointer == -1 && this.replenishPercentage > 0.0){
             this.refillPool();
         }
 

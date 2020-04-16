@@ -97,12 +97,12 @@ public class LineChartActivityColored extends DemoBase {
         chart.animateX(2500);
     }
     
-    private LineData getData(int count, float range) {
+    private LineData getData(int count, double range) {
 
         ArrayList<Entry> yVals = new ArrayList<Entry>();
 
         for (int i = 0; i < count; i++) {
-            float val = (float) (Math.random() * range) + 3;
+            double val = (Math.random() * range) + 3;
             yVals.add(new Entry(i, val));
         }
 
@@ -111,9 +111,9 @@ public class LineChartActivityColored extends DemoBase {
         // set1.setFillAlpha(110);
         // set1.setFillColor(Color.RED);
 
-        set1.setLineWidth(1.75f);
-        set1.setCircleRadius(5f);
-        set1.setCircleHoleRadius(2.5f);
+        set1.setLineWidth(1.75);
+        set1.setCircleRadius(5);
+        set1.setCircleHoleRadius(2.5);
         set1.setColor(Color.WHITE);
         set1.setCircleColor(Color.WHITE);
         set1.setHighLightColor(Color.WHITE);

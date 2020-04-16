@@ -6,10 +6,10 @@ package com.github.mikephil.charting.highlight;
  */
 public final class Range {
 
-	public float from;
-	public float to;
+	public double from;
+	public double to;
 
-	public Range(float from, float to) {
+	public Range(double from, double to) {
 		this.from = from;
 		this.to = to;
 	}
@@ -20,7 +20,7 @@ public final class Range {
 	 * @param value
 	 * @return
 	 */
-	public boolean contains(float value) {
+	public boolean contains(double value) {
 
 		if (value > from && value <= to)
 			return true;
@@ -28,11 +28,11 @@ public final class Range {
 			return false;
 	}
 
-	public boolean isLarger(float value) {
+	public boolean isLarger(double value) {
 		return value > to;
 	}
 
-	public boolean isSmaller(float value) {
+	public boolean isSmaller(double value) {
 		return value < from;
 	}
 }

@@ -62,8 +62,8 @@ public abstract class BaseDataSet<T extends Entry> implements IDataSet<T> {
     protected Typeface mValueTypeface;
 
     private Legend.LegendForm mForm = Legend.LegendForm.DEFAULT;
-    private float mFormSize = Float.NaN;
-    private float mFormLineWidth = Float.NaN;
+    private double mFormSize = Double.NaN;
+    private double mFormLineWidth = Double.NaN;
     private DashPathEffect mFormLineDashEffect = null;
 
     /**
@@ -84,7 +84,7 @@ public abstract class BaseDataSet<T extends Entry> implements IDataSet<T> {
     /**
      * the size of the value-text labels
      */
-    protected float mValueTextSize = 17f;
+    protected double mValueTextSize = 17;
 
     /**
      * flag that indicates if the DataSet is visible or not
@@ -314,7 +314,7 @@ public abstract class BaseDataSet<T extends Entry> implements IDataSet<T> {
     }
 
     @Override
-    public void setValueTextSize(float size) {
+    public void setValueTextSize(double size) {
         mValueTextSize = Utils.convertDpToPixel(size);
     }
 
@@ -334,7 +334,7 @@ public abstract class BaseDataSet<T extends Entry> implements IDataSet<T> {
     }
 
     @Override
-    public float getValueTextSize() {
+    public double getValueTextSize() {
         return mValueTextSize;
     }
 
@@ -347,21 +347,21 @@ public abstract class BaseDataSet<T extends Entry> implements IDataSet<T> {
         return mForm;
     }
 
-    public void setFormSize(float formSize) {
+    public void setFormSize(double formSize) {
         mFormSize = formSize;
     }
 
     @Override
-    public float getFormSize() {
+    public double getFormSize() {
         return mFormSize;
     }
 
-    public void setFormLineWidth(float formLineWidth) {
+    public void setFormLineWidth(double formLineWidth) {
         mFormLineWidth = formLineWidth;
     }
 
     @Override
-    public float getFormLineWidth() {
+    public double getFormLineWidth() {
         return mFormLineWidth;
     }
 
@@ -465,9 +465,9 @@ public abstract class BaseDataSet<T extends Entry> implements IDataSet<T> {
     }
 
     @Override
-    public boolean removeEntryByXValue(float xValue) {
+    public boolean removeEntryByXValue(double xValue) {
 
-        T e = getEntryForXValue(xValue, Float.NaN);
+        T e = getEntryForXValue(xValue, Double.NaN);
         return removeEntry(e);
     }
 

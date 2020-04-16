@@ -60,11 +60,11 @@ public abstract class DataRenderer extends Renderer {
         mValuePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mValuePaint.setColor(Color.rgb(63, 63, 63));
         mValuePaint.setTextAlign(Align.CENTER);
-        mValuePaint.setTextSize(Utils.convertDpToPixel(9f));
+        mValuePaint.setTextSize(Utils.convertDpToPixel(9));
 
         mHighlightPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mHighlightPaint.setStyle(Paint.Style.STROKE);
-        mHighlightPaint.setStrokeWidth(2f);
+        mHighlightPaint.setStrokeWidth(2);
         mHighlightPaint.setColor(Color.rgb(255, 187, 115));
     }
 
@@ -147,7 +147,7 @@ public abstract class DataRenderer extends Renderer {
      * @param y            position
      * @param color
      */
-    public void drawValue(Canvas c, IValueFormatter formatter, float value, Entry entry, int dataSetIndex, float x, float y, int color) {
+    public void drawValue(Canvas c, IValueFormatter formatter, double value, Entry entry, int dataSetIndex, double x, double y, int color) {
         mValuePaint.setColor(color);
         c.drawText(formatter.getFormattedValue(value, entry, dataSetIndex, mViewPortHandler), x, y, mValuePaint);
     }

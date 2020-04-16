@@ -18,10 +18,10 @@ public class AnimatedMoveViewJob extends AnimatedViewPortJob {
 
     static {
         pool = ObjectPool.create(4, new AnimatedMoveViewJob(null,0,0,null,null,0,0,0));
-        pool.setReplenishPercentage(0.5f);
+        pool.setReplenishPercentage(0.5);
     }
 
-    public static AnimatedMoveViewJob getInstance(ViewPortHandler viewPortHandler, float xValue, float yValue, Transformer trans, View v, float xOrigin, float yOrigin, long duration){
+    public static AnimatedMoveViewJob getInstance(ViewPortHandler viewPortHandler, double xValue, double yValue, Transformer trans, View v, double xOrigin, double yOrigin, long duration){
         AnimatedMoveViewJob result = pool.get();
         result.mViewPortHandler = viewPortHandler;
         result.xValue = xValue;
@@ -40,7 +40,7 @@ public class AnimatedMoveViewJob extends AnimatedViewPortJob {
     }
 
 
-    public AnimatedMoveViewJob(ViewPortHandler viewPortHandler, float xValue, float yValue, Transformer trans, View v, float xOrigin, float yOrigin, long duration) {
+    public AnimatedMoveViewJob(ViewPortHandler viewPortHandler, double xValue, double yValue, Transformer trans, View v, double xOrigin, double yOrigin, long duration) {
         super(viewPortHandler, xValue, yValue, trans, v, xOrigin, yOrigin, duration);
     }
 

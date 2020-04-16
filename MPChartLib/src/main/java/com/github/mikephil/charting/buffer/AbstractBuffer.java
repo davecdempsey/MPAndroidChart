@@ -15,14 +15,14 @@ public abstract class AbstractBuffer<T> {
     /** index in the buffer */
     protected int index = 0;
 
-    /** float-buffer that holds the data points to draw, order: x,y,x,y,... */
-    public final float[] buffer;
+    /** double-buffer that holds the data points to draw, order: x,y,x,y,... */
+    public final double[] buffer;
 
     /** animation phase x-axis */
-    protected float phaseX = 1f;
+    protected double phaseX = 1;
 
     /** animation phase y-axis */
-    protected float phaseY = 1f;
+    protected double phaseY = 1;
 
     /** indicates from which x-index the visible data begins */
     protected int mFrom = 0;
@@ -37,7 +37,7 @@ public abstract class AbstractBuffer<T> {
      */
     public AbstractBuffer(int size) {
         index = 0;
-        buffer = new float[size];
+        buffer = new double[size];
     }
 
     /** limits the drawing on the x-axis */
@@ -76,7 +76,7 @@ public abstract class AbstractBuffer<T> {
      * @param phaseX
      * @param phaseY
      */
-    public void setPhases(float phaseX, float phaseY) {
+    public void setPhases(double phaseX, double phaseY) {
         this.phaseX = phaseX;
         this.phaseY = phaseY;
     }

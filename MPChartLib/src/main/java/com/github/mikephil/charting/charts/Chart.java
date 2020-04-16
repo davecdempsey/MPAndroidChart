@@ -92,9 +92,9 @@ public abstract class Chart<T extends ChartData<? extends IDataSet<? extends Ent
      * Deceleration friction coefficient in [0 ; 1] interval, higher values
      * indicate that speed will decrease slowly, for example if it set to 0, it
      * will stop immediately. 1 is an invalid value, and will be converted to
-     * 0.999f automatically.
+     * 0.999 automatically.
      */
-    private float mDragDecelerationFrictionCoef = 0.9f;
+    private double mDragDecelerationFrictionCoef = 0.9;
 
     /**
      * default value-formatter, number of digits depends on provided chart-data
@@ -172,7 +172,7 @@ public abstract class Chart<T extends ChartData<? extends IDataSet<? extends Ent
     /**
      * Extra offsets to be appended to the viewport
      */
-    private float mExtraTopOffset = 0.f,
+    private double mExtraTopOffset = 0.f,
             mExtraRightOffset = 0.f,
             mExtraBottomOffset = 0.f,
             mExtraLeftOffset = 0.f;
@@ -224,7 +224,7 @@ public abstract class Chart<T extends ChartData<? extends IDataSet<? extends Ent
 
         // initialize the utils
         Utils.init(getContext());
-        mMaxHighlightDistance = Utils.convertDpToPixel(500f);
+        mMaxHighlightDistance = Utils.convertDpToPixel(500);
 
         mDescription = new Description();
         mLegend = new Legend();
@@ -238,7 +238,7 @@ public abstract class Chart<T extends ChartData<? extends IDataSet<? extends Ent
         mInfoPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mInfoPaint.setColor(Color.rgb(247, 189, 51)); // orange
         mInfoPaint.setTextAlign(Align.CENTER);
-        mInfoPaint.setTextSize(Utils.convertDpToPixel(12f));
+        mInfoPaint.setTextSize(Utils.convertDpToPixel(12));
 
         if (mLogEnabled)
             Log.i("", "Chart.init()");
@@ -265,7 +265,7 @@ public abstract class Chart<T extends ChartData<? extends IDataSet<? extends Ent
     // ArrayList<Entry> yVals = new ArrayList<Entry>();
     //
     // for (int j = 0; j < 12; j++) {
-    // float val = (float) (Math.random() * 100);
+    // double val =  (Math.random() * 100);
     // yVals.add(new Entry(val, j));
     // }
     //
@@ -372,9 +372,9 @@ public abstract class Chart<T extends ChartData<? extends IDataSet<? extends Ent
      * Calculates the required number of digits for the values that might be
      * drawn in the chart (if enabled), and creates the default-value-formatter
      */
-    protected void setupDefaultFormatter(float min, float max) {
+    protected void setupDefaultFormatter(double min, double max) {
 
-        float reference = 0f;
+        double reference = 0;
 
         if (mData == null || mData.getEntryCount() < 2) {
 
@@ -432,7 +432,7 @@ public abstract class Chart<T extends ChartData<? extends IDataSet<? extends Ent
             mDescPaint.setColor(mDescription.getTextColor());
             mDescPaint.setTextAlign(mDescription.getTextAlign());
 
-            float x, y;
+            double x, y;
 
             // if no position specified, draw on default position
             if (position == null) {
@@ -461,10 +461,10 @@ public abstract class Chart<T extends ChartData<? extends IDataSet<? extends Ent
     /**
      * The maximum distance in dp away from an entry causing it to highlight.
      */
-    protected float mMaxHighlightDistance = 0f;
+    protected double mMaxHighlightDistance = 0;
 
     @Override
-    public float getMaxHighlightDistance() {
+    public double getMaxHighlightDistance() {
         return mMaxHighlightDistance;
     }
 
@@ -474,7 +474,7 @@ public abstract class Chart<T extends ChartData<? extends IDataSet<? extends Ent
      *
      * @param distDp
      */
-    public void setMaxHighlightDistance(float distDp) {
+    public void setMaxHighlightDistance(double distDp) {
         mMaxHighlightDistance = Utils.convertDpToPixel(distDp);
     }
 
@@ -560,7 +560,7 @@ public abstract class Chart<T extends ChartData<? extends IDataSet<? extends Ent
      * @param x The x-value to highlight
      * @param dataSetIndex The dataset index to search in
      */
-    public void highlightValue(float x, int dataSetIndex) {
+    public void highlightValue(double x, int dataSetIndex) {
         highlightValue(x, dataSetIndex, true);
     }
 
@@ -572,7 +572,7 @@ public abstract class Chart<T extends ChartData<? extends IDataSet<? extends Ent
      * @param y The y-value to highlight. Supply `NaN` for "any"
      * @param dataSetIndex The dataset index to search in
      */
-    public void highlightValue(float x, float y, int dataSetIndex) {
+    public void highlightValue(double x, double y, int dataSetIndex) {
         highlightValue(x, y, dataSetIndex, true);
     }
 
@@ -583,8 +583,8 @@ public abstract class Chart<T extends ChartData<? extends IDataSet<? extends Ent
      * @param dataSetIndex The dataset index to search in
      * @param callListener Should the listener be called for this change
      */
-    public void highlightValue(float x, int dataSetIndex, boolean callListener) {
-        highlightValue(x, Float.NaN, dataSetIndex, callListener);
+    public void highlightValue(double x, int dataSetIndex, boolean callListener) {
+        highlightValue(x, Double.NaN, dataSetIndex, callListener);
     }
 
     /**
@@ -595,7 +595,7 @@ public abstract class Chart<T extends ChartData<? extends IDataSet<? extends Ent
      * @param dataSetIndex The dataset index to search in
      * @param callListener Should the listener be called for this change
      */
-    public void highlightValue(float x, float y, int dataSetIndex, boolean callListener) {
+    public void highlightValue(double x, double y, int dataSetIndex, boolean callListener) {
 
         if (dataSetIndex < 0 || dataSetIndex >= mData.getDataSetCount()) {
             highlightValue(null, callListener);
@@ -671,7 +671,7 @@ public abstract class Chart<T extends ChartData<? extends IDataSet<? extends Ent
      * @param y
      * @return
      */
-    public Highlight getHighlightByTouchPoint(float x, float y) {
+    public Highlight getHighlightByTouchPoint(double x, double y) {
 
         if (mData == null) {
             Log.e(LOG_TAG, "Can't select by touch. No data set.");
@@ -736,7 +736,7 @@ public abstract class Chart<T extends ChartData<? extends IDataSet<? extends Ent
             if (e == null || entryIndex > set.getEntryCount() * mAnimator.getPhaseX())
                 continue;
 
-            float[] pos = getMarkerPosition(highlight);
+            double[] pos = getMarkerPosition(highlight);
 
             // check bounds
             if (!mViewPortHandler.isInBounds(pos[0], pos[1]))
@@ -757,8 +757,8 @@ public abstract class Chart<T extends ChartData<? extends IDataSet<? extends Ent
      * @param high
      * @return
      */
-    protected float[] getMarkerPosition(Highlight high) {
-        return new float[]{high.getDrawX(), high.getDrawY()};
+    protected double[] getMarkerPosition(Highlight high) {
+        return new double[]{high.getDrawX(), high.getDrawY()};
     }
 
     /**
@@ -797,7 +797,7 @@ public abstract class Chart<T extends ChartData<? extends IDataSet<? extends Ent
      *
      * @return
      */
-    public float getDragDecelerationFrictionCoef() {
+    public double getDragDecelerationFrictionCoef() {
         return mDragDecelerationFrictionCoef;
     }
 
@@ -805,17 +805,17 @@ public abstract class Chart<T extends ChartData<? extends IDataSet<? extends Ent
      * Deceleration friction coefficient in [0 ; 1] interval, higher values
      * indicate that speed will decrease slowly, for example if it set to 0, it
      * will stop immediately. 1 is an invalid value, and will be converted to
-     * 0.999f automatically.
+     * 0.999 automatically.
      *
      * @param newValue
      */
-    public void setDragDecelerationFrictionCoef(float newValue) {
+    public void setDragDecelerationFrictionCoef(double newValue) {
 
         if (newValue < 0.f)
             newValue = 0.f;
 
-        if (newValue >= 1f)
-            newValue = 0.999f;
+        if (newValue >= 1)
+            newValue = 0.999;
 
         mDragDecelerationFrictionCoef = newValue;
     }
@@ -1052,7 +1052,7 @@ public abstract class Chart<T extends ChartData<? extends IDataSet<? extends Ent
      *
      * @return
      */
-    public float getYMax() {
+    public double getYMax() {
         return mData.getYMax();
     }
 
@@ -1061,22 +1061,22 @@ public abstract class Chart<T extends ChartData<? extends IDataSet<? extends Ent
      *
      * @return
      */
-    public float getYMin() {
+    public double getYMin() {
         return mData.getYMin();
     }
 
     @Override
-    public float getXChartMax() {
+    public double getXChartMax() {
         return mXAxis.mAxisMaximum;
     }
 
     @Override
-    public float getXChartMin() {
+    public double getXChartMin() {
         return mXAxis.mAxisMinimum;
     }
 
     @Override
-    public float getXRange() {
+    public double getXRange() {
         return mXAxis.mAxisRange;
     }
 
@@ -1087,7 +1087,7 @@ public abstract class Chart<T extends ChartData<? extends IDataSet<? extends Ent
      * @return
      */
     public MPPointF getCenter() {
-        return MPPointF.getInstance(getWidth() / 2f, getHeight() / 2f);
+        return MPPointF.getInstance(getWidth() / 2, getHeight() / 2);
     }
 
     /**
@@ -1111,7 +1111,7 @@ public abstract class Chart<T extends ChartData<? extends IDataSet<? extends Ent
      * @param right
      * @param bottom
      */
-    public void setExtraOffsets(float left, float top, float right, float bottom) {
+    public void setExtraOffsets(double left, double top, double right, double bottom) {
         setExtraLeftOffset(left);
         setExtraTopOffset(top);
         setExtraRightOffset(right);
@@ -1121,56 +1121,56 @@ public abstract class Chart<T extends ChartData<? extends IDataSet<? extends Ent
     /**
      * Set an extra offset to be appended to the viewport's top
      */
-    public void setExtraTopOffset(float offset) {
+    public void setExtraTopOffset(double offset) {
         mExtraTopOffset = Utils.convertDpToPixel(offset);
     }
 
     /**
      * @return the extra offset to be appended to the viewport's top
      */
-    public float getExtraTopOffset() {
+    public double getExtraTopOffset() {
         return mExtraTopOffset;
     }
 
     /**
      * Set an extra offset to be appended to the viewport's right
      */
-    public void setExtraRightOffset(float offset) {
+    public void setExtraRightOffset(double offset) {
         mExtraRightOffset = Utils.convertDpToPixel(offset);
     }
 
     /**
      * @return the extra offset to be appended to the viewport's right
      */
-    public float getExtraRightOffset() {
+    public double getExtraRightOffset() {
         return mExtraRightOffset;
     }
 
     /**
      * Set an extra offset to be appended to the viewport's bottom
      */
-    public void setExtraBottomOffset(float offset) {
+    public void setExtraBottomOffset(double offset) {
         mExtraBottomOffset = Utils.convertDpToPixel(offset);
     }
 
     /**
      * @return the extra offset to be appended to the viewport's bottom
      */
-    public float getExtraBottomOffset() {
+    public double getExtraBottomOffset() {
         return mExtraBottomOffset;
     }
 
     /**
      * Set an extra offset to be appended to the viewport's left
      */
-    public void setExtraLeftOffset(float offset) {
+    public void setExtraLeftOffset(double offset) {
         mExtraLeftOffset = Utils.convertDpToPixel(offset);
     }
 
     /**
      * @return the extra offset to be appended to the viewport's left
      */
-    public float getExtraLeftOffset() {
+    public double getExtraLeftOffset() {
         return mExtraLeftOffset;
     }
 
@@ -1694,7 +1694,7 @@ public abstract class Chart<T extends ChartData<? extends IDataSet<? extends Ent
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        int size = (int) Utils.convertDpToPixel(50f);
+        int size = (int) Utils.convertDpToPixel(50);
         setMeasuredDimension(
                 Math.max(getSuggestedMinimumWidth(),
                         resolveSize(size,

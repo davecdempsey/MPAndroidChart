@@ -38,8 +38,8 @@ public abstract class DemoBase extends FragmentActivity {
         mTfLight = Typeface.createFromAsset(getAssets(), "OpenSans-Light.ttf");
     }
 
-    protected float getRandom(float range, float startsfrom) {
-        return (float) (Math.random() * range) + startsfrom;
+    protected double getRandom(double range, double startsfrom) {
+        return (Math.random() * range) + startsfrom;
     }
 
     @Override

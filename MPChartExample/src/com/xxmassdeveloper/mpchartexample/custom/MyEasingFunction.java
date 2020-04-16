@@ -11,7 +11,7 @@ import com.github.mikephil.charting.animation.EasingFunction;
 public class MyEasingFunction implements EasingFunction {
 
     @Override
-    public float getInterpolation(float input) {
+    public double getInterpolation(double input) {
         // do awesome stuff here, this is just linear easing
         return input;
     }

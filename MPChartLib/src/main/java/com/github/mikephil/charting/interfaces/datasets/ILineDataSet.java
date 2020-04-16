@@ -20,11 +20,11 @@ public interface ILineDataSet extends ILineRadarDataSet<Entry> {
 
     /**
      * Returns the intensity of the cubic lines (the effect intensity).
-     * Max = 1f = very cubic, Min = 0.05f = low cubic effect, Default: 0.2f
+     * Max = 1 = very cubic, Min = 0.05 = low cubic effect, Default: 0.2
      *
      * @return
      */
-    float getCubicIntensity();
+    double getCubicIntensity();
 
     @Deprecated
     boolean isDrawCubicEnabled();
@@ -35,12 +35,12 @@ public interface ILineDataSet extends ILineRadarDataSet<Entry> {
     /**
      * Returns the size of the drawn circles.
      */
-    float getCircleRadius();
+    double getCircleRadius();
 
     /**
      * Returns the hole radius of the drawn circles.
      */
-    float getCircleHoleRadius();
+    double getCircleHoleRadius();
 
     /**
      * Returns the color at the given index of the DataSet's circle-color array.

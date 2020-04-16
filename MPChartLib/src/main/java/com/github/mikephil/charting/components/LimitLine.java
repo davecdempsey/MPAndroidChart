@@ -18,10 +18,10 @@ import com.github.mikephil.charting.utils.Utils;
 public class LimitLine extends ComponentBase {
 
     /** limit / maximum (the y-value or xIndex) */
-    private float mLimit = 0f;
+    private double mLimit = 0;
 
     /** the width of the limit line */
-    private float mLineWidth = 2f;
+    private double mLineWidth = 2;
 
     /** the color of the limit line */
     private int mLineColor = Color.rgb(237, 91, 91);
@@ -49,7 +49,7 @@ public class LimitLine extends ComponentBase {
      * @param limit - the position (the value) on the y-axis (y-value) or x-axis
      *            (xIndex) where this line should appear
      */
-    public LimitLine(float limit) {
+    public LimitLine(double limit) {
         mLimit = limit;
     }
 
@@ -60,7 +60,7 @@ public class LimitLine extends ComponentBase {
      *            (xIndex) where this line should appear
      * @param label - provide "" if no label is required
      */
-    public LimitLine(float limit, String label) {
+    public LimitLine(double limit, String label) {
         mLimit = limit;
         mLabel = label;
     }
@@ -70,22 +70,22 @@ public class LimitLine extends ComponentBase {
      * 
      * @return
      */
-    public float getLimit() {
+    public double getLimit() {
         return mLimit;
     }
 
     /**
-     * set the line width of the chart (min = 0.2f, max = 12f); default 2f NOTE:
+     * set the line width of the chart (min = 0.2, max = 12); default 2 NOTE:
      * thinner line == better performance, thicker line == worse performance
      * 
      * @param width
      */
-    public void setLineWidth(float width) {
+    public void setLineWidth(double width) {
 
-        if (width < 0.2f)
-            width = 0.2f;
-        if (width > 12.0f)
-            width = 12.0f;
+        if (width < 0.2)
+            width = 0.2;
+        if (width > 12.0)
+            width = 12.0;
         mLineWidth = Utils.convertDpToPixel(width);
     }
 
@@ -94,7 +94,7 @@ public class LimitLine extends ComponentBase {
      * 
      * @return
      */
-    public float getLineWidth() {
+    public double getLineWidth() {
         return mLineWidth;
     }
 
@@ -124,8 +124,8 @@ public class LimitLine extends ComponentBase {
      * @param spaceLength the length of space inbetween the pieces
      * @param phase offset, in degrees (normally, use 0)
      */
-    public void enableDashedLine(float lineLength, float spaceLength, float phase) {
-        mDashPathEffect = new DashPathEffect(new float[] {
+    public void enableDashedLine(double lineLength, double spaceLength, double phase) {
+        mDashPathEffect = new DashPathEffect(new double[] {
                 lineLength, spaceLength
         }, phase);
     }

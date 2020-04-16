@@ -22,7 +22,7 @@ public class AxisRendererTest {
         AxisRenderer renderer = new YAxisRenderer(null, yAxis, null);
 
         renderer.computeAxis(0, 100, false);
-        float[] entries = yAxis.mEntries;
+        double[] entries = yAxis.mEntries;
 
         assertEquals(6, entries.length);
         assertEquals(20, entries[1] - entries[0], 0.01); // interval 20
@@ -31,7 +31,7 @@ public class AxisRendererTest {
 
         yAxis = new YAxis();
         yAxis.setLabelCount(6);
-        yAxis.setGranularity(50f);
+        yAxis.setGranularity(50);
         renderer = new YAxisRenderer(null, yAxis, null);
 
         renderer.computeAxis(0, 100, false);
@@ -58,7 +58,7 @@ public class AxisRendererTest {
         yAxis.setLabelCount(5, true);
         renderer = new YAxisRenderer(null, yAxis, null);
 
-        renderer.computeAxis(0, 0.01f, false);
+        renderer.computeAxis(0, 0.01, false);
         entries = yAxis.mEntries;
 
         assertEquals(5, entries.length);
@@ -70,7 +70,7 @@ public class AxisRendererTest {
         yAxis.setLabelCount(5, false);
         renderer = new YAxisRenderer(null, yAxis, null);
 
-        renderer.computeAxis(0, 0.01f, false);
+        renderer.computeAxis(0, 0.01, false);
         entries = yAxis.mEntries;
 
         assertEquals(5, entries.length);

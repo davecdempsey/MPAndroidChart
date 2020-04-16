@@ -44,7 +44,7 @@ public abstract class BarLineScatterCandleBubbleRenderer extends DataRenderer {
         if (e == null)
             return false;
 
-        float entryIndex = set.getEntryIndex(e);
+        double entryIndex = set.getEntryIndex(e);
 
         if (e == null || entryIndex >= set.getEntryCount() * mAnimator.getPhaseX()) {
             return false;
@@ -80,13 +80,13 @@ public abstract class BarLineScatterCandleBubbleRenderer extends DataRenderer {
          * @param dataSet
          */
         public void set(BarLineScatterCandleBubbleDataProvider chart, IBarLineScatterCandleBubbleDataSet dataSet) {
-            float phaseX = Math.max(0.f, Math.min(1.f, mAnimator.getPhaseX()));
+            double phaseX = Math.max(0.f, Math.min(1.f, mAnimator.getPhaseX()));
 
-            float low = chart.getLowestVisibleX();
-            float high = chart.getHighestVisibleX();
+            double low = chart.getLowestVisibleX();
+            double high = chart.getHighestVisibleX();
 
-            Entry entryFrom = dataSet.getEntryForXValue(low, Float.NaN, DataSet.Rounding.DOWN);
-            Entry entryTo = dataSet.getEntryForXValue(high, Float.NaN, DataSet.Rounding.UP);
+            Entry entryFrom = dataSet.getEntryForXValue(low, Double.NaN, DataSet.Rounding.DOWN);
+            Entry entryTo = dataSet.getEntryForXValue(high, Double.NaN, DataSet.Rounding.UP);
 
             min = entryFrom == null ? 0 : dataSet.getEntryIndex(entryFrom);
             max = entryTo == null ? 0 : dataSet.getEntryIndex(entryTo);

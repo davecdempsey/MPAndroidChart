@@ -21,7 +21,7 @@ public class ScatterDataSet extends LineScatterCandleRadarDataSet<Entry> impleme
     /**
      * the size the scattershape will have, in density pixels
      */
-    private float mShapeSize = 15f;
+    private double mShapeSize = 15;
 
     /**
      * Renderer responsible for rendering this DataSet, default: square
@@ -32,7 +32,7 @@ public class ScatterDataSet extends LineScatterCandleRadarDataSet<Entry> impleme
      * The radius of the hole in the shape (applies to Square, Circle and Triangle)
      * - default: 0.0
      */
-    private float mScatterShapeHoleRadius = 0f;
+    private double mScatterShapeHoleRadius = 0;
 
     /**
      * Color for the hole in the shape.
@@ -75,12 +75,12 @@ public class ScatterDataSet extends LineScatterCandleRadarDataSet<Entry> impleme
      *
      * @param size
      */
-    public void setScatterShapeSize(float size) {
+    public void setScatterShapeSize(double size) {
         mShapeSize = size;
     }
 
     @Override
-    public float getScatterShapeSize() {
+    public double getScatterShapeSize() {
         return mShapeSize;
     }
 
@@ -115,12 +115,12 @@ public class ScatterDataSet extends LineScatterCandleRadarDataSet<Entry> impleme
      *
      * @param holeRadius
      */
-    public void setScatterShapeHoleRadius(float holeRadius) {
+    public void setScatterShapeHoleRadius(double holeRadius) {
         mScatterShapeHoleRadius = holeRadius;
     }
 
     @Override
-    public float getScatterShapeHoleRadius() {
+    public double getScatterShapeHoleRadius() {
         return mScatterShapeHoleRadius;
     }
 

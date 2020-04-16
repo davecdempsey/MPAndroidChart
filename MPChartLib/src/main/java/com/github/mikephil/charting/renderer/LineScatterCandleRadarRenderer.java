@@ -29,7 +29,7 @@ public abstract class LineScatterCandleRadarRenderer extends BarLineScatterCandl
      * @param y y-position of the highlight line intersection
      * @param set the currently drawn dataset
      */
-    protected void drawHighlightLines(Canvas c, float x, float y, ILineScatterCandleRadarDataSet set) {
+    protected void drawHighlightLines(Canvas c, double x, double y, ILineScatterCandleRadarDataSet set) {
 
         // set color and stroke-width
         mHighlightPaint.setColor(set.getHighLightColor());

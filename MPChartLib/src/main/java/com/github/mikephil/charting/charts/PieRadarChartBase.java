@@ -33,12 +33,12 @@ public abstract class PieRadarChartBase<T extends ChartData<? extends IDataSet<?
     /**
      * holds the normalized version of the current rotation angle of the chart
      */
-    private float mRotationAngle = 270f;
+    private double mRotationAngle = 270;
 
     /**
      * holds the raw version of the current rotation angle of the chart
      */
-    private float mRawRotationAngle = 270f;
+    private double mRawRotationAngle = 270;
 
     /**
      * flag that indicates if rotation is enabled or not
@@ -48,7 +48,7 @@ public abstract class PieRadarChartBase<T extends ChartData<? extends IDataSet<?
     /**
      * Sets the minimum offset (padding) around the chart, defaults to 0.f
      */
-    protected float mMinOffset = 0.f;
+    protected double mMinOffset = 0.f;
 
     public PieRadarChartBase(Context context) {
         super(context);
@@ -111,52 +111,52 @@ public abstract class PieRadarChartBase<T extends ChartData<? extends IDataSet<?
     @Override
     public void calculateOffsets() {
 
-        float legendLeft = 0f, legendRight = 0f, legendBottom = 0f, legendTop = 0f;
+        double legendLeft = 0, legendRight = 0, legendBottom = 0, legendTop = 0;
 
         if (mLegend != null && mLegend.isEnabled() && !mLegend.isDrawInsideEnabled()) {
 
-            float fullLegendWidth = Math.min(mLegend.mNeededWidth,
+            double fullLegendWidth = Math.min(mLegend.mNeededWidth,
                     mViewPortHandler.getChartWidth() * mLegend.getMaxSizePercent());
 
             switch (mLegend.getOrientation()) {
                 case VERTICAL: {
-                    float xLegendOffset = 0.f;
+                    double xLegendOffset = 0.f;
 
                     if (mLegend.getHorizontalAlignment() == Legend.LegendHorizontalAlignment.LEFT
                             || mLegend.getHorizontalAlignment() == Legend.LegendHorizontalAlignment.RIGHT) {
                         if (mLegend.getVerticalAlignment() == Legend.LegendVerticalAlignment.CENTER) {
                             // this is the space between the legend and the chart
-                            final float spacing = Utils.convertDpToPixel(13f);
+                            final double spacing = Utils.convertDpToPixel(13);
 
                             xLegendOffset = fullLegendWidth + spacing;
 
                         } else {
                             // this is the space between the legend and the chart
-                            float spacing = Utils.convertDpToPixel(8f);
+                            double spacing = Utils.convertDpToPixel(8);
 
-                            float legendWidth = fullLegendWidth + spacing;
-                            float legendHeight = mLegend.mNeededHeight + mLegend.mTextHeightMax;
+                            double legendWidth = fullLegendWidth + spacing;
+                            double legendHeight = mLegend.mNeededHeight + mLegend.mTextHeightMax;
 
                             MPPointF center = getCenter();
 
-                            float bottomX = mLegend.getHorizontalAlignment() ==
+                            double bottomX = mLegend.getHorizontalAlignment() ==
                                     Legend.LegendHorizontalAlignment.RIGHT
                                     ? getWidth() - legendWidth + 15.f
                                     : legendWidth - 15.f;
-                            float bottomY = legendHeight + 15.f;
-                            float distLegend = distanceToCenter(bottomX, bottomY);
+                            double bottomY = legendHeight + 15.f;
+                            double distLegend = distanceToCenter(bottomX, bottomY);
 
                             MPPointF reference = getPosition(center, getRadius(),
                                     getAngleForPoint(bottomX, bottomY));
 
-                            float distReference = distanceToCenter(reference.x, reference.y);
-                            float minOffset = Utils.convertDpToPixel(5f);
+                            double distReference = distanceToCenter(reference.x, reference.y);
+                            double minOffset = Utils.convertDpToPixel(5);
 
                             if (bottomY >= center.y && getHeight() - legendWidth > getWidth()) {
                                 xLegendOffset = legendWidth;
                             } else if (distLegend < distReference) {
 
-                                float diff = distReference - distLegend;
+                                double diff = distReference - distLegend;
                                 xLegendOffset = minOffset + diff;
                             }
 
@@ -191,7 +191,7 @@ public abstract class PieRadarChartBase<T extends ChartData<? extends IDataSet<?
                 break;
 
                 case HORIZONTAL:
-                    float yLegendOffset = 0.f;
+                    double yLegendOffset = 0.f;
 
                     if (mLegend.getVerticalAlignment() == Legend.LegendVerticalAlignment.TOP ||
                             mLegend.getVerticalAlignment() == Legend.LegendVerticalAlignment.BOTTOM) {
@@ -199,7 +199,7 @@ public abstract class PieRadarChartBase<T extends ChartData<? extends IDataSet<?
                         // It's possible that we do not need this offset anymore as it
                         //   is available through the extraOffsets, but changing it can mean
                         //   changing default visibility for existing apps.
-                        float yOffset = getRequiredLegendOffset();
+                        double yOffset = getRequiredLegendOffset();
 
                         yLegendOffset = Math.min(mLegend.mNeededHeight + yOffset,
                                 mViewPortHandler.getChartHeight() * mLegend.getMaxSizePercent());
@@ -222,7 +222,7 @@ public abstract class PieRadarChartBase<T extends ChartData<? extends IDataSet<?
             legendBottom += getRequiredBaseOffset();
         }
 
-        float minOffset = Utils.convertDpToPixel(mMinOffset);
+        double minOffset = Utils.convertDpToPixel(mMinOffset);
 
         if (this instanceof RadarChart) {
             XAxis x = this.getXAxis();
@@ -237,10 +237,10 @@ public abstract class PieRadarChartBase<T extends ChartData<? extends IDataSet<?
         legendBottom += getExtraBottomOffset();
         legendLeft += getExtraLeftOffset();
 
-        float offsetLeft = Math.max(minOffset, legendLeft);
-        float offsetTop = Math.max(minOffset, legendTop);
-        float offsetRight = Math.max(minOffset, legendRight);
-        float offsetBottom = Math.max(minOffset, Math.max(getRequiredBaseOffset(), legendBottom));
+        double offsetLeft = Math.max(minOffset, legendLeft);
+        double offsetTop = Math.max(minOffset, legendTop);
+        double offsetRight = Math.max(minOffset, legendRight);
+        double offsetBottom = Math.max(minOffset, Math.max(getRequiredBaseOffset(), legendBottom));
 
         mViewPortHandler.restrainViewPort(offsetLeft, offsetTop, offsetRight, offsetBottom);
 
@@ -258,7 +258,7 @@ public abstract class PieRadarChartBase<T extends ChartData<? extends IDataSet<?
      * @param y
      * @return
      */
-    public float getAngleForPoint(float x, float y) {
+    public double getAngleForPoint(double x, double y) {
 
         MPPointF c = getCenterOffsets();
 
@@ -266,17 +266,17 @@ public abstract class PieRadarChartBase<T extends ChartData<? extends IDataSet<?
         double length = Math.sqrt(tx * tx + ty * ty);
         double r = Math.acos(ty / length);
 
-        float angle = (float) Math.toDegrees(r);
+        double angle =  Math.toDegrees(r);
 
         if (x > c.x)
-            angle = 360f - angle;
+            angle = 360 - angle;
 
         // add 90° because chart starts EAST
-        angle = angle + 90f;
+        angle = angle + 90;
 
         // neutralize overflow
-        if (angle > 360f)
-            angle = angle - 360f;
+        if (angle > 360)
+            angle = angle - 360;
 
         MPPointF.recycleInstance(c);
 
@@ -293,16 +293,16 @@ public abstract class PieRadarChartBase<T extends ChartData<? extends IDataSet<?
      * @param angle  in degrees, converted to radians internally
      * @return
      */
-    public MPPointF getPosition(MPPointF center, float dist, float angle) {
+    public MPPointF getPosition(MPPointF center, double dist, double angle) {
 
         MPPointF p = MPPointF.getInstance(0, 0);
         getPosition(center, dist, angle, p);
         return p;
     }
 
-    public void getPosition(MPPointF center, float dist, float angle, MPPointF outputPoint) {
-        outputPoint.x = (float) (center.x + dist * Math.cos(Math.toRadians(angle)));
-        outputPoint.y = (float) (center.y + dist * Math.sin(Math.toRadians(angle)));
+    public void getPosition(MPPointF center, double dist, double angle, MPPointF outputPoint) {
+        outputPoint.x =  (center.x + dist * Math.cos(Math.toRadians(angle)));
+        outputPoint.y =  (center.y + dist * Math.sin(Math.toRadians(angle)));
     }
 
     /**
@@ -313,14 +313,14 @@ public abstract class PieRadarChartBase<T extends ChartData<? extends IDataSet<?
      * @param y
      * @return
      */
-    public float distanceToCenter(float x, float y) {
+    public double distanceToCenter(double x, double y) {
 
         MPPointF c = getCenterOffsets();
 
-        float dist = 0f;
+        double dist = 0;
 
-        float xDist = 0f;
-        float yDist = 0f;
+        double xDist = 0;
+        double yDist = 0;
 
         if (x > c.x) {
             xDist = x - c.x;
@@ -335,7 +335,7 @@ public abstract class PieRadarChartBase<T extends ChartData<? extends IDataSet<?
         }
 
         // pythagoras
-        dist = (float) Math.sqrt(Math.pow(xDist, 2.0) + Math.pow(yDist, 2.0));
+        dist =  Math.sqrt(Math.pow(xDist, 2.0) + Math.pow(yDist, 2.0));
 
         MPPointF.recycleInstance(c);
 
@@ -349,15 +349,15 @@ public abstract class PieRadarChartBase<T extends ChartData<? extends IDataSet<?
      * @param angle
      * @return
      */
-    public abstract int getIndexForAngle(float angle);
+    public abstract int getIndexForAngle(double angle);
 
     /**
-     * Set an offset for the rotation of the RadarChart in degrees. Default 270f
+     * Set an offset for the rotation of the RadarChart in degrees. Default 270
      * --> top (NORTH)
      *
      * @param angle
      */
-    public void setRotationAngle(float angle) {
+    public void setRotationAngle(double angle) {
         mRawRotationAngle = angle;
         mRotationAngle = Utils.getNormalizedAngle(mRawRotationAngle);
     }
@@ -370,7 +370,7 @@ public abstract class PieRadarChartBase<T extends ChartData<? extends IDataSet<?
      *
      * @return
      */
-    public float getRawRotationAngle() {
+    public double getRawRotationAngle() {
         return mRawRotationAngle;
     }
 
@@ -380,7 +380,7 @@ public abstract class PieRadarChartBase<T extends ChartData<? extends IDataSet<?
      *
      * @return
      */
-    public float getRotationAngle() {
+    public double getRotationAngle() {
         return mRotationAngle;
     }
 
@@ -406,14 +406,14 @@ public abstract class PieRadarChartBase<T extends ChartData<? extends IDataSet<?
     /**
      * Gets the minimum offset (padding) around the chart, defaults to 0.f
      */
-    public float getMinOffset() {
+    public double getMinOffset() {
         return mMinOffset;
     }
 
     /**
      * Sets the minimum offset (padding) around the chart, defaults to 0.f
      */
-    public void setMinOffset(float minOffset) {
+    public void setMinOffset(double minOffset) {
         mMinOffset = minOffset;
     }
 
@@ -422,7 +422,7 @@ public abstract class PieRadarChartBase<T extends ChartData<? extends IDataSet<?
      *
      * @return
      */
-    public float getDiameter() {
+    public double getDiameter() {
         RectF content = mViewPortHandler.getContentRect();
         content.left += getExtraLeftOffset();
         content.top += getExtraTopOffset();
@@ -436,14 +436,14 @@ public abstract class PieRadarChartBase<T extends ChartData<? extends IDataSet<?
      *
      * @return
      */
-    public abstract float getRadius();
+    public abstract double getRadius();
 
     /**
      * Returns the required offset for the chart legend.
      *
      * @return
      */
-    protected abstract float getRequiredLegendOffset();
+    protected abstract double getRequiredLegendOffset();
 
     /**
      * Returns the base offset needed for the chart without calculating the
@@ -451,16 +451,16 @@ public abstract class PieRadarChartBase<T extends ChartData<? extends IDataSet<?
      *
      * @return
      */
-    protected abstract float getRequiredBaseOffset();
+    protected abstract double getRequiredBaseOffset();
 
     @Override
-    public float getYChartMax() {
+    public double getYChartMax() {
         // TODO Auto-generated method stub
         return 0;
     }
 
     @Override
-    public float getYChartMin() {
+    public double getYChartMin() {
         // TODO Auto-generated method stub
         return 0;
     }
@@ -478,14 +478,14 @@ public abstract class PieRadarChartBase<T extends ChartData<? extends IDataSet<?
      * @param toangle
      */
     @SuppressLint("NewApi")
-    public void spin(int durationmillis, float fromangle, float toangle, EasingFunction easing) {
+    public void spin(int durationmillis, double fromangle, double toangle, EasingFunction easing) {
 
         if (android.os.Build.VERSION.SDK_INT < 11)
             return;
 
         setRotationAngle(fromangle);
 
-        ObjectAnimator spinAnimator = ObjectAnimator.ofFloat(this, "rotationAngle", fromangle,
+        ObjectAnimator spinAnimator = ObjectAnimator.ofDouble(this, "rotationAngle", fromangle,
                 toangle);
         spinAnimator.setDuration(durationmillis);
         spinAnimator.setInterpolator(easing);

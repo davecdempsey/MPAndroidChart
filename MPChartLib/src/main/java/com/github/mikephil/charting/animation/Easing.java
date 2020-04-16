@@ -16,7 +16,7 @@ public class Easing {
 
     public interface EasingFunction extends TimeInterpolator {
         @Override
-        float getInterpolation(float input);
+        double getInterpolation(double input);
     }
 
     /**
@@ -126,291 +126,291 @@ public class Easing {
         }
     }
 
-    private static final float DOUBLE_PI = 2f * (float) Math.PI;
+    private static final double DOUBLE_PI = 2 *  Math.PI;
 
     @SuppressWarnings("unused")
     public static final EasingFunction Linear = new EasingFunction() {
-        public float getInterpolation(float input) {
+        public double getInterpolation(double input) {
             return input;
         }
     };
 
     @SuppressWarnings("unused")
     public static final EasingFunction EaseInQuad = new EasingFunction() {
-        public float getInterpolation(float input) {
+        public double getInterpolation(double input) {
             return input * input;
         }
     };
 
     @SuppressWarnings("unused")
     public static final EasingFunction EaseOutQuad = new EasingFunction() {
-        public float getInterpolation(float input) {
-            return -input * (input - 2f);
+        public double getInterpolation(double input) {
+            return -input * (input - 2);
         }
     };
 
     @SuppressWarnings("unused")
     public static final EasingFunction EaseInOutQuad = new EasingFunction() {
-        public float getInterpolation(float input) {
-            input *= 2f;
+        public double getInterpolation(double input) {
+            input *= 2;
 
-            if (input < 1f) {
-                return 0.5f * input * input;
+            if (input < 1) {
+                return 0.5 * input * input;
             }
 
-            return -0.5f * ((--input) * (input - 2f) - 1f);
+            return -0.5 * ((--input) * (input - 2) - 1);
         }
     };
 
     @SuppressWarnings("unused")
     public static final EasingFunction EaseInCubic = new EasingFunction() {
-        public float getInterpolation(float input) {
-            return (float) Math.pow(input, 3);
+        public double getInterpolation(double input) {
+            return  Math.pow(input, 3);
         }
     };
 
     @SuppressWarnings("unused")
     public static final EasingFunction EaseOutCubic = new EasingFunction() {
-        public float getInterpolation(float input) {
+        public double getInterpolation(double input) {
             input--;
-            return (float) Math.pow(input, 3) + 1f;
+            return  Math.pow(input, 3) + 1;
         }
     };
 
     @SuppressWarnings("unused")
     public static final EasingFunction EaseInOutCubic = new EasingFunction() {
-        public float getInterpolation(float input) {
-            input *= 2f;
-            if (input < 1f) {
-                return 0.5f * (float) Math.pow(input, 3);
+        public double getInterpolation(double input) {
+            input *= 2;
+            if (input < 1) {
+                return 0.5 *  Math.pow(input, 3);
             }
-            input -= 2f;
-            return 0.5f * ((float) Math.pow(input, 3) + 2f);
+            input -= 2;
+            return 0.5 * ( Math.pow(input, 3) + 2);
         }
     };
 
     @SuppressWarnings("unused")
     public static final EasingFunction EaseInQuart = new EasingFunction() {
 
-        public float getInterpolation(float input) {
-            return (float) Math.pow(input, 4);
+        public double getInterpolation(double input) {
+            return  Math.pow(input, 4);
         }
     };
 
     @SuppressWarnings("unused")
     public static final EasingFunction EaseOutQuart = new EasingFunction() {
-        public float getInterpolation(float input) {
+        public double getInterpolation(double input) {
             input--;
-            return -((float) Math.pow(input, 4) - 1f);
+            return -( Math.pow(input, 4) - 1);
         }
     };
 
     @SuppressWarnings("unused")
     public static final EasingFunction EaseInOutQuart = new EasingFunction() {
-        public float getInterpolation(float input) {
-            input *= 2f;
-            if (input < 1f) {
-                return 0.5f * (float) Math.pow(input, 4);
+        public double getInterpolation(double input) {
+            input *= 2;
+            if (input < 1) {
+                return 0.5 *  Math.pow(input, 4);
             }
-            input -= 2f;
-            return -0.5f * ((float) Math.pow(input, 4) - 2f);
+            input -= 2;
+            return -0.5 * ( Math.pow(input, 4) - 2);
         }
     };
 
     @SuppressWarnings("unused")
     public static final EasingFunction EaseInSine = new EasingFunction() {
-        public float getInterpolation(float input) {
-            return -(float) Math.cos(input * (Math.PI / 2f)) + 1f;
+        public double getInterpolation(double input) {
+            return - Math.cos(input * (Math.PI / 2)) + 1;
         }
     };
 
     @SuppressWarnings("unused")
     public static final EasingFunction EaseOutSine = new EasingFunction() {
-        public float getInterpolation(float input) {
-            return (float) Math.sin(input * (Math.PI / 2f));
+        public double getInterpolation(double input) {
+            return  Math.sin(input * (Math.PI / 2));
         }
     };
 
     @SuppressWarnings("unused")
     public static final EasingFunction EaseInOutSine = new EasingFunction() {
-        public float getInterpolation(float input) {
-            return -0.5f * ((float) Math.cos(Math.PI * input) - 1f);
+        public double getInterpolation(double input) {
+            return -0.5 * ( Math.cos(Math.PI * input) - 1);
         }
     };
 
     @SuppressWarnings("unused")
     public static final EasingFunction EaseInExpo = new EasingFunction() {
-        public float getInterpolation(float input) {
-            return (input == 0) ? 0f : (float) Math.pow(2f, 10f * (input - 1f));
+        public double getInterpolation(double input) {
+            return (input == 0) ? 0 :  Math.pow(2, 10 * (input - 1));
         }
     };
 
     @SuppressWarnings("unused")
     public static final EasingFunction EaseOutExpo = new EasingFunction() {
-        public float getInterpolation(float input) {
-            return (input == 1f) ? 1f : (-(float) Math.pow(2f, -10f * (input + 1f)));
+        public double getInterpolation(double input) {
+            return (input == 1) ? 1 : (- Math.pow(2, -10 * (input + 1)));
         }
     };
 
     @SuppressWarnings("unused")
     public static final EasingFunction EaseInOutExpo = new EasingFunction() {
-        public float getInterpolation(float input) {
+        public double getInterpolation(double input) {
             if (input == 0) {
-                return 0f;
-            } else if (input == 1f) {
-                return 1f;
+                return 0;
+            } else if (input == 1) {
+                return 1;
             }
 
-            input *= 2f;
-            if (input < 1f) {
-                return 0.5f * (float) Math.pow(2f, 10f * (input - 1f));
+            input *= 2;
+            if (input < 1) {
+                return 0.5 *  Math.pow(2, 10 * (input - 1));
             }
-            return 0.5f * (-(float) Math.pow(2f, -10f * --input) + 2f);
+            return 0.5 * (- Math.pow(2, -10 * --input) + 2);
         }
     };
 
     @SuppressWarnings("unused")
     public static final EasingFunction EaseInCirc = new EasingFunction() {
-        public float getInterpolation(float input) {
-            return -((float) Math.sqrt(1f - input * input) - 1f);
+        public double getInterpolation(double input) {
+            return -( Math.sqrt(1 - input * input) - 1);
         }
     };
 
     @SuppressWarnings("unused")
     public static final EasingFunction EaseOutCirc = new EasingFunction() {
-        public float getInterpolation(float input) {
+        public double getInterpolation(double input) {
             input--;
-            return (float) Math.sqrt(1f - input * input);
+            return  Math.sqrt(1 - input * input);
         }
     };
 
     @SuppressWarnings("unused")
     public static final EasingFunction EaseInOutCirc = new EasingFunction() {
-        public float getInterpolation(float input) {
-            input *= 2f;
-            if (input < 1f) {
-                return -0.5f * ((float) Math.sqrt(1f - input * input) - 1f);
+        public double getInterpolation(double input) {
+            input *= 2;
+            if (input < 1) {
+                return -0.5 * ( Math.sqrt(1 - input * input) - 1);
             }
-            return 0.5f * ((float) Math.sqrt(1f - (input -= 2f) * input) + 1f);
+            return 0.5 * ( Math.sqrt(1 - (input -= 2) * input) + 1);
         }
     };
 
     @SuppressWarnings("unused")
     public static final EasingFunction EaseInElastic = new EasingFunction() {
-        public float getInterpolation(float input) {
+        public double getInterpolation(double input) {
             if (input == 0) {
-                return 0f;
+                return 0;
             } else if (input == 1) {
-                return 1f;
+                return 1;
             }
 
-            float p = 0.3f;
-            float s = p / DOUBLE_PI * (float) Math.asin(1f);
-            return -((float) Math.pow(2f, 10f * (input -= 1f))
-                    *(float) Math.sin((input - s) * DOUBLE_PI / p));
+            double p = 0.3;
+            double s = p / DOUBLE_PI *  Math.asin(1);
+            return -( Math.pow(2, 10 * (input -= 1))
+                    * Math.sin((input - s) * DOUBLE_PI / p));
         }
     };
 
     @SuppressWarnings("unused")
     public static final EasingFunction EaseOutElastic = new EasingFunction() {
-        public float getInterpolation(float input) {
+        public double getInterpolation(double input) {
             if (input == 0) {
-                return 0f;
+                return 0;
             } else if (input == 1) {
-                return 1f;
+                return 1;
             }
 
-            float p = 0.3f;
-            float s = p / DOUBLE_PI * (float) Math.asin(1f);
-            return 1f
-                    + (float) Math.pow(2f, -10f * input)
-                    * (float) Math.sin((input - s) * DOUBLE_PI / p);
+            double p = 0.3;
+            double s = p / DOUBLE_PI *  Math.asin(1);
+            return 1
+                    +  Math.pow(2, -10 * input)
+                    *  Math.sin((input - s) * DOUBLE_PI / p);
         }
     };
 
     @SuppressWarnings("unused")
     public static final EasingFunction EaseInOutElastic = new EasingFunction() {
-        public float getInterpolation(float input) {
+        public double getInterpolation(double input) {
             if (input == 0) {
-                return 0f;
+                return 0;
             }
 
-            input *= 2f;
+            input *= 2;
             if (input == 2) {
-                return 1f;
+                return 1;
             }
 
-            float p = 1f / 0.45f;
-            float s = 0.45f / DOUBLE_PI * (float) Math.asin(1f);
-            if (input < 1f) {
-                return -0.5f
-                        * ((float) Math.pow(2f, 10f * (input -= 1f))
-                        * (float) Math.sin((input * 1f - s) * DOUBLE_PI * p));
+            double p = 1 / 0.45;
+            double s = 0.45 / DOUBLE_PI *  Math.asin(1);
+            if (input < 1) {
+                return -0.5
+                        * ( Math.pow(2, 10 * (input -= 1))
+                        *  Math.sin((input * 1 - s) * DOUBLE_PI * p));
             }
-            return 1f + 0.5f
-                    * (float) Math.pow(2f, -10f * (input -= 1f))
-                    * (float) Math.sin((input * 1f - s) * DOUBLE_PI * p);
+            return 1 + 0.5
+                    *  Math.pow(2, -10 * (input -= 1))
+                    *  Math.sin((input * 1 - s) * DOUBLE_PI * p);
         }
     };
 
     @SuppressWarnings("unused")
     public static final EasingFunction EaseInBack = new EasingFunction() {
-        public float getInterpolation(float input) {
-            final float s = 1.70158f;
-            return input * input * ((s + 1f) * input - s);
+        public double getInterpolation(double input) {
+            final double s = 1.70158;
+            return input * input * ((s + 1) * input - s);
         }
     };
 
     @SuppressWarnings("unused")
     public static final EasingFunction EaseOutBack = new EasingFunction() {
-        public float getInterpolation(float input) {
-            final float s = 1.70158f;
+        public double getInterpolation(double input) {
+            final double s = 1.70158;
             input--;
-            return (input * input * ((s + 1f) * input + s) + 1f);
+            return (input * input * ((s + 1) * input + s) + 1);
         }
     };
 
     @SuppressWarnings("unused")
     public static final EasingFunction EaseInOutBack = new EasingFunction() {
-        public float getInterpolation(float input) {
-            float s = 1.70158f;
-            input *= 2f;
-            if (input < 1f) {
-                return 0.5f * (input * input * (((s *= (1.525f)) + 1f) * input - s));
+        public double getInterpolation(double input) {
+            double s = 1.70158;
+            input *= 2;
+            if (input < 1) {
+                return 0.5 * (input * input * (((s *= (1.525)) + 1) * input - s));
             }
-            return 0.5f * ((input -= 2f) * input * (((s *= (1.525f)) + 1f) * input + s) + 2f);
+            return 0.5 * ((input -= 2) * input * (((s *= (1.525)) + 1) * input + s) + 2);
         }
     };
 
     @SuppressWarnings("unused")
     public static final EasingFunction EaseInBounce = new EasingFunction() {
-        public float getInterpolation(float input) {
-            return 1f - EaseOutBounce.getInterpolation(1f - input);
+        public double getInterpolation(double input) {
+            return 1 - EaseOutBounce.getInterpolation(1 - input);
         }
     };
 
     @SuppressWarnings("unused")
     public static final EasingFunction EaseOutBounce = new EasingFunction() {
-        public float getInterpolation(float input) {
-            float s = 7.5625f;
-            if (input < (1f / 2.75f)) {
+        public double getInterpolation(double input) {
+            double s = 7.5625;
+            if (input < (1 / 2.75)) {
                 return s * input * input;
-            } else if (input < (2f / 2.75f)) {
-                return s * (input -= (1.5f / 2.75f)) * input + 0.75f;
-            } else if (input < (2.5f / 2.75f)) {
-                return s * (input -= (2.25f / 2.75f)) * input + 0.9375f;
+            } else if (input < (2 / 2.75)) {
+                return s * (input -= (1.5 / 2.75)) * input + 0.75;
+            } else if (input < (2.5 / 2.75)) {
+                return s * (input -= (2.25 / 2.75)) * input + 0.9375;
             }
-            return s * (input -= (2.625f / 2.75f)) * input + 0.984375f;
+            return s * (input -= (2.625 / 2.75)) * input + 0.984375;
         }
     };
 
     @SuppressWarnings("unused")
     public static final EasingFunction EaseInOutBounce = new EasingFunction() {
-        public float getInterpolation(float input) {
-            if (input < 0.5f) {
-                return EaseInBounce.getInterpolation(input * 2f) * 0.5f;
+        public double getInterpolation(double input) {
+            if (input < 0.5) {
+                return EaseInBounce.getInterpolation(input * 2) * 0.5;
             }
-            return EaseOutBounce.getInterpolation(input * 2f - 1f) * 0.5f + 0.5f;
+            return EaseOutBounce.getInterpolation(input * 2 - 1) * 0.5 + 0.5;
         }
     };
 

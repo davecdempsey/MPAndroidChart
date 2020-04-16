@@ -107,7 +107,7 @@ public class CombinedChart extends BarLineChartBase<CombinedData> implements Com
      * @return
      */
     @Override
-    public Highlight getHighlightByTouchPoint(float x, float y) {
+    public Highlight getHighlightByTouchPoint(double x, double y) {
 
         if (mData == null) {
             Log.e(LOG_TAG, "Can't select by touch. No data set.");
@@ -255,7 +255,7 @@ public class CombinedChart extends BarLineChartBase<CombinedData> implements Com
             if (entryIndex > set.getEntryCount() * mAnimator.getPhaseX())
                 continue;
 
-            float[] pos = getMarkerPosition(highlight);
+            double[] pos = getMarkerPosition(highlight);
 
             // check bounds
             if (!mViewPortHandler.isInBounds(pos[0], pos[1]))

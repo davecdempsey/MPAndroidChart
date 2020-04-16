@@ -17,16 +17,16 @@ public abstract class AnimatedViewPortJob extends ViewPortJob implements ValueAn
 
     protected ObjectAnimator animator;
 
-    protected float phase;
+    protected double phase;
 
-    protected float xOrigin;
-    protected float yOrigin;
+    protected double xOrigin;
+    protected double yOrigin;
 
-    public AnimatedViewPortJob(ViewPortHandler viewPortHandler, float xValue, float yValue, Transformer trans, View v, float xOrigin, float yOrigin, long duration) {
+    public AnimatedViewPortJob(ViewPortHandler viewPortHandler, double xValue, double yValue, Transformer trans, View v, double xOrigin, double yOrigin, long duration) {
         super(viewPortHandler, xValue, yValue, trans, v);
         this.xOrigin = xOrigin;
         this.yOrigin = yOrigin;
-        animator = ObjectAnimator.ofFloat(this, "phase", 0f, 1f);
+        animator = ObjectAnimator.ofDouble(this, "phase", 0, 1);
         animator.setDuration(duration);
         animator.addUpdateListener(this);
         animator.addListener(this);
@@ -38,19 +38,19 @@ public abstract class AnimatedViewPortJob extends ViewPortJob implements ValueAn
         animator.start();
     }
 
-    public float getPhase() {
+    public double getPhase() {
         return phase;
     }
 
-    public void setPhase(float phase) {
+    public void setPhase(double phase) {
         this.phase = phase;
     }
 
-    public float getXOrigin() {
+    public double getXOrigin() {
         return xOrigin;
     }
 
-    public float getYOrigin() {
+    public double getYOrigin() {
         return yOrigin;
     }
 

@@ -39,7 +39,7 @@ public class XAxis extends AxisBase {
     /**
      * This is the angle for drawing the X axis labels (in degrees)
      */
-    protected float mLabelRotationAngle = 0f;
+    protected double mLabelRotationAngle = 0;
 
     /**
      * if set to true, the chart will avoid that the first and last label entry
@@ -84,7 +84,7 @@ public class XAxis extends AxisBase {
     /**
      * returns the angle for drawing the X axis labels (in degrees)
      */
-    public float getLabelRotationAngle() {
+    public double getLabelRotationAngle() {
         return mLabelRotationAngle;
     }
 
@@ -93,7 +93,7 @@ public class XAxis extends AxisBase {
      *
      * @param angle the angle in degrees
      */
-    public void setLabelRotationAngle(float angle) {
+    public void setLabelRotationAngle(double angle) {
         mLabelRotationAngle = angle;
     }
 

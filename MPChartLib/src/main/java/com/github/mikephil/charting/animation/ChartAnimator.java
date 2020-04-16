@@ -20,11 +20,11 @@ public class ChartAnimator {
 
     /** The phase of drawn values on the y-axis. 0 - 1 */
     @SuppressWarnings("WeakerAccess")
-    protected float mPhaseY = 1f;
+    protected double mPhaseY = 1;
 
     /** The phase of drawn values on the x-axis. 0 - 1 */
     @SuppressWarnings("WeakerAccess")
-    protected float mPhaseX = 1f;
+    protected double mPhaseX = 1;
 
     public ChartAnimator() { }
 
@@ -36,7 +36,7 @@ public class ChartAnimator {
     @RequiresApi(11)
     private ObjectAnimator xAnimator(int duration, EasingFunction easing) {
 
-        ObjectAnimator animatorX = ObjectAnimator.ofFloat(this, "phaseX", 0f, 1f);
+        ObjectAnimator animatorX = ObjectAnimator.ofDouble(this, "phaseX", 0, 1);
         animatorX.setInterpolator(easing);
         animatorX.setDuration(duration);
 
@@ -46,7 +46,7 @@ public class ChartAnimator {
     @RequiresApi(11)
     private ObjectAnimator yAnimator(int duration, EasingFunction easing) {
 
-        ObjectAnimator animatorY = ObjectAnimator.ofFloat(this, "phaseY", 0f, 1f);
+        ObjectAnimator animatorY = ObjectAnimator.ofDouble(this, "phaseY", 0, 1);
         animatorY.setInterpolator(easing);
         animatorY.setDuration(duration);
 
@@ -181,11 +181,11 @@ public class ChartAnimator {
         if (android.os.Build.VERSION.SDK_INT < 11)
             return;
 
-        ObjectAnimator animatorY = ObjectAnimator.ofFloat(this, "phaseY", 0f, 1f);
+        ObjectAnimator animatorY = ObjectAnimator.ofDouble(this, "phaseY", 0, 1);
         animatorY.setInterpolator(Easing.getEasingFunctionFromOption(easingY));
         animatorY.setDuration(
                 durationMillisY);
-        ObjectAnimator animatorX = ObjectAnimator.ofFloat(this, "phaseX", 0f, 1f);
+        ObjectAnimator animatorX = ObjectAnimator.ofDouble(this, "phaseX", 0, 1);
         animatorX.setInterpolator(Easing.getEasingFunctionFromOption(easingX));
         animatorX.setDuration(
                 durationMillisX);
@@ -220,7 +220,7 @@ public class ChartAnimator {
         if (android.os.Build.VERSION.SDK_INT < 11)
             return;
 
-        ObjectAnimator animatorX = ObjectAnimator.ofFloat(this, "phaseX", 0f, 1f);
+        ObjectAnimator animatorX = ObjectAnimator.ofDouble(this, "phaseX", 0, 1);
         animatorX.setInterpolator(Easing.getEasingFunctionFromOption(easing));
         animatorX.setDuration(durationMillis);
         animatorX.addUpdateListener(mListener);
@@ -245,7 +245,7 @@ public class ChartAnimator {
         if (android.os.Build.VERSION.SDK_INT < 11)
             return;
 
-        ObjectAnimator animatorY = ObjectAnimator.ofFloat(this, "phaseY", 0f, 1f);
+        ObjectAnimator animatorY = ObjectAnimator.ofDouble(this, "phaseY", 0, 1);
         animatorY.setInterpolator(Easing.getEasingFunctionFromOption(easing));
         animatorY.setDuration(durationMillis);
         animatorY.addUpdateListener(mListener);
@@ -255,22 +255,22 @@ public class ChartAnimator {
     /**
      * Gets the Y axis phase of the animation.
      *
-     * @return float value of {@link #mPhaseY}
+     * @return double value of {@link #mPhaseY}
      */
-    public float getPhaseY() {
+    public double getPhaseY() {
         return mPhaseY;
     }
 
     /**
      * Sets the Y axis phase of the animation.
      *
-     * @param phase float value between 0 - 1
+     * @param phase double value between 0 - 1
      */
-    public void setPhaseY(float phase) {
-        if (phase > 1f) {
-            phase = 1f;
-        } else if (phase < 0f) {
-            phase = 0f;
+    public void setPhaseY(double phase) {
+        if (phase > 1) {
+            phase = 1;
+        } else if (phase < 0) {
+            phase = 0;
         }
         mPhaseY = phase;
     }
@@ -278,22 +278,22 @@ public class ChartAnimator {
     /**
      * Gets the X axis phase of the animation.
      *
-     * @return float value of {@link #mPhaseX}
+     * @return double value of {@link #mPhaseX}
      */
-    public float getPhaseX() {
+    public double getPhaseX() {
         return mPhaseX;
     }
 
     /**
      * Sets the X axis phase of the animation.
      *
-     * @param phase float value between 0 - 1
+     * @param phase double value between 0 - 1
      */
-    public void setPhaseX(float phase) {
-        if (phase > 1f) {
-            phase = 1f;
-        } else if (phase < 0f) {
-            phase = 0f;
+    public void setPhaseX(double phase) {
+        if (phase > 1) {
+            phase = 1;
+        } else if (phase < 0) {
+            phase = 0;
         }
         mPhaseX = phase;
     }

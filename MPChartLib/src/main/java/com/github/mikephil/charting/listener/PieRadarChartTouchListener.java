@@ -26,12 +26,12 @@ public class PieRadarChartTouchListener extends ChartTouchListener<PieRadarChart
     /**
      * the angle where the dragging started
      */
-    private float mStartAngle = 0f;
+    private double mStartAngle = 0;
 
     private ArrayList<AngularVelocitySample> _velocitySamples = new ArrayList<AngularVelocitySample>();
 
     private long mDecelerationLastTime = 0;
-    private float mDecelerationAngularVelocity = 0.f;
+    private double mDecelerationAngularVelocity = 0.f;
 
     public PieRadarChartTouchListener(PieRadarChartBase<?> chart) {
         super(chart);
@@ -47,8 +47,8 @@ public class PieRadarChartTouchListener extends ChartTouchListener<PieRadarChart
         // if rotation by touch is enabled
         if (mChart.isRotationEnabled()) {
 
-            float x = event.getX();
-            float y = event.getY();
+            double x = event.getX();
+            double y = event.getY();
 
             switch (event.getAction()) {
 
@@ -75,7 +75,7 @@ public class PieRadarChartTouchListener extends ChartTouchListener<PieRadarChart
 
                     if (mTouchMode == NONE
                             && distance(x, mTouchStartPoint.x, y, mTouchStartPoint.y)
-                            > Utils.convertDpToPixel(8f)) {
+                            > Utils.convertDpToPixel(8)) {
                         mLastGesture = ChartGesture.ROTATE;
                         mTouchMode = ROTATE;
                         mChart.disableScroll();
@@ -158,7 +158,7 @@ public class PieRadarChartTouchListener extends ChartTouchListener<PieRadarChart
         _velocitySamples.clear();
     }
 
-    private void sampleVelocity(float touchLocationX, float touchLocationY) {
+    private void sampleVelocity(double touchLocationX, double touchLocationY) {
 
         long currentTime = AnimationUtils.currentAnimationTimeMillis();
 
@@ -176,7 +176,7 @@ public class PieRadarChartTouchListener extends ChartTouchListener<PieRadarChart
         }
     }
 
-    private float calculateVelocity() {
+    private double calculateVelocity() {
 
         if (_velocitySamples.isEmpty())
             return 0.f;
@@ -194,9 +194,9 @@ public class PieRadarChartTouchListener extends ChartTouchListener<PieRadarChart
         }
 
         // Calculate the sampling time
-        float timeDelta = (lastSample.time - firstSample.time) / 1000.f;
+        double timeDelta = (lastSample.time - firstSample.time) / 1000.f;
         if (timeDelta == 0.f) {
-            timeDelta = 0.1f;
+            timeDelta = 0.1;
         }
 
         // Calculate clockwise/ccw by choosing two values that should be closest to each other,
@@ -214,7 +214,7 @@ public class PieRadarChartTouchListener extends ChartTouchListener<PieRadarChart
         }
 
         // The velocity
-        float velocity = Math.abs((lastSample.angle - firstSample.angle) / timeDelta);
+        double velocity = Math.abs((lastSample.angle - firstSample.angle) / timeDelta);
 
         // Direction?
         if (!clockwise) {
@@ -231,7 +231,7 @@ public class PieRadarChartTouchListener extends ChartTouchListener<PieRadarChart
      * @param x
      * @param y
      */
-    public void setGestureStartAngle(float x, float y) {
+    public void setGestureStartAngle(double x, double y) {
         mStartAngle = mChart.getAngleForPoint(x, y) - mChart.getRawRotationAngle();
     }
 
@@ -242,12 +242,12 @@ public class PieRadarChartTouchListener extends ChartTouchListener<PieRadarChart
      * @param x
      * @param y
      */
-    public void updateGestureRotation(float x, float y) {
+    public void updateGestureRotation(double x, double y) {
         mChart.setRotationAngle(mChart.getAngleForPoint(x, y) - mStartAngle);
     }
 
     /**
-     * Sets the deceleration-angular-velocity to 0f
+     * Sets the deceleration-angular-velocity to 0
      */
     public void stopDeceleration() {
         mDecelerationAngularVelocity = 0.f;
@@ -262,7 +262,7 @@ public class PieRadarChartTouchListener extends ChartTouchListener<PieRadarChart
 
         mDecelerationAngularVelocity *= mChart.getDragDecelerationFrictionCoef();
 
-        final float timeInterval = (float) (currentTime - mDecelerationLastTime) / 1000.f;
+        final double timeInterval =  (currentTime - mDecelerationLastTime) / 1000.f;
 
         mChart.setRotationAngle(mChart.getRotationAngle() + mDecelerationAngularVelocity * timeInterval);
 
@@ -277,9 +277,9 @@ public class PieRadarChartTouchListener extends ChartTouchListener<PieRadarChart
     private class AngularVelocitySample {
 
         public long time;
-        public float angle;
+        public double angle;
 
-        public AngularVelocitySample(long time, float angle) {
+        public AngularVelocitySample(long time, double angle) {
             this.time = time;
             this.angle = angle;
         }

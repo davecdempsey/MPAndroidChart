@@ -20,7 +20,7 @@ public class CandleDataSet extends LineScatterCandleRadarDataSet<CandleEntry> im
     /**
      * the width of the shadow of the candle
      */
-    private float mShadowWidth = 3f;
+    private double mShadowWidth = 3;
 
     /**
      * should the candle bars show?
@@ -31,9 +31,9 @@ public class CandleDataSet extends LineScatterCandleRadarDataSet<CandleEntry> im
     private boolean mShowCandleBar = true;
 
     /**
-     * the space between the candle entries, default 0.1f (10%)
+     * the space between the candle entries, default 0.1 (10%)
      */
-    private float mBarSpace = 0.1f;
+    private double mBarSpace = 0.1;
 
     /**
      * use candle color for the shadow
@@ -130,36 +130,36 @@ public class CandleDataSet extends LineScatterCandleRadarDataSet<CandleEntry> im
 
     /**
      * Sets the space that is left out on the left and right side of each
-     * candle, default 0.1f (10%), max 0.45f, min 0f
+     * candle, default 0.1 (10%), max 0.45, min 0
      *
      * @param space
      */
-    public void setBarSpace(float space) {
+    public void setBarSpace(double space) {
 
-        if (space < 0f)
-            space = 0f;
-        if (space > 0.45f)
-            space = 0.45f;
+        if (space < 0)
+            space = 0;
+        if (space > 0.45)
+            space = 0.45;
 
         mBarSpace = space;
     }
 
     @Override
-    public float getBarSpace() {
+    public double getBarSpace() {
         return mBarSpace;
     }
 
     /**
-     * Sets the width of the candle-shadow-line in pixels. Default 3f.
+     * Sets the width of the candle-shadow-line in pixels. Default 3.
      *
      * @param width
      */
-    public void setShadowWidth(float width) {
+    public void setShadowWidth(double width) {
         mShadowWidth = Utils.convertDpToPixel(width);
     }
 
     @Override
-    public float getShadowWidth() {
+    public double getShadowWidth() {
         return mShadowWidth;
     }
 

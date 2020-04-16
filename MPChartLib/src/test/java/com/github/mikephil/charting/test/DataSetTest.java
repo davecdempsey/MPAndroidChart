@@ -28,31 +28,31 @@ public class DataSetTest {
 
         ScatterDataSet set = new ScatterDataSet(entries, "");
 
-        assertEquals(10f, set.getXMin(), 0.01f);
-        assertEquals(21f, set.getXMax(), 0.01f);
+        assertEquals(10, set.getXMin(), 0.01);
+        assertEquals(21, set.getXMax(), 0.01);
 
-        assertEquals(2f, set.getYMin(), 0.01f);
-        assertEquals(10f, set.getYMax(), 0.01f);
+        assertEquals(2, set.getYMin(), 0.01);
+        assertEquals(10, set.getYMax(), 0.01);
 
         assertEquals(3, set.getEntryCount());
 
         set.addEntry(new Entry(25, 1));
 
-        assertEquals(10f, set.getXMin(), 0.01f);
-        assertEquals(25f, set.getXMax(), 0.01f);
+        assertEquals(10, set.getXMin(), 0.01);
+        assertEquals(25, set.getXMax(), 0.01);
 
-        assertEquals(1f, set.getYMin(), 0.01f);
-        assertEquals(10f, set.getYMax(), 0.01f);
+        assertEquals(1, set.getYMin(), 0.01);
+        assertEquals(10, set.getYMax(), 0.01);
 
         assertEquals(4, set.getEntryCount());
 
         set.removeEntry(3);
 
-        assertEquals(10f, set.getXMin(), 0.01f);
-        assertEquals(21, set.getXMax(), 0.01f);
+        assertEquals(10, set.getXMin(), 0.01);
+        assertEquals(21, set.getXMax(), 0.01);
 
-        assertEquals(2f, set.getYMin(), 0.01f);
-        assertEquals(10f, set.getYMax(), 0.01f);
+        assertEquals(2, set.getYMin(), 0.01);
+        assertEquals(10, set.getYMax(), 0.01);
     }
 
     @Test
@@ -71,55 +71,55 @@ public class DataSetTest {
 
         assertEquals(4, set.getEntryCount());
 
-        assertEquals(5, set.getXMin(), 0.01f);
-        assertEquals(21, set.getXMax(), 0.01f);
+        assertEquals(5, set.getXMin(), 0.01);
+        assertEquals(21, set.getXMax(), 0.01);
 
-        assertEquals(1f, set.getYMin(), 0.01f);
-        assertEquals(10f, set.getYMax(), 0.01f);
+        assertEquals(1, set.getYMin(), 0.01);
+        assertEquals(10, set.getYMax(), 0.01);
 
-        assertEquals(5, set.getEntryForIndex(0).getX(), 0.01f);
-        assertEquals(1, set.getEntryForIndex(0).getY(), 0.01f);
+        assertEquals(5, set.getEntryForIndex(0).getX(), 0.01);
+        assertEquals(1, set.getEntryForIndex(0).getY(), 0.01);
 
         set.addEntryOrdered(new Entry(20, 50));
 
         assertEquals(5, set.getEntryCount());
 
-        assertEquals(20, set.getEntryForIndex(3).getX(), 0.01f);
-        assertEquals(50, set.getEntryForIndex(3).getY(), 0.01f);
+        assertEquals(20, set.getEntryForIndex(3).getX(), 0.01);
+        assertEquals(50, set.getEntryForIndex(3).getY(), 0.01);
 
         assertTrue(set.removeEntry(3));
 
         assertEquals(4, set.getEntryCount());
 
-        assertEquals(21, set.getEntryForIndex(3).getX(), 0.01f);
-        assertEquals(5, set.getEntryForIndex(3).getY(), 0.01f);
+        assertEquals(21, set.getEntryForIndex(3).getX(), 0.01);
+        assertEquals(5, set.getEntryForIndex(3).getY(), 0.01);
 
-        assertEquals(5, set.getEntryForIndex(0).getX(), 0.01f);
-        assertEquals(1, set.getEntryForIndex(0).getY(), 0.01f);
+        assertEquals(5, set.getEntryForIndex(0).getX(), 0.01);
+        assertEquals(1, set.getEntryForIndex(0).getY(), 0.01);
 
         assertTrue(set.removeFirst());
 
         assertEquals(3, set.getEntryCount());
 
-        assertEquals(10, set.getEntryForIndex(0).getX(), 0.01f);
-        assertEquals(10, set.getEntryForIndex(0).getY(), 0.01f);
+        assertEquals(10, set.getEntryForIndex(0).getX(), 0.01);
+        assertEquals(10, set.getEntryForIndex(0).getY(), 0.01);
 
         set.addEntryOrdered(new Entry(15, 3));
 
         assertEquals(4, set.getEntryCount());
 
-        assertEquals(15, set.getEntryForIndex(1).getX(), 0.01f);
-        assertEquals(3, set.getEntryForIndex(1).getY(), 0.01f);
+        assertEquals(15, set.getEntryForIndex(1).getX(), 0.01);
+        assertEquals(3, set.getEntryForIndex(1).getY(), 0.01);
 
-        assertEquals(21, set.getEntryForIndex(3).getX(), 0.01f);
-        assertEquals(5, set.getEntryForIndex(3).getY(), 0.01f);
+        assertEquals(21, set.getEntryForIndex(3).getX(), 0.01);
+        assertEquals(5, set.getEntryForIndex(3).getY(), 0.01);
 
         assertTrue(set.removeLast());
 
         assertEquals(3, set.getEntryCount());
 
-        assertEquals(15, set.getEntryForIndex(2).getX(), 0.01f);
-        assertEquals(2, set.getEntryForIndex(2).getY(), 0.01f);
+        assertEquals(15, set.getEntryForIndex(2).getX(), 0.01);
+        assertEquals(2, set.getEntryForIndex(2).getY(), 0.01);
 
         assertTrue(set.removeLast());
 
@@ -129,8 +129,8 @@ public class DataSetTest {
 
         assertEquals(1, set.getEntryCount());
 
-        assertEquals(10, set.getEntryForIndex(0).getX(), 0.01f);
-        assertEquals(10, set.getEntryForIndex(0).getY(), 0.01f);
+        assertEquals(10, set.getEntryForIndex(0).getX(), 0.01);
+        assertEquals(10, set.getEntryForIndex(0).getY(), 0.01);
 
         assertTrue(set.removeLast());
 
@@ -150,33 +150,33 @@ public class DataSetTest {
 
         ScatterDataSet set = new ScatterDataSet(entries, "");
 
-        Entry closest = set.getEntryForXValue(17, Float.NaN, DataSet.Rounding.CLOSEST);
-        assertEquals(15, closest.getX(), 0.01f);
-        assertEquals(5, closest.getY(), 0.01f);
+        Entry closest = set.getEntryForXValue(17, Double.NaN, DataSet.Rounding.CLOSEST);
+        assertEquals(15, closest.getX(), 0.01);
+        assertEquals(5, closest.getY(), 0.01);
 
-        closest = set.getEntryForXValue(17, Float.NaN, DataSet.Rounding.DOWN);
-        assertEquals(15, closest.getX(), 0.01f);
-        assertEquals(5, closest.getY(), 0.01f);
+        closest = set.getEntryForXValue(17, Double.NaN, DataSet.Rounding.DOWN);
+        assertEquals(15, closest.getX(), 0.01);
+        assertEquals(5, closest.getY(), 0.01);
 
-        closest = set.getEntryForXValue(15, Float.NaN, DataSet.Rounding.DOWN);
-        assertEquals(15, closest.getX(), 0.01f);
-        assertEquals(5, closest.getY(), 0.01f);
+        closest = set.getEntryForXValue(15, Double.NaN, DataSet.Rounding.DOWN);
+        assertEquals(15, closest.getX(), 0.01);
+        assertEquals(5, closest.getY(), 0.01);
 
-        closest = set.getEntryForXValue(14, Float.NaN, DataSet.Rounding.DOWN);
-        assertEquals(10, closest.getX(), 0.01f);
-        assertEquals(10, closest.getY(), 0.01f);
+        closest = set.getEntryForXValue(14, Double.NaN, DataSet.Rounding.DOWN);
+        assertEquals(10, closest.getX(), 0.01);
+        assertEquals(10, closest.getY(), 0.01);
 
-        closest = set.getEntryForXValue(17, Float.NaN, DataSet.Rounding.UP);
-        assertEquals(21, closest.getX(), 0.01f);
-        assertEquals(5, closest.getY(), 0.01f);
+        closest = set.getEntryForXValue(17, Double.NaN, DataSet.Rounding.UP);
+        assertEquals(21, closest.getX(), 0.01);
+        assertEquals(5, closest.getY(), 0.01);
 
-        closest = set.getEntryForXValue(21, Float.NaN, DataSet.Rounding.UP);
-        assertEquals(21, closest.getX(), 0.01f);
-        assertEquals(5, closest.getY(), 0.01f);
+        closest = set.getEntryForXValue(21, Double.NaN, DataSet.Rounding.UP);
+        assertEquals(21, closest.getX(), 0.01);
+        assertEquals(5, closest.getY(), 0.01);
 
-        closest = set.getEntryForXValue(21, Float.NaN, DataSet.Rounding.CLOSEST);
-        assertEquals(21, closest.getX(), 0.01f);
-        assertEquals(5, closest.getY(), 0.01f);
+        closest = set.getEntryForXValue(21, Double.NaN, DataSet.Rounding.CLOSEST);
+        assertEquals(21, closest.getX(), 0.01);
+        assertEquals(5, closest.getY(), 0.01);
     }
 
     @Test
@@ -199,40 +199,40 @@ public class DataSetTest {
 
         ScatterDataSet set = new ScatterDataSet(values, "");
 
-        Entry closest = set.getEntryForXValue(0, Float.NaN, DataSet.Rounding.CLOSEST);
-        assertEquals(0, closest.getX(), 0.01f);
-        assertEquals(10, closest.getY(), 0.01f);
+        Entry closest = set.getEntryForXValue(0, Double.NaN, DataSet.Rounding.CLOSEST);
+        assertEquals(0, closest.getX(), 0.01);
+        assertEquals(10, closest.getY(), 0.01);
 
-        closest = set.getEntryForXValue(5, Float.NaN, DataSet.Rounding.CLOSEST);
-        assertEquals(5, closest.getX(), 0.01f);
-        assertEquals(80, closest.getY(), 0.01f);
+        closest = set.getEntryForXValue(5, Double.NaN, DataSet.Rounding.CLOSEST);
+        assertEquals(5, closest.getX(), 0.01);
+        assertEquals(80, closest.getY(), 0.01);
 
-        closest = set.getEntryForXValue(5.4f, Float.NaN, DataSet.Rounding.CLOSEST);
-        assertEquals(5, closest.getX(), 0.01f);
-        assertEquals(80, closest.getY(), 0.01f);
+        closest = set.getEntryForXValue(5.4, Double.NaN, DataSet.Rounding.CLOSEST);
+        assertEquals(5, closest.getX(), 0.01);
+        assertEquals(80, closest.getY(), 0.01);
 
-        closest = set.getEntryForXValue(4.6f, Float.NaN, DataSet.Rounding.CLOSEST);
-        assertEquals(5, closest.getX(), 0.01f);
-        assertEquals(80, closest.getY(), 0.01f);
+        closest = set.getEntryForXValue(4.6, Double.NaN, DataSet.Rounding.CLOSEST);
+        assertEquals(5, closest.getX(), 0.01);
+        assertEquals(80, closest.getY(), 0.01);
 
-        closest = set.getEntryForXValue(7, Float.NaN, DataSet.Rounding.CLOSEST);
-        assertEquals(7, closest.getX(), 0.01f);
-        assertEquals(100, closest.getY(), 0.01f);
+        closest = set.getEntryForXValue(7, Double.NaN, DataSet.Rounding.CLOSEST);
+        assertEquals(7, closest.getX(), 0.01);
+        assertEquals(100, closest.getY(), 0.01);
 
-        closest = set.getEntryForXValue(4f, Float.NaN, DataSet.Rounding.CLOSEST);
-        assertEquals(4, closest.getX(), 0.01f);
-        assertEquals(60, closest.getY(), 0.01f);
+        closest = set.getEntryForXValue(4, Double.NaN, DataSet.Rounding.CLOSEST);
+        assertEquals(4, closest.getX(), 0.01);
+        assertEquals(60, closest.getY(), 0.01);
 
-        List<Entry> entries = set.getEntriesForXValue(4f);
+        List<Entry> entries = set.getEntriesForXValue(4);
         assertEquals(2, entries.size());
-        assertEquals(60, entries.get(0).getY(), 0.01f);
-        assertEquals(70, entries.get(1).getY(), 0.01f);
+        assertEquals(60, entries.get(0).getY(), 0.01);
+        assertEquals(70, entries.get(1).getY(), 0.01);
 
-        entries = set.getEntriesForXValue(3.5f);
+        entries = set.getEntriesForXValue(3.5);
         assertEquals(0, entries.size());
 
-        entries = set.getEntriesForXValue(2f);
+        entries = set.getEntriesForXValue(2);
         assertEquals(1, entries.size());
-        assertEquals(30, entries.get(0).getY(), 0.01f);
+        assertEquals(30, entries.get(0).getY(), 0.01);
     }
 }

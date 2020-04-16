@@ -5,23 +5,23 @@ import io.realm.RealmObject;
 /**
  * Created by Philipp Jahoda on 09/11/15.
  */
-public class RealmFloat extends RealmObject {
+public class Realmdouble extends RealmObject {
 
-    private float floatValue;
+    private double doubleValue;
 
-    public RealmFloat() {
+    public RealmDouble() {
 
     }
 
-    public RealmFloat(float floatValue) {
-        this.floatValue = floatValue;
+    public RealmDouble(double doubleValue) {
+        this.doubleValue = doubleValue;
     }
 
-    public float getFloatValue() {
-        return floatValue;
+    public double getDoubleValue() {
+        return doubleValue;
     }
 
-    public void setFloatValue(float value) {
-        this.floatValue = value;
+    public void setDoubleValue(double value) {
+        this.doubleValue = value;
     }
 }

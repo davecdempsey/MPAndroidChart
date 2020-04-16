@@ -14,7 +14,7 @@ public class PieHighlighter extends PieRadarHighlighter<PieChart> {
     }
 
     @Override
-    protected Highlight getClosestHighlight(int index, float x, float y) {
+    protected Highlight getClosestHighlight(int index, double x, double y) {
 
         IPieDataSet set = mChart.getData().getDataSet();
 

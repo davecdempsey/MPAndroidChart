@@ -15,16 +15,16 @@ import java.util.Arrays;
 public class Approximator {
 
     @TargetApi(Build.VERSION_CODES.GINGERBREAD)
-    public float[] reduceWithDouglasPeucker(float[] points, float tolerance) {
+    public double[] reduceWithDouglasPeucker(double[] points, double tolerance) {
 
         int greatestIndex = 0;
-        float greatestDistance = 0f;
+        double greatestDistance = 0;
 
         Line line = new Line(points[0], points[1], points[points.length - 2], points[points.length - 1]);
 
         for (int i = 2; i < points.length - 2; i += 2) {
 
-            float distance = line.distance(points[i], points[i + 1]);
+            double distance = line.distance(points[i], points[i + 1]);
 
             if (distance > greatestDistance) {
                 greatestDistance = distance;
@@ -34,12 +34,12 @@ public class Approximator {
 
         if (greatestDistance > tolerance) {
 
-            float[] reduced1 = reduceWithDouglasPeucker(Arrays.copyOfRange(points, 0, greatestIndex + 2), tolerance);
-            float[] reduced2 = reduceWithDouglasPeucker(Arrays.copyOfRange(points, greatestIndex, points.length),
+            double[] reduced1 = reduceWithDouglasPeucker(Arrays.copyOfRange(points, 0, greatestIndex + 2), tolerance);
+            double[] reduced2 = reduceWithDouglasPeucker(Arrays.copyOfRange(points, greatestIndex, points.length),
                     tolerance);
 
-            float[] result1 = reduced1;
-            float[] result2 = Arrays.copyOfRange(reduced2, 2, reduced2.length);
+            double[] result1 = reduced1;
+            double[] result2 = Arrays.copyOfRange(reduced2, 2, reduced2.length);
 
             return concat(result1, result2);
         } else {
@@ -53,15 +53,15 @@ public class Approximator {
      * @param arrays
      * @return
      */
-    float[] concat(float[]... arrays) {
+    double[] concat(double[]... arrays) {
         int length = 0;
-        for (float[] array : arrays) {
+        for (double[] array : arrays) {
             length += array.length;
         }
-        float[] result = new float[length];
+        double[] result = new double[length];
         int pos = 0;
-        for (float[] array : arrays) {
-            for (float element : array) {
+        for (double[] array : arrays) {
+            for (double element : array) {
                 result[pos] = element;
                 pos++;
             }
@@ -71,31 +71,31 @@ public class Approximator {
 
     private class Line {
 
-        private float[] points;
+        private double[] points;
 
-        private float sxey;
-        private float exsy;
+        private double sxey;
+        private double exsy;
 
-        private float dx;
-        private float dy;
+        private double dx;
+        private double dy;
 
-        private float length;
+        private double length;
 
-        public Line(float x1, float y1, float x2, float y2) {
+        public Line(double x1, double y1, double x2, double y2) {
             dx = x1 - x2;
             dy = y1 - y2;
             sxey = x1 * y2;
             exsy = x2 * y1;
-            length = (float) Math.sqrt(dx * dx + dy * dy);
+            length =  Math.sqrt(dx * dx + dy * dy);
 
-            points = new float[]{x1, y1, x2, y2};
+            points = new double[]{x1, y1, x2, y2};
         }
 
-        public float distance(float x, float y) {
+        public double distance(double x, double y) {
             return Math.abs(dy * x - dx * y + sxey - exsy) / length;
         }
 
-        public float[] getPoints() {
+        public double[] getPoints() {
             return points;
         }
     }

@@ -57,17 +57,17 @@ public class PieChartItem extends ChartItem {
 
         // apply styling
         holder.chart.getDescription().setEnabled(false);
-        holder.chart.setHoleRadius(52f);
-        holder.chart.setTransparentCircleRadius(57f);
+        holder.chart.setHoleRadius(52);
+        holder.chart.setTransparentCircleRadius(57);
         holder.chart.setCenterText(mCenterText);
         holder.chart.setCenterTextTypeface(mTf);
-        holder.chart.setCenterTextSize(9f);
+        holder.chart.setCenterTextSize(9);
         holder.chart.setUsePercentValues(true);
         holder.chart.setExtraOffsets(5, 10, 50, 10);
 
         mChartData.setValueFormatter(new PercentFormatter());
         mChartData.setValueTypeface(mTf);
-        mChartData.setValueTextSize(11f);
+        mChartData.setValueTextSize(11);
         mChartData.setValueTextColor(Color.WHITE);
         // set data
         holder.chart.setData((PieData) mChartData);
@@ -77,8 +77,8 @@ public class PieChartItem extends ChartItem {
         l.setHorizontalAlignment(Legend.LegendHorizontalAlignment.RIGHT);
         l.setOrientation(Legend.LegendOrientation.VERTICAL);
         l.setDrawInside(false);
-        l.setYEntrySpace(0f);
-        l.setYOffset(0f);
+        l.setYEntrySpace(0);
+        l.setYOffset(0);
 
         // do not forget to refresh the chart
         // holder.chart.invalidate();
@@ -89,11 +89,11 @@ public class PieChartItem extends ChartItem {
 
     private SpannableString generateCenterText() {
         SpannableString s = new SpannableString("MPAndroidChart\ncreated by\nPhilipp Jahoda");
-        s.setSpan(new RelativeSizeSpan(1.6f), 0, 14, 0);
+        s.setSpan(new RelativeSizeSpan(1.6), 0, 14, 0);
         s.setSpan(new ForegroundColorSpan(ColorTemplate.VORDIPLOM_COLORS[0]), 0, 14, 0);
-        s.setSpan(new RelativeSizeSpan(.9f), 14, 25, 0);
+        s.setSpan(new RelativeSizeSpan(.9), 14, 25, 0);
         s.setSpan(new ForegroundColorSpan(Color.GRAY), 14, 25, 0);
-        s.setSpan(new RelativeSizeSpan(1.4f), 25, s.length(), 0);
+        s.setSpan(new RelativeSizeSpan(1.4), 25, s.length(), 0);
         s.setSpan(new ForegroundColorSpan(ColorTemplate.getHoloBlue()), 25, s.length(), 0);
         return s;
     }

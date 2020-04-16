@@ -13,22 +13,22 @@ public class Highlight {
     /**
      * the x-value of the highlighted value
      */
-    private float mX = Float.NaN;
+    private double mX = Double.NaN;
 
     /**
      * the y-value of the highlighted value
      */
-    private float mY = Float.NaN;
+    private double mY = Double.NaN;
 
     /**
      * the x-pixel of the highlight
      */
-    private float mXPx;
+    private double mXPx;
 
     /**
      * the y-pixel of the highlight
      */
-    private float mYPx;
+    private double mYPx;
 
     /**
      * the index of the data object - in case it refers to more than one
@@ -53,21 +53,21 @@ public class Highlight {
     /**
      * the x-position (pixels) on which this highlight object was last drawn
      */
-    private float mDrawX;
+    private double mDrawX;
 
     /**
      * the y-position (pixels) on which this highlight object was last drawn
      */
-    private float mDrawY;
+    private double mDrawY;
 
-    public Highlight(float x, float y, int dataSetIndex) {
+    public Highlight(double x, double y, int dataSetIndex) {
         this.mX = x;
         this.mY = y;
         this.mDataSetIndex = dataSetIndex;
     }
 
-    public Highlight(float x, int dataSetIndex, int stackIndex) {
-        this(x, Float.NaN, dataSetIndex);
+    public Highlight(double x, int dataSetIndex, int stackIndex) {
+        this(x, Double.NaN, dataSetIndex);
         this.mStackIndex = stackIndex;
     }
 
@@ -78,7 +78,7 @@ public class Highlight {
      * @param y            the y-value of the highlighted value
      * @param dataSetIndex the index of the DataSet the highlighted value belongs to
      */
-    public Highlight(float x, float y, float xPx, float yPx, int dataSetIndex, YAxis.AxisDependency axis) {
+    public Highlight(double x, double y, double xPx, double yPx, int dataSetIndex, YAxis.AxisDependency axis) {
         this.mX = x;
         this.mY = y;
         this.mXPx = xPx;
@@ -96,7 +96,7 @@ public class Highlight {
      * @param stackIndex   references which value of a stacked-bar entry has been
      *                     selected
      */
-    public Highlight(float x, float y, float xPx, float yPx, int dataSetIndex, int stackIndex, YAxis.AxisDependency axis) {
+    public Highlight(double x, double y, double xPx, double yPx, int dataSetIndex, int stackIndex, YAxis.AxisDependency axis) {
         this(x, y, xPx, yPx, dataSetIndex, axis);
         this.mStackIndex = stackIndex;
     }
@@ -106,7 +106,7 @@ public class Highlight {
      *
      * @return
      */
-    public float getX() {
+    public double getX() {
         return mX;
     }
 
@@ -115,21 +115,21 @@ public class Highlight {
      *
      * @return
      */
-    public float getY() {
+    public double getY() {
         return mY;
     }
 
     /**
      * returns the x-position of the highlight in pixels
      */
-    public float getXPx() {
+    public double getXPx() {
         return mXPx;
     }
 
     /**
      * returns the y-position of the highlight in pixels
      */
-    public float getYPx() {
+    public double getYPx() {
         return mYPx;
     }
 
@@ -184,7 +184,7 @@ public class Highlight {
      * @param x
      * @param y
      */
-    public void setDraw(float x, float y) {
+    public void setDraw(double x, double y) {
         this.mDrawX = x;
         this.mDrawY = y;
     }
@@ -194,7 +194,7 @@ public class Highlight {
      *
      * @return
      */
-    public float getDrawX() {
+    public double getDrawX() {
         return mDrawX;
     }
 
@@ -203,7 +203,7 @@ public class Highlight {
      *
      * @return
      */
-    public float getDrawY() {
+    public double getDrawY() {
         return mDrawY;
     }
 

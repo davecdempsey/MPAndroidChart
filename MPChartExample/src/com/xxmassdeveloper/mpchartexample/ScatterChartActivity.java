@@ -57,7 +57,7 @@ public class ScatterChartActivity extends DemoBase implements OnSeekBarChangeLis
 
         mChart.setDrawGridBackground(false);
         mChart.setTouchEnabled(true);
-        mChart.setMaxHighlightDistance(50f);
+        mChart.setMaxHighlightDistance(50);
 
         // enable scaling and dragging
         mChart.setDragEnabled(true);
@@ -75,11 +75,11 @@ public class ScatterChartActivity extends DemoBase implements OnSeekBarChangeLis
         l.setOrientation(Legend.LegendOrientation.VERTICAL);
         l.setDrawInside(false);
         l.setTypeface(mTfLight);
-        l.setXOffset(5f);
+        l.setXOffset(5);
 
         YAxis yl = mChart.getAxisLeft();
         yl.setTypeface(mTfLight);
-        yl.setAxisMinimum(0f); // this replaces setStartAtZero(true)
+        yl.setAxisMinimum(0); // this replaces setStartAtZero(true)
         
         mChart.getAxisRight().setEnabled(false);
 
@@ -165,18 +165,18 @@ public class ScatterChartActivity extends DemoBase implements OnSeekBarChangeLis
         ArrayList<Entry> yVals3 = new ArrayList<Entry>();
 
         for (int i = 0; i < mSeekBarX.getProgress(); i++) {
-            float val = (float) (Math.random() * mSeekBarY.getProgress()) + 3;
+            double val = (Math.random() * mSeekBarY.getProgress()) + 3;
             yVals1.add(new Entry(i, val));
         }
 
         for (int i = 0; i < mSeekBarX.getProgress(); i++) {
-            float val = (float) (Math.random() * mSeekBarY.getProgress()) + 3;
-            yVals2.add(new Entry(i+0.33f, val));
+            double val = (Math.random() * mSeekBarY.getProgress()) + 3;
+            yVals2.add(new Entry(i+0.33, val));
         }
 
         for (int i = 0; i < mSeekBarX.getProgress(); i++) {
-            float val = (float) (Math.random() * mSeekBarY.getProgress()) + 3;
-            yVals3.add(new Entry(i+0.66f, val));
+            double val = (Math.random() * mSeekBarY.getProgress()) + 3;
+            yVals3.add(new Entry(i+0.66, val));
         }
 
         // create a dataset and give it a type
@@ -186,15 +186,15 @@ public class ScatterChartActivity extends DemoBase implements OnSeekBarChangeLis
         ScatterDataSet set2 = new ScatterDataSet(yVals2, "DS 2");
         set2.setScatterShape(ScatterChart.ScatterShape.CIRCLE);
         set2.setScatterShapeHoleColor(ColorTemplate.COLORFUL_COLORS[3]);
-        set2.setScatterShapeHoleRadius(3f);
+        set2.setScatterShapeHoleRadius(3);
         set2.setColor(ColorTemplate.COLORFUL_COLORS[1]);
         ScatterDataSet set3 = new ScatterDataSet(yVals3, "DS 3");
         set3.setShapeRenderer(new CustomScatterShapeRenderer());
         set3.setColor(ColorTemplate.COLORFUL_COLORS[2]);
 
-        set1.setScatterShapeSize(8f);
-        set2.setScatterShapeSize(8f);
-        set3.setScatterShapeSize(8f);
+        set1.setScatterShapeSize(8);
+        set2.setScatterShapeSize(8);
+        set3.setScatterShapeSize(8);
 
         ArrayList<IScatterDataSet> dataSets = new ArrayList<IScatterDataSet>();
         dataSets.add(set1); // add the datasets

@@ -13,8 +13,8 @@ public class HorizontalBarBuffer extends BarBuffer {
     @Override
     public void feed(IBarDataSet data) {
 
-        float size = data.getEntryCount() * phaseX;
-        float barWidthHalf = mBarWidth / 2f;
+        double size = data.getEntryCount() * phaseX;
+        double barWidthHalf = mBarWidth / 2;
 
         for (int i = 0; i < size; i++) {
 
@@ -23,15 +23,15 @@ public class HorizontalBarBuffer extends BarBuffer {
             if(e == null)
                 continue;
 
-            float x = e.getX();
-            float y = e.getY();
-            float[] vals = e.getYVals();
+            double x = e.getX();
+            double y = e.getY();
+            double[] vals = e.getYVals();
 
             if (!mContainsStacks || vals == null) {
 
-                float bottom = x - barWidthHalf;
-                float top = x + barWidthHalf;
-                float left, right;
+                double bottom = x - barWidthHalf;
+                double top = x + barWidthHalf;
+                double left, right;
                 if (mInverted) {
                     left = y >= 0 ? y : 0;
                     right = y <= 0 ? y : 0;
@@ -50,16 +50,16 @@ public class HorizontalBarBuffer extends BarBuffer {
 
             } else {
 
-                float posY = 0f;
-                float negY = -e.getNegativeSum();
-                float yStart = 0f;
+                double posY = 0;
+                double negY = -e.getNegativeSum();
+                double yStart = 0;
 
                 // fill the stack
                 for (int k = 0; k < vals.length; k++) {
 
-                    float value = vals[k];
+                    double value = vals[k];
 
-                    if (value >= 0f) {
+                    if (value >= 0) {
                         y = posY;
                         yStart = posY + value;
                         posY = yStart;
@@ -69,9 +69,9 @@ public class HorizontalBarBuffer extends BarBuffer {
                         negY += Math.abs(value);
                     }
 
-                    float bottom = x - barWidthHalf;
-                    float top = x + barWidthHalf;
-                    float left, right;
+                    double bottom = x - barWidthHalf;
+                    double top = x + barWidthHalf;
+                    double left, right;
                     if (mInverted) {
                         left = y >= yStart ? y : yStart;
                         right = y <= yStart ? y : yStart;

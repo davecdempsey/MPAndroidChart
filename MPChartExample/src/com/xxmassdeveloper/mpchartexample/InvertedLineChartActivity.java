@@ -84,11 +84,11 @@ public class InvertedLineChartActivity extends DemoBase implements OnSeekBarChan
         
         XAxis xl = mChart.getXAxis();
         xl.setAvoidFirstLastClipping(true);
-        xl.setAxisMinimum(0f);
+        xl.setAxisMinimum(0);
         
         YAxis leftAxis = mChart.getAxisLeft();
         leftAxis.setInverted(true);
-        leftAxis.setAxisMinimum(0f); // this replaces setStartAtZero(true)
+        leftAxis.setAxisMinimum(0); // this replaces setStartAtZero(true)
         
         YAxis rightAxis = mChart.getAxisRight();
         rightAxis.setEnabled(false);
@@ -97,7 +97,7 @@ public class InvertedLineChartActivity extends DemoBase implements OnSeekBarChan
         setData(25, 50);
 
         // // restrain the maximum scale-out factor
-        // mChart.setScaleMinima(3f, 3f);
+        // mChart.setScaleMinima(3, 3);
         //
         // // center the view to a specific position inside the chart
         // mChart.centerViewPort(10, 50);
@@ -252,13 +252,13 @@ public class InvertedLineChartActivity extends DemoBase implements OnSeekBarChan
 
     }
 
-    private void setData(int count, float range) {
+    private void setData(int count, double range) {
 
         ArrayList<Entry> entries = new ArrayList<Entry>();
 
         for (int i = 0; i < count; i++) {
-            float xVal = (float) (Math.random() * range);
-            float yVal = (float) (Math.random() * range);
+            double xVal = (Math.random() * range);
+            double yVal = (Math.random() * range);
             entries.add(new Entry(xVal, yVal));
         }
 
@@ -268,8 +268,8 @@ public class InvertedLineChartActivity extends DemoBase implements OnSeekBarChan
         // create a dataset and give it a type
         LineDataSet set1 = new LineDataSet(entries, "DataSet 1");
 
-        set1.setLineWidth(1.5f);
-        set1.setCircleRadius(4f);
+        set1.setLineWidth(1.5);
+        set1.setCircleRadius(4);
 
         // create a data object with the datasets
         LineData data = new LineData(set1);

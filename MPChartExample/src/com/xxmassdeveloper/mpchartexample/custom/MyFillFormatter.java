@@ -10,14 +10,14 @@ import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 public class MyFillFormatter implements IFillFormatter
 {
 
-    private float mFillPos = 0f;
+    private double mFillPos = 0;
 
-    public MyFillFormatter(float fillpos) {
+    public MyFillFormatter(double fillpos) {
         this.mFillPos = fillpos;
     }
 
     @Override
-    public float getFillLinePosition(ILineDataSet dataSet, LineDataProvider dataProvider) {
+    public double getFillLinePosition(ILineDataSet dataSet, LineDataProvider dataProvider) {
         // your logic could be here
         return mFillPos;
     }

@@ -62,7 +62,7 @@ public class RealmDatabaseActivityRadar extends RealmBaseActivity {
         set.setColor(ColorTemplate.rgb("#009688"));
         set.setFillColor(ColorTemplate.rgb("#009688"));
         set.setFillAlpha(130);
-        set.setLineWidth(2f);
+        set.setLineWidth(2);
 
         ArrayList<IRadarDataSet> dataSets = new ArrayList<IRadarDataSet>();
         dataSets.add(set); // add the dataset

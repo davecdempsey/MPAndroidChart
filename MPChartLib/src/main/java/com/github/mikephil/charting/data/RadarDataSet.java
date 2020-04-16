@@ -21,9 +21,9 @@ public class RadarDataSet extends LineRadarDataSet<RadarEntry> implements IRadar
     protected int mHighlightCircleStrokeColor = ColorTemplate.COLOR_NONE;
 
     protected int mHighlightCircleStrokeAlpha = (int)(0.3 * 255);
-    protected float mHighlightCircleInnerRadius = 3.0f;
-    protected float mHighlightCircleOuterRadius = 4.0f;
-    protected float mHighlightCircleStrokeWidth = 2.0f;
+    protected double mHighlightCircleInnerRadius = 3.0;
+    protected double mHighlightCircleOuterRadius = 4.0;
+    protected double mHighlightCircleStrokeWidth = 2.0;
 
     public RadarDataSet(List<RadarEntry> yVals, String label) {
         super(yVals, label);
@@ -81,34 +81,34 @@ public class RadarDataSet extends LineRadarDataSet<RadarEntry> implements IRadar
     }
 
     @Override
-    public float getHighlightCircleInnerRadius()
+    public double getHighlightCircleInnerRadius()
     {
         return mHighlightCircleInnerRadius;
     }
 
-    public void setHighlightCircleInnerRadius(float radius)
+    public void setHighlightCircleInnerRadius(double radius)
     {
         mHighlightCircleInnerRadius = radius;
     }
 
     @Override
-    public float getHighlightCircleOuterRadius()
+    public double getHighlightCircleOuterRadius()
     {
         return mHighlightCircleOuterRadius;
     }
 
-    public void setHighlightCircleOuterRadius(float radius)
+    public void setHighlightCircleOuterRadius(double radius)
     {
         mHighlightCircleOuterRadius = radius;
     }
 
     @Override
-    public float getHighlightCircleStrokeWidth()
+    public double getHighlightCircleStrokeWidth()
     {
         return mHighlightCircleStrokeWidth;
     }
 
-    public void setHighlightCircleStrokeWidth(float strokeWidth)
+    public void setHighlightCircleStrokeWidth(double strokeWidth)
     {
         mHighlightCircleStrokeWidth = strokeWidth;
     }

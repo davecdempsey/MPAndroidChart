@@ -17,12 +17,12 @@ public class XShapeRenderer implements IShapeRenderer
 
     @Override
     public void renderShape(Canvas c, IScatterDataSet dataSet, ViewPortHandler viewPortHandler,
-                            float posX, float posY, Paint renderPaint) {
+                            double posX, double posY, Paint renderPaint) {
 
-        final float shapeHalf = dataSet.getScatterShapeSize() / 2f;
+        final double shapeHalf = dataSet.getScatterShapeSize() / 2;
 
         renderPaint.setStyle(Paint.Style.STROKE);
-        renderPaint.setStrokeWidth(Utils.convertDpToPixel(1f));
+        renderPaint.setStrokeWidth(Utils.convertDpToPixel(1));
 
         c.drawLine(
                 posX - shapeHalf,

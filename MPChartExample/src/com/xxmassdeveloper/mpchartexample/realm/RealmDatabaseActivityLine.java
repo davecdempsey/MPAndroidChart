@@ -34,8 +34,8 @@ public class RealmDatabaseActivityLine extends RealmBaseActivity {
         mChart = (LineChart) findViewById(R.id.chart1);
         setup(mChart);
 
-        mChart.getAxisLeft().setAxisMaximum(150f);
-        mChart.getAxisLeft().setAxisMinimum(0f);
+        mChart.getAxisLeft().setAxisMaximum(150);
+        mChart.getAxisLeft().setAxisMinimum(0);
         mChart.getAxisLeft().setDrawGridLines(false);
         mChart.getXAxis().setDrawGridLines(false);
     }
@@ -61,8 +61,8 @@ public class RealmDatabaseActivityLine extends RealmBaseActivity {
         set.setDrawCircleHole(false);
         set.setColor(ColorTemplate.rgb("#FF5722"));
         set.setCircleColor(ColorTemplate.rgb("#FF5722"));
-        set.setLineWidth(1.8f);
-        set.setCircleRadius(3.6f);
+        set.setLineWidth(1.8);
+        set.setCircleRadius(3.6);
 
         ArrayList<ILineDataSet> dataSets = new ArrayList<ILineDataSet>();
         dataSets.add(set); // add the dataset

@@ -36,7 +36,7 @@ public interface ILineRadarDataSet<T extends Entry> extends ILineScatterCandleRa
      *
      * @return
      */
-    float getLineWidth();
+    double getLineWidth();
 
     /**
      * Returns true if filled drawing is enabled, false if not

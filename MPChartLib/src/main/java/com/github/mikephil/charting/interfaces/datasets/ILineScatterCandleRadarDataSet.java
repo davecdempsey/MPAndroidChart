@@ -25,7 +25,7 @@ public interface ILineScatterCandleRadarDataSet<T extends Entry> extends IBarLin
      * Returns the line-width in which highlight lines are to be drawn.
      * @return
      */
-    float getHighlightLineWidth();
+    double getHighlightLineWidth();
 
     /**
      * Returns the DashPathEffect that is used for highlighting.

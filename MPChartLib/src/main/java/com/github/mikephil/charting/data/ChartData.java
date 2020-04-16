@@ -23,31 +23,31 @@ public abstract class ChartData<T extends IDataSet<? extends Entry>> {
     /**
      * maximum y-value in the value array across all axes
      */
-    protected float mYMax = -Float.MAX_VALUE;
+    protected double mYMax = -Double.MAX_VALUE;
 
     /**
      * the minimum y-value in the value array across all axes
      */
-    protected float mYMin = Float.MAX_VALUE;
+    protected double mYMin = Double.MAX_VALUE;
 
     /**
      * maximum x-value in the value array
      */
-    protected float mXMax = -Float.MAX_VALUE;
+    protected double mXMax = -Double.MAX_VALUE;
 
     /**
      * minimum x-value in the value array
      */
-    protected float mXMin = Float.MAX_VALUE;
+    protected double mXMin = Double.MAX_VALUE;
 
 
-    protected float mLeftAxisMax = -Float.MAX_VALUE;
+    protected double mLeftAxisMax = -Double.MAX_VALUE;
 
-    protected float mLeftAxisMin = Float.MAX_VALUE;
+    protected double mLeftAxisMin = Double.MAX_VALUE;
 
-    protected float mRightAxisMax = -Float.MAX_VALUE;
+    protected double mRightAxisMax = -Double.MAX_VALUE;
 
-    protected float mRightAxisMin = Float.MAX_VALUE;
+    protected double mRightAxisMin = Double.MAX_VALUE;
 
     /**
      * array that holds all DataSets the ChartData object represents
@@ -114,7 +114,7 @@ public abstract class ChartData<T extends IDataSet<? extends Entry>> {
      * @param fromX the x-value to start the calculation from
      * @param toX   the x-value to which the calculation should be performed
      */
-    public void calcMinMaxY(float fromX, float toX) {
+    public void calcMinMaxY(double fromX, double toX) {
 
         for (T set : mDataSets) {
             set.calcMinMaxY(fromX, toX);
@@ -132,19 +132,19 @@ public abstract class ChartData<T extends IDataSet<? extends Entry>> {
         if (mDataSets == null)
             return;
 
-        mYMax = -Float.MAX_VALUE;
-        mYMin = Float.MAX_VALUE;
-        mXMax = -Float.MAX_VALUE;
-        mXMin = Float.MAX_VALUE;
+        mYMax = -Double.MAX_VALUE;
+        mYMin = Double.MAX_VALUE;
+        mXMax = -Double.MAX_VALUE;
+        mXMin = Double.MAX_VALUE;
 
         for (T set : mDataSets) {
             calcMinMax(set);
         }
 
-        mLeftAxisMax = -Float.MAX_VALUE;
-        mLeftAxisMin = Float.MAX_VALUE;
-        mRightAxisMax = -Float.MAX_VALUE;
-        mRightAxisMin = Float.MAX_VALUE;
+        mLeftAxisMax = -Double.MAX_VALUE;
+        mLeftAxisMin = Double.MAX_VALUE;
+        mRightAxisMax = -Double.MAX_VALUE;
+        mRightAxisMin = Double.MAX_VALUE;
 
         // left axis
         T firstLeft = getFirstLeft(mDataSets);
@@ -203,7 +203,7 @@ public abstract class ChartData<T extends IDataSet<? extends Entry>> {
      *
      * @return
      */
-    public float getYMin() {
+    public double getYMin() {
         return mYMin;
     }
 
@@ -213,15 +213,15 @@ public abstract class ChartData<T extends IDataSet<? extends Entry>> {
      * @param axis
      * @return
      */
-    public float getYMin(AxisDependency axis) {
+    public double getYMin(AxisDependency axis) {
         if (axis == AxisDependency.LEFT) {
 
-            if (mLeftAxisMin == Float.MAX_VALUE) {
+            if (mLeftAxisMin == Double.MAX_VALUE) {
                 return mRightAxisMin;
             } else
                 return mLeftAxisMin;
         } else {
-            if (mRightAxisMin == Float.MAX_VALUE) {
+            if (mRightAxisMin == Double.MAX_VALUE) {
                 return mLeftAxisMin;
             } else
                 return mRightAxisMin;
@@ -233,7 +233,7 @@ public abstract class ChartData<T extends IDataSet<? extends Entry>> {
      *
      * @return
      */
-    public float getYMax() {
+    public double getYMax() {
         return mYMax;
     }
 
@@ -243,15 +243,15 @@ public abstract class ChartData<T extends IDataSet<? extends Entry>> {
      * @param axis
      * @return
      */
-    public float getYMax(AxisDependency axis) {
+    public double getYMax(AxisDependency axis) {
         if (axis == AxisDependency.LEFT) {
 
-            if (mLeftAxisMax == -Float.MAX_VALUE) {
+            if (mLeftAxisMax == -Double.MAX_VALUE) {
                 return mRightAxisMax;
             } else
                 return mLeftAxisMax;
         } else {
-            if (mRightAxisMax == -Float.MAX_VALUE) {
+            if (mRightAxisMax == -Double.MAX_VALUE) {
                 return mLeftAxisMax;
             } else
                 return mRightAxisMax;
@@ -263,7 +263,7 @@ public abstract class ChartData<T extends IDataSet<? extends Entry>> {
      *
      * @return
      */
-    public float getXMin() {
+    public double getXMin() {
         return mXMin;
     }
 
@@ -272,7 +272,7 @@ public abstract class ChartData<T extends IDataSet<? extends Entry>> {
      *
      * @return
      */
-    public float getXMax() {
+    public double getXMax() {
         return mXMax;
     }
 
@@ -544,13 +544,13 @@ public abstract class ChartData<T extends IDataSet<? extends Entry>> {
      * @param dataSetIndex
      * @return
      */
-    public boolean removeEntry(float xValue, int dataSetIndex) {
+    public boolean removeEntry(double xValue, int dataSetIndex) {
 
         if (dataSetIndex >= mDataSets.size())
             return false;
 
         IDataSet dataSet = mDataSets.get(dataSetIndex);
-        Entry e = dataSet.getEntryForXValue(xValue, Float.NaN);
+        Entry e = dataSet.getEntryForXValue(xValue, Double.NaN);
 
         if (e == null)
             return false;
@@ -711,7 +711,7 @@ public abstract class ChartData<T extends IDataSet<? extends Entry>> {
      *
      * @param size
      */
-    public void setValueTextSize(float size) {
+    public void setValueTextSize(double size) {
         for (IDataSet set : mDataSets) {
             set.setValueTextSize(size);
         }

@@ -8,22 +8,22 @@ public class HorizontalViewPortHandler extends ViewPortHandler {
 
 
 //    @Override
-//    public void setMinimumScaleX(float xScale) {
+//    public void setMinimumScaleX(double xScale) {
 //        setMinimumScaleY(xScale);
 //    }
 //
 //    @Override
-//    public void setMinimumScaleY(float yScale) {
+//    public void setMinimumScaleY(double yScale) {
 //        setMinimumScaleX(yScale);
 //    }
 //
 //    @Override
-//    public void setMinMaxScaleX(float minScaleX, float maxScaleX) {
+//    public void setMinMaxScaleX(double minScaleX, double maxScaleX) {
 //        setMinMaxScaleY(minScaleX, maxScaleX);
 //    }
 //
 //    @Override
-//    public void setMinMaxScaleY(float minScaleY, float maxScaleY) {
+//    public void setMinMaxScaleY(double minScaleY, double maxScaleY) {
 //        setMinMaxScaleX(minScaleY, maxScaleY);
 //    }
 }

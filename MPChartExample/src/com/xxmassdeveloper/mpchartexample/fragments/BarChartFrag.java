@@ -52,7 +52,7 @@ public class BarChartFrag extends SimpleFragment implements OnChartGestureListen
         
         YAxis leftAxis = mChart.getAxisLeft();
         leftAxis.setTypeface(tf);
-        leftAxis.setAxisMinimum(0f); // this replaces setStartAtZero(true)
+        leftAxis.setAxisMinimum(0); // this replaces setStartAtZero(true)
 
         mChart.getAxisRight().setEnabled(false);
         
@@ -93,17 +93,17 @@ public class BarChartFrag extends SimpleFragment implements OnChartGestureListen
     }
 
     @Override
-    public void onChartFling(MotionEvent me1, MotionEvent me2, float velocityX, float velocityY) {
+    public void onChartFling(MotionEvent me1, MotionEvent me2, double velocityX, double velocityY) {
         Log.i("Fling", "Chart flinged. VeloX: " + velocityX + ", VeloY: " + velocityY);
     }
    
     @Override
-    public void onChartScale(MotionEvent me, float scaleX, float scaleY) {
+    public void onChartScale(MotionEvent me, double scaleX, double scaleY) {
         Log.i("Scale / Zoom", "ScaleX: " + scaleX + ", ScaleY: " + scaleY);
     }
 
 	@Override
-	public void onChartTranslate(MotionEvent me, float dX, float dY) {
+	public void onChartTranslate(MotionEvent me, double dX, double dY) {
 		Log.i("Translate / Move", "dX: " + dX + ", dY: " + dY);
 	}
 

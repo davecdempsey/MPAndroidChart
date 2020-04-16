@@ -58,15 +58,15 @@ public class BarChart extends BarLineChartBase<BarData> implements BarDataProvid
 
         setHighlighter(new BarHighlighter(this));
 
-        getXAxis().setSpaceMin(0.5f);
-        getXAxis().setSpaceMax(0.5f);
+        getXAxis().setSpaceMin(0.5);
+        getXAxis().setSpaceMax(0.5);
     }
 
     @Override
     protected void calcMinMax() {
 
         if (mFitBars) {
-            mXAxis.calculate(mData.getXMin() - mData.getBarWidth() / 2f, mData.getXMax() + mData.getBarWidth() / 2f);
+            mXAxis.calculate(mData.getXMin() - mData.getBarWidth() / 2, mData.getXMax() + mData.getBarWidth() / 2);
         } else {
             mXAxis.calculate(mData.getXMin(), mData.getXMax());
         }
@@ -87,7 +87,7 @@ public class BarChart extends BarLineChartBase<BarData> implements BarDataProvid
      * @return
      */
     @Override
-    public Highlight getHighlightByTouchPoint(float x, float y) {
+    public Highlight getHighlightByTouchPoint(double x, double y) {
 
         if (mData == null) {
             Log.e(LOG_TAG, "Can't select by touch. No data set.");
@@ -120,7 +120,7 @@ public class BarChart extends BarLineChartBase<BarData> implements BarDataProvid
 
     /**
      * The passed outputRect will be assigned the values of the bounding box of the specified Entry in the specified DataSet.
-     * The rect will be assigned Float.MIN_VALUE in all locations if the Entry could not be found in the charts data.
+     * The rect will be assigned Double.MIN_VALUE in all locations if the Entry could not be found in the charts data.
      *
      * @param e
      * @return
@@ -132,19 +132,19 @@ public class BarChart extends BarLineChartBase<BarData> implements BarDataProvid
         IBarDataSet set = mData.getDataSetForEntry(e);
 
         if (set == null) {
-            bounds.set(Float.MIN_VALUE, Float.MIN_VALUE, Float.MIN_VALUE, Float.MIN_VALUE);
+            bounds.set(Double.MIN_VALUE, Double.MIN_VALUE, Double.MIN_VALUE, Double.MIN_VALUE);
             return;
         }
 
-        float y = e.getY();
-        float x = e.getX();
+        double y = e.getY();
+        double x = e.getX();
 
-        float barWidth = mData.getBarWidth();
+        double barWidth = mData.getBarWidth();
 
-        float left = x - barWidth / 2f;
-        float right = x + barWidth / 2f;
-        float top = y >= 0 ? y : 0;
-        float bottom = y <= 0 ? y : 0;
+        double left = x - barWidth / 2;
+        double right = x + barWidth / 2;
+        double top = y >= 0 ? y : 0;
+        double bottom = y <= 0 ? y : 0;
 
         bounds.set(left, top, right, bottom);
 
@@ -216,7 +216,7 @@ public class BarChart extends BarLineChartBase<BarData> implements BarDataProvid
      * @param dataSetIndex
      * @param stackIndex   the index inside the stack - only relevant for stacked entries
      */
-    public void highlightValue(float x, int dataSetIndex, int stackIndex) {
+    public void highlightValue(double x, int dataSetIndex, int stackIndex) {
         highlightValue(new Highlight(x, dataSetIndex, stackIndex), false);
     }
 
@@ -243,10 +243,10 @@ public class BarChart extends BarLineChartBase<BarData> implements BarDataProvid
      * Calls notifyDataSetChanged() afterwards.
      *
      * @param fromX      the starting point on the x-axis where the grouping should begin
-     * @param groupSpace the space between groups of bars in values (not pixels) e.g. 0.8f for bar width 1f
-     * @param barSpace   the space between individual bars in values (not pixels) e.g. 0.1f for bar width 1f
+     * @param groupSpace the space between groups of bars in values (not pixels) e.g. 0.8 for bar width 1
+     * @param barSpace   the space between individual bars in values (not pixels) e.g. 0.1 for bar width 1
      */
-    public void groupBars(float fromX, float groupSpace, float barSpace) {
+    public void groupBars(double fromX, double groupSpace, double barSpace) {
 
         if (getBarData() == null) {
             throw new RuntimeException("You need to set data for the chart before grouping bars.");

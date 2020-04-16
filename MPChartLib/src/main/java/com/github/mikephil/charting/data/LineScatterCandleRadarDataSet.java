@@ -16,7 +16,7 @@ public abstract class LineScatterCandleRadarDataSet<T extends Entry> extends Bar
     protected boolean mDrawHorizontalHighlightIndicator = true;
 
     /** the width of the highlight indicator lines */
-    protected float mHighlightLineWidth = 0.5f;
+    protected double mHighlightLineWidth = 0.5;
 
     /** the path effect for dashed highlight-lines */
     protected DashPathEffect mHighlightDashPathEffect = null;
@@ -24,7 +24,7 @@ public abstract class LineScatterCandleRadarDataSet<T extends Entry> extends Bar
 
     public LineScatterCandleRadarDataSet(List<T> yVals, String label) {
         super(yVals, label);
-        mHighlightLineWidth = Utils.convertDpToPixel(0.5f);
+        mHighlightLineWidth = Utils.convertDpToPixel(0.5);
     }
 
     /**
@@ -66,12 +66,12 @@ public abstract class LineScatterCandleRadarDataSet<T extends Entry> extends Bar
      * Sets the width of the highlight line in dp.
      * @param width
      */
-    public void setHighlightLineWidth(float width) {
+    public void setHighlightLineWidth(double width) {
         mHighlightLineWidth = Utils.convertDpToPixel(width);
     }
 
     @Override
-    public float getHighlightLineWidth() {
+    public double getHighlightLineWidth() {
         return mHighlightLineWidth;
     }
 
@@ -82,8 +82,8 @@ public abstract class LineScatterCandleRadarDataSet<T extends Entry> extends Bar
      * @param spaceLength the length of space inbetween the line-pieces
      * @param phase offset, in degrees (normally, use 0)
      */
-    public void enableDashedHighlightLine(float lineLength, float spaceLength, float phase) {
-        mHighlightDashPathEffect = new DashPathEffect(new float[] {
+    public void enableDashedHighlightLine(double lineLength, double spaceLength, double phase) {
+        mHighlightDashPathEffect = new DashPathEffect(new double[] {
                 lineLength, spaceLength
         }, phase);
     }

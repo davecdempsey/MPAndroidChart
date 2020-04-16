@@ -47,7 +47,7 @@ public class LegendRenderer extends Renderer {
         this.mLegend = legend;
 
         mLegendLabelPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        mLegendLabelPaint.setTextSize(Utils.convertDpToPixel(9f));
+        mLegendLabelPaint.setTextSize(Utils.convertDpToPixel(9));
         mLegendLabelPaint.setTextAlign(Align.LEFT);
 
         mLegendFormPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
@@ -117,8 +117,8 @@ public class LegendRenderer extends Renderer {
                         computedEntries.add(new LegendEntry(
                                 dataSet.getLabel(),
                                 Legend.LegendForm.NONE,
-                                Float.NaN,
-                                Float.NaN,
+                                Double.NaN,
+                                Double.NaN,
                                 null,
                                 ColorTemplate.COLOR_NONE
                         ));
@@ -145,8 +145,8 @@ public class LegendRenderer extends Renderer {
                         computedEntries.add(new LegendEntry(
                                 dataSet.getLabel(),
                                 Legend.LegendForm.NONE,
-                                Float.NaN,
-                                Float.NaN,
+                                Double.NaN,
+                                Double.NaN,
                                 null,
                                 ColorTemplate.COLOR_NONE
                         ));
@@ -235,27 +235,27 @@ public class LegendRenderer extends Renderer {
         mLegendLabelPaint.setTextSize(mLegend.getTextSize());
         mLegendLabelPaint.setColor(mLegend.getTextColor());
 
-        float labelLineHeight = Utils.getLineHeight(mLegendLabelPaint, legendFontMetrics);
-        float labelLineSpacing = Utils.getLineSpacing(mLegendLabelPaint, legendFontMetrics)
+        double labelLineHeight = Utils.getLineHeight(mLegendLabelPaint, legendFontMetrics);
+        double labelLineSpacing = Utils.getLineSpacing(mLegendLabelPaint, legendFontMetrics)
                 + Utils.convertDpToPixel(mLegend.getYEntrySpace());
-        float formYOffset = labelLineHeight - Utils.calcTextHeight(mLegendLabelPaint, "ABC") / 2.f;
+        double formYOffset = labelLineHeight - Utils.calcTextHeight(mLegendLabelPaint, "ABC") / 2.f;
 
         LegendEntry[] entries = mLegend.getEntries();
 
-        float formToTextSpace = Utils.convertDpToPixel(mLegend.getFormToTextSpace());
-        float xEntrySpace = Utils.convertDpToPixel(mLegend.getXEntrySpace());
+        double formToTextSpace = Utils.convertDpToPixel(mLegend.getFormToTextSpace());
+        double xEntrySpace = Utils.convertDpToPixel(mLegend.getXEntrySpace());
         Legend.LegendOrientation orientation = mLegend.getOrientation();
         Legend.LegendHorizontalAlignment horizontalAlignment = mLegend.getHorizontalAlignment();
         Legend.LegendVerticalAlignment verticalAlignment = mLegend.getVerticalAlignment();
         Legend.LegendDirection direction = mLegend.getDirection();
-        float defaultFormSize = Utils.convertDpToPixel(mLegend.getFormSize());
+        double defaultFormSize = Utils.convertDpToPixel(mLegend.getFormSize());
 
         // space between the entries
-        float stackSpace = Utils.convertDpToPixel(mLegend.getStackSpace());
+        double stackSpace = Utils.convertDpToPixel(mLegend.getStackSpace());
 
-        float yoffset = mLegend.getYOffset();
-        float xoffset = mLegend.getXOffset();
-        float originPosX = 0.f;
+        double yoffset = mLegend.getYOffset();
+        double xoffset = mLegend.getXOffset();
+        double originPosX = 0.f;
 
         switch (horizontalAlignment) {
             case LEFT:
@@ -312,8 +312,8 @@ public class LegendRenderer extends Renderer {
                 List<FSize> calculatedLabelSizes = mLegend.getCalculatedLabelSizes();
                 List<Boolean> calculatedLabelBreakPoints = mLegend.getCalculatedLabelBreakPoints();
 
-                float posX = originPosX;
-                float posY = 0.f;
+                double posX = originPosX;
+                double posY = 0.f;
 
                 switch (verticalAlignment) {
                     case TOP:
@@ -335,7 +335,7 @@ public class LegendRenderer extends Renderer {
 
                     LegendEntry e = entries[i];
                     boolean drawingForm = e.form != Legend.LegendForm.NONE;
-                    float formSize = Float.isNaN(e.formSize) ? defaultFormSize : Utils.convertDpToPixel(e.formSize);
+                    double formSize = Double.isNaN(e.formSize) ? defaultFormSize : Utils.convertDpToPixel(e.formSize);
 
                     if (i < calculatedLabelBreakPoints.size() && calculatedLabelBreakPoints.get(i)) {
                         posX = originPosX;
@@ -386,9 +386,9 @@ public class LegendRenderer extends Renderer {
 
             case VERTICAL: {
                 // contains the stacked legend size in pixels
-                float stack = 0f;
+                double stack = 0;
                 boolean wasStacked = false;
-                float posY = 0.f;
+                double posY = 0.f;
 
                 switch (verticalAlignment) {
                     case TOP:
@@ -416,9 +416,9 @@ public class LegendRenderer extends Renderer {
 
                     LegendEntry e = entries[i];
                     boolean drawingForm = e.form != Legend.LegendForm.NONE;
-                    float formSize = Float.isNaN(e.formSize) ? defaultFormSize : Utils.convertDpToPixel(e.formSize);
+                    double formSize = Double.isNaN(e.formSize) ? defaultFormSize : Utils.convertDpToPixel(e.formSize);
 
-                    float posX = originPosX;
+                    double posX = originPosX;
 
                     if (drawingForm) {
                         if (direction == Legend.LegendDirection.LEFT_TO_RIGHT)
@@ -452,7 +452,7 @@ public class LegendRenderer extends Renderer {
 
                         // make a step down
                         posY += labelLineHeight + labelLineSpacing;
-                        stack = 0f;
+                        stack = 0;
                     } else {
                         stack += formSize + stackSpace;
                         wasStacked = true;
@@ -479,7 +479,7 @@ public class LegendRenderer extends Renderer {
      */
     protected void drawForm(
             Canvas c,
-            float x, float y,
+            double x, double y,
             LegendEntry entry,
             Legend legend) {
 
@@ -496,11 +496,11 @@ public class LegendRenderer extends Renderer {
 
         mLegendFormPaint.setColor(entry.formColor);
 
-        final float formSize = Utils.convertDpToPixel(
-                Float.isNaN(entry.formSize)
+        final double formSize = Utils.convertDpToPixel(
+                Double.isNaN(entry.formSize)
                         ? legend.getFormSize()
                         : entry.formSize);
-        final float half = formSize / 2f;
+        final double half = formSize / 2;
 
         switch (form) {
             case NONE:
@@ -524,8 +524,8 @@ public class LegendRenderer extends Renderer {
 
             case LINE:
             {
-                final float formLineWidth = Utils.convertDpToPixel(
-                        Float.isNaN(entry.formLineWidth)
+                final double formLineWidth = Utils.convertDpToPixel(
+                        Double.isNaN(entry.formLineWidth)
                                 ? legend.getFormLineWidth()
                                 : entry.formLineWidth);
                 final DashPathEffect formLineDashEffect = entry.formLineDashEffect == null
@@ -554,7 +554,7 @@ public class LegendRenderer extends Renderer {
      * @param y
      * @param label the label to draw
      */
-    protected void drawLabel(Canvas c, float x, float y, String label) {
+    protected void drawLabel(Canvas c, double x, double y, String label) {
         c.drawText(label, x, y, mLegendLabelPaint);
     }
 }

@@ -17,7 +17,7 @@ public class BarHighlighter extends ChartHighlighter<BarDataProvider> {
     }
 
     @Override
-    public Highlight getHighlight(float x, float y) {
+    public Highlight getHighlight(double x, double y) {
         Highlight high = super.getHighlight(x, y);
 
         if(high == null) {
@@ -33,8 +33,8 @@ public class BarHighlighter extends ChartHighlighter<BarDataProvider> {
 
             return getStackedHighlight(high,
                     set,
-                    (float) pos.x,
-                    (float) pos.y);
+                     pos.x,
+                     pos.y);
         }
 
         MPPointD.recycleInstance(pos);
@@ -52,7 +52,7 @@ public class BarHighlighter extends ChartHighlighter<BarDataProvider> {
      * @param yVal
      * @return
      */
-    public Highlight getStackedHighlight(Highlight high, IBarDataSet set, float xVal, float yVal) {
+    public Highlight getStackedHighlight(Highlight high, IBarDataSet set, double xVal, double yVal) {
 
         BarEntry entry = set.getEntryForXValue(xVal, yVal);
 
@@ -73,8 +73,8 @@ public class BarHighlighter extends ChartHighlighter<BarDataProvider> {
                 Highlight stackedHigh = new Highlight(
                         entry.getX(),
                         entry.getY(),
-                        (float) pixels.x,
-                        (float) pixels.y,
+                         pixels.x,
+                         pixels.y,
                         high.getDataSetIndex(),
                         stackIndex,
                         high.getAxis()
@@ -98,7 +98,7 @@ public class BarHighlighter extends ChartHighlighter<BarDataProvider> {
      * @param value
      * @return
      */
-    protected int getClosestStackIndex(Range[] ranges, float value) {
+    protected int getClosestStackIndex(Range[] ranges, double value) {
 
         if (ranges == null || ranges.length == 0)
             return 0;
@@ -125,19 +125,19 @@ public class BarHighlighter extends ChartHighlighter<BarDataProvider> {
 //     */
 //    protected Range[] getRanges(BarEntry entry) {
 //
-//        float[] values = entry.getYVals();
+//        double[] values = entry.getYVals();
 //
 //        if (values == null || values.length == 0)
 //            return new Range[0];
 //
 //        Range[] ranges = new Range[values.length];
 //
-//        float negRemain = -entry.getNegativeSum();
-//        float posRemain = 0f;
+//        double negRemain = -entry.getNegativeSum();
+//        double posRemain = 0;
 //
 //        for (int i = 0; i < ranges.length; i++) {
 //
-//            float value = values[i];
+//            double value = values[i];
 //
 //            if (value < 0) {
 //                ranges[i] = new Range(negRemain, negRemain + Math.abs(value));
@@ -152,7 +152,7 @@ public class BarHighlighter extends ChartHighlighter<BarDataProvider> {
 //    }
 
     @Override
-    protected float getDistance(float x1, float y1, float x2, float y2) {
+    protected double getDistance(double x1, double y1, double x2, double y2) {
         return Math.abs(x1 - x2);
     }
 

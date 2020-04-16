@@ -35,7 +35,7 @@ public abstract class LineRadarDataSet<T extends Entry> extends LineScatterCandl
     /**
      * the width of the drawn data lines
      */
-    private float mLineWidth = 2.5f;
+    private double mLineWidth = 2.5;
 
     /**
      * if true, the data will also be drawn filled
@@ -94,22 +94,22 @@ public abstract class LineRadarDataSet<T extends Entry> extends LineScatterCandl
     }
 
     /**
-     * set the line width of the chart (min = 0.2f, max = 10f); default 1f NOTE:
+     * set the line width of the chart (min = 0.2, max = 10); default 1 NOTE:
      * thinner line == better performance, thicker line == worse performance
      *
      * @param width
      */
-    public void setLineWidth(float width) {
+    public void setLineWidth(double width) {
 
-        if (width < 0.0f)
-            width = 0.0f;
-        if (width > 10.0f)
-            width = 10.0f;
+        if (width < 0.0)
+            width = 0.0;
+        if (width > 10.0)
+            width = 10.0;
         mLineWidth = Utils.convertDpToPixel(width);
     }
 
     @Override
-    public float getLineWidth() {
+    public double getLineWidth() {
         return mLineWidth;
     }
 

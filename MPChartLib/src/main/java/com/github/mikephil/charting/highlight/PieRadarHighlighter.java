@@ -24,9 +24,9 @@ public abstract class PieRadarHighlighter<T extends PieRadarChartBase> implement
     }
 
     @Override
-    public Highlight getHighlight(float x, float y) {
+    public Highlight getHighlight(double x, double y) {
 
-        float touchDistanceToCenter = mChart.distanceToCenter(x, y);
+        double touchDistanceToCenter = mChart.distanceToCenter(x, y);
 
         // check if a slice was touched
         if (touchDistanceToCenter > mChart.getRadius()) {
@@ -36,7 +36,7 @@ public abstract class PieRadarHighlighter<T extends PieRadarChartBase> implement
 
         } else {
 
-            float angle = mChart.getAngleForPoint(x, y);
+            double angle = mChart.getAngleForPoint(x, y);
 
             if (mChart instanceof PieChart) {
                 angle /= mChart.getAnimator().getPhaseY();
@@ -62,5 +62,5 @@ public abstract class PieRadarHighlighter<T extends PieRadarChartBase> implement
      * @param y
      * @return
      */
-    protected abstract Highlight getClosestHighlight(int index, float x, float y);
+    protected abstract Highlight getClosestHighlight(int index, double x, double y);
 }

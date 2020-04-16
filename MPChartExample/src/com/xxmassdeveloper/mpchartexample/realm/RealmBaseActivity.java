@@ -57,14 +57,14 @@ public abstract class RealmBaseActivity extends DemoBase {
             YAxis leftAxis = mChart.getAxisLeft();
             leftAxis.removeAllLimitLines(); // reset all limit lines to avoid overlapping lines
             leftAxis.setTypeface(mTf);
-            leftAxis.setTextSize(8f);
+            leftAxis.setTextSize(8);
             leftAxis.setTextColor(Color.DKGRAY);
             leftAxis.setValueFormatter(new PercentFormatter());
 
             XAxis xAxis = mChart.getXAxis();
             xAxis.setTypeface(mTf);
             xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
-            xAxis.setTextSize(8f);
+            xAxis.setTextSize(8);
             xAxis.setTextColor(Color.DKGRAY);
 
             mChart.getAxisRight().setEnabled(false);
@@ -73,7 +73,7 @@ public abstract class RealmBaseActivity extends DemoBase {
 
     protected void styleData(ChartData data) {
         data.setValueTypeface(mTf);
-        data.setValueTextSize(8f);
+        data.setValueTextSize(8);
         data.setValueTextColor(Color.DKGRAY);
         data.setValueFormatter(new PercentFormatter());
     }
@@ -103,7 +103,7 @@ public abstract class RealmBaseActivity extends DemoBase {
 
         for (int i = 0; i < objectCount; i++) {
 
-            float value = 40f + (float) (Math.random() * 60f);
+            double value = 40.0 + (Math.random() * 60.0);
 
             RealmDemoData d = new RealmDemoData(i, value);
             mRealm.copyToRealm(d);
@@ -120,9 +120,9 @@ public abstract class RealmBaseActivity extends DemoBase {
 
         for (int i = 0; i < objectCount; i++) {
 
-            float val1 = 34f + (float) (Math.random() * 12.0f);
-            float val2 = 34f + (float) (Math.random() * 12.0f);
-            float[] stack = new float[]{val1, val2, 100 - val1 - val2};
+            double val1 = 34 + (Math.random() * 12.0);
+            double val2 = 34 + (Math.random() * 12.0);
+            double[] stack = new double[]{val1, val2, 100 - val1 - val2};
 
             RealmDemoData d = new RealmDemoData(i, stack);
             mRealm.copyToRealm(d);
@@ -139,14 +139,14 @@ public abstract class RealmBaseActivity extends DemoBase {
 
         for (int i = 0; i < objectCount; i++) {
 
-            float mult = 50;
-            float val = (float) (Math.random() * 40) + mult;
+            double mult = 50;
+            double val = (Math.random() * 40) + mult;
 
-            float high = (float) (Math.random() * 9) + 8f;
-            float low = (float) (Math.random() * 9) + 8f;
+            double high = (Math.random() * 9) + 8.0;
+            double low = (Math.random() * 9) + 8.0;
 
-            float open = (float) (Math.random() * 6) + 1f;
-            float close = (float) (Math.random() * 6) + 1f;
+            double open = (Math.random() * 6) + 1.0;
+            double close = (Math.random() * 6) + 1.0;
 
             boolean even = i % 2 == 0;
 
@@ -167,8 +167,8 @@ public abstract class RealmBaseActivity extends DemoBase {
 
         for (int i = 0; i < objectCount; i++) {
 
-            float value = 30f + (float) (Math.random() * 100.0);
-            float size = 15f + (float) (Math.random() * 20.0);
+            double value = 30.0 + (Math.random() * 100.0);
+            double size = 15.0 + (Math.random() * 20.0);
 
             RealmDemoData d = new RealmDemoData(i, value, size);
             mRealm.copyToRealm(d);
@@ -183,13 +183,13 @@ public abstract class RealmBaseActivity extends DemoBase {
 
         mRealm.delete(RealmDemoData.class);
 
-        float value1 = 15f + (float) (Math.random() * 8f);
-        float value2 = 15f + (float) (Math.random() * 8f);
-        float value3 = 15f + (float) (Math.random() * 8f);
-        float value4 = 15f + (float) (Math.random() * 8f);
-        float value5 = 100f - value1 - value2 - value3 - value4;
+        double value1 = 15.0 + (Math.random() * 8.0);
+        double value2 = 15.0 + (Math.random() * 8.0);
+        double value3 = 15.0 + (Math.random() * 8.0);
+        double value4 = 15.0 + (Math.random() * 8.0);
+        double value5 = 100.0 - value1 - value2 - value3 - value4;
 
-        float[] values = new float[]{value1, value2, value3, value4, value5};
+        double[] values = new double[]{value1, value2, value3, value4, value5};
         String[] labels = new String[]{"iOS", "Android", "WP 10", "BlackBerry", "Other"};
 
         for (int i = 0; i < values.length; i++) {

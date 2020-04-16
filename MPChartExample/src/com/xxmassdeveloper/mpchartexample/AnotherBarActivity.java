@@ -157,8 +157,8 @@ public class AnotherBarActivity extends DemoBase implements OnSeekBarChangeListe
         ArrayList<BarEntry> yVals1 = new ArrayList<BarEntry>();
 
         for (int i = 0; i < mSeekBarX.getProgress() + 1; i++) {
-            float mult = (mSeekBarY.getProgress() + 1);
-            float val = (float) (Math.random() * mult) + mult / 3;
+            double mult = (mSeekBarY.getProgress() + 1);
+            double val = (Math.random() * mult) + mult / 3;
             yVals1.add(new BarEntry(i, val));
         }
 

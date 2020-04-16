@@ -9,26 +9,26 @@ import java.util.List;
 
 public class PieDataSet extends DataSet<PieEntry> implements IPieDataSet {
 
-    /** the space in pixels between the chart-slices, default 0f */
-    private float mSliceSpace = 0f;
+    /** the space in pixels between the chart-slices, default 0 */
+    private double mSliceSpace = 0;
     private boolean mAutomaticallyDisableSliceSpacing;
 
     /** indicates the selection distance of a pie slice */
-    private float mShift = 18f;
+    private double mShift = 18;
 
     private ValuePosition mXValuePosition = ValuePosition.INSIDE_SLICE;
     private ValuePosition mYValuePosition = ValuePosition.INSIDE_SLICE;
     private boolean mUsingSliceColorAsValueLineColor = false;
     private int mValueLineColor = 0xff000000;
-    private float mValueLineWidth = 1.0f;
-    private float mValueLinePart1OffsetPercentage = 75.f;
-    private float mValueLinePart1Length = 0.3f;
-    private float mValueLinePart2Length = 0.4f;
+    private double mValueLineWidth = 1.0;
+    private double mValueLinePart1OffsetPercentage = 75.f;
+    private double mValueLinePart1Length = 0.3;
+    private double mValueLinePart2Length = 0.4;
     private boolean mValueLineVariableLength = true;
 
     public PieDataSet(List<PieEntry> yVals, String label) {
         super(yVals, label);
-//        mShift = Utils.convertDpToPixel(12f);
+//        mShift = Utils.convertDpToPixel(12);
     }
 
     @Override
@@ -58,22 +58,22 @@ public class PieDataSet extends DataSet<PieEntry> implements IPieDataSet {
 
     /**
      * Sets the space that is left out between the piechart-slices in dp.
-     * Default: 0 --> no space, maximum 20f
+     * Default: 0 --> no space, maximum 20
      *
      * @param spaceDp
      */
-    public void setSliceSpace(float spaceDp) {
+    public void setSliceSpace(double spaceDp) {
 
         if (spaceDp > 20)
-            spaceDp = 20f;
+            spaceDp = 20;
         if (spaceDp < 0)
-            spaceDp = 0f;
+            spaceDp = 0;
 
         mSliceSpace = Utils.convertDpToPixel(spaceDp);
     }
 
     @Override
-    public float getSliceSpace() {
+    public double getSliceSpace() {
         return mSliceSpace;
     }
 
@@ -100,16 +100,16 @@ public class PieDataSet extends DataSet<PieEntry> implements IPieDataSet {
 
     /**
      * sets the distance the highlighted piechart-slice of this DataSet is
-     * "shifted" away from the center of the chart, default 12f
+     * "shifted" away from the center of the chart, default 12
      * 
      * @param shift
      */
-    public void setSelectionShift(float shift) {
+    public void setSelectionShift(double shift) {
         mShift = Utils.convertDpToPixel(shift);
     }
 
     @Override
-    public float getSelectionShift() {
+    public double getSelectionShift() {
         return mShift;
     }
 
@@ -160,48 +160,48 @@ public class PieDataSet extends DataSet<PieEntry> implements IPieDataSet {
 
     /** When valuePosition is OutsideSlice, indicates line width */
     @Override
-    public float getValueLineWidth()
+    public double getValueLineWidth()
     {
         return mValueLineWidth;
     }
 
-    public void setValueLineWidth(float valueLineWidth)
+    public void setValueLineWidth(double valueLineWidth)
     {
         this.mValueLineWidth = valueLineWidth;
     }
 
     /** When valuePosition is OutsideSlice, indicates offset as percentage out of the slice size */
     @Override
-    public float getValueLinePart1OffsetPercentage()
+    public double getValueLinePart1OffsetPercentage()
     {
         return mValueLinePart1OffsetPercentage;
     }
 
-    public void setValueLinePart1OffsetPercentage(float valueLinePart1OffsetPercentage)
+    public void setValueLinePart1OffsetPercentage(double valueLinePart1OffsetPercentage)
     {
         this.mValueLinePart1OffsetPercentage = valueLinePart1OffsetPercentage;
     }
 
     /** When valuePosition is OutsideSlice, indicates length of first half of the line */
     @Override
-    public float getValueLinePart1Length()
+    public double getValueLinePart1Length()
     {
         return mValueLinePart1Length;
     }
 
-    public void setValueLinePart1Length(float valueLinePart1Length)
+    public void setValueLinePart1Length(double valueLinePart1Length)
     {
         this.mValueLinePart1Length = valueLinePart1Length;
     }
 
     /** When valuePosition is OutsideSlice, indicates length of second half of the line */
     @Override
-    public float getValueLinePart2Length()
+    public double getValueLinePart2Length()
     {
         return mValueLinePart2Length;
     }
 
-    public void setValueLinePart2Length(float valueLinePart2Length)
+    public void setValueLinePart2Length(double valueLinePart2Length)
     {
         this.mValueLinePart2Length = valueLinePart2Length;
     }

@@ -42,7 +42,7 @@ public abstract class SimpleFragment extends Fragment {
         return super.onCreateView(inflater, container, savedInstanceState);
     }
 
-    protected BarData generateBarData(int dataSets, float range, int count) {
+    protected BarData generateBarData(int dataSets, double range, int count) {
         
         ArrayList<IBarDataSet> sets = new ArrayList<IBarDataSet>();
         
@@ -53,7 +53,7 @@ public abstract class SimpleFragment extends Fragment {
 //            entries = FileUtils.loadEntriesFromAssets(getActivity().getAssets(), "stacked_bars.txt");
             
             for(int j = 0; j < count; j++) {        
-                entries.add(new BarEntry(j, (float) (Math.random() * range) + range / 4));
+                entries.add(new BarEntry(j, (Math.random() * range) + range / 4));
             }
             
             BarDataSet ds = new BarDataSet(entries, getLabel(i));
@@ -66,7 +66,7 @@ public abstract class SimpleFragment extends Fragment {
         return d;
     }
     
-    protected ScatterData generateScatterData(int dataSets, float range, int count) {
+    protected ScatterData generateScatterData(int dataSets, double range, int count) {
         
         ArrayList<IScatterDataSet> sets = new ArrayList<IScatterDataSet>();
         
@@ -77,14 +77,14 @@ public abstract class SimpleFragment extends Fragment {
             ArrayList<Entry> entries = new ArrayList<Entry>();
             
             for(int j = 0; j < count; j++) {        
-                entries.add(new Entry(j, (float) (Math.random() * range) + range / 4));
+                entries.add(new Entry(j, (Math.random() * range) + range / 4));
             }
             
             ScatterDataSet ds = new ScatterDataSet(entries, getLabel(i));
-            ds.setScatterShapeSize(12f);
+            ds.setScatterShapeSize(12);
             ds.setScatterShape(shapes[i % shapes.length]);
             ds.setColors(ColorTemplate.COLORFUL_COLORS);
-            ds.setScatterShapeSize(9f);
+            ds.setScatterShapeSize(9);
             sets.add(ds);
         }
         
@@ -104,14 +104,14 @@ public abstract class SimpleFragment extends Fragment {
         ArrayList<PieEntry> entries1 = new ArrayList<PieEntry>();
         
         for(int i = 0; i < count; i++) {
-            entries1.add(new PieEntry((float) ((Math.random() * 60) + 40), "Quarter " + (i+1)));
+            entries1.add(new PieEntry(((Math.random() * 60) + 40), "Quarter " + (i+1)));
         }
         
         PieDataSet ds1 = new PieDataSet(entries1, "Quarterly Revenues 2015");
         ds1.setColors(ColorTemplate.VORDIPLOM_COLORS);
-        ds1.setSliceSpace(2f);
+        ds1.setSliceSpace(2);
         ds1.setValueTextColor(Color.WHITE);
-        ds1.setValueTextSize(12f);
+        ds1.setValueTextSize(12);
         
         PieData d = new PieData(ds1);
         d.setValueTypeface(tf);
@@ -126,8 +126,8 @@ public abstract class SimpleFragment extends Fragment {
         LineDataSet ds1 = new LineDataSet(FileUtils.loadEntriesFromAssets(getActivity().getAssets(), "sine.txt"), "Sine function");
         LineDataSet ds2 = new LineDataSet(FileUtils.loadEntriesFromAssets(getActivity().getAssets(), "cosine.txt"), "Cosine function");
         
-        ds1.setLineWidth(2f);
-        ds2.setLineWidth(2f);
+        ds1.setLineWidth(2);
+        ds2.setLineWidth(2);
         
         ds1.setDrawCircles(false);
         ds2.setDrawCircles(false);
@@ -163,14 +163,14 @@ public abstract class SimpleFragment extends Fragment {
         ds3.setCircleColor(ColorTemplate.VORDIPLOM_COLORS[2]);
         ds4.setCircleColor(ColorTemplate.VORDIPLOM_COLORS[3]);
         
-        ds1.setLineWidth(2.5f);
-        ds1.setCircleRadius(3f);
-        ds2.setLineWidth(2.5f);
-        ds2.setCircleRadius(3f);
-        ds3.setLineWidth(2.5f);
-        ds3.setCircleRadius(3f);
-        ds4.setLineWidth(2.5f);
-        ds4.setCircleRadius(3f);
+        ds1.setLineWidth(2.5);
+        ds1.setCircleRadius(3);
+        ds2.setLineWidth(2.5);
+        ds2.setCircleRadius(3);
+        ds3.setLineWidth(2.5);
+        ds3.setCircleRadius(3);
+        ds4.setLineWidth(2.5);
+        ds4.setCircleRadius(3);
         
         
         // load DataSets from textfiles in assets folders

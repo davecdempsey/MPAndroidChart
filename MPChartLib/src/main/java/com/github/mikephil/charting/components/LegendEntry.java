@@ -21,8 +21,8 @@ public class LegendEntry {
      */
     public LegendEntry(String label,
                        Legend.LegendForm form,
-                       float formSize,
-                       float formLineWidth,
+                       double formSize,
+                       double formLineWidth,
                        DashPathEffect formLineDashEffect,
                        int formColor)
     {
@@ -54,14 +54,14 @@ public class LegendEntry {
      *
      * Set as NaN to use the legend's default
      */
-    public float formSize = Float.NaN;
+    public double formSize = Double.NaN;
 
     /**
      * Line width used for shapes that consist of lines.
      *
      * Set as NaN to use the legend's default
      */
-    public float formLineWidth = Float.NaN;
+    public double formLineWidth = Double.NaN;
 
     /**
      * Line dash path effect used for shapes that consist of lines.

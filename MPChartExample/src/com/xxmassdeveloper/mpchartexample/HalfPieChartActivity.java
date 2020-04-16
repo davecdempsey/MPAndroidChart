@@ -54,16 +54,16 @@ public class HalfPieChartActivity extends DemoBase {
         mChart.setTransparentCircleColor(Color.WHITE);
         mChart.setTransparentCircleAlpha(110);
 
-        mChart.setHoleRadius(58f);
-        mChart.setTransparentCircleRadius(61f);
+        mChart.setHoleRadius(58);
+        mChart.setTransparentCircleRadius(61);
 
         mChart.setDrawCenterText(true);
 
         mChart.setRotationEnabled(false);
         mChart.setHighlightPerTapEnabled(true);
 
-        mChart.setMaxAngle(180f); // HALF CHART
-        mChart.setRotationAngle(180f);
+        mChart.setMaxAngle(180); // HALF CHART
+        mChart.setRotationAngle(180);
         mChart.setCenterTextOffset(0, -20);
 
         setData(4, 100);
@@ -75,34 +75,34 @@ public class HalfPieChartActivity extends DemoBase {
         l.setHorizontalAlignment(Legend.LegendHorizontalAlignment.CENTER);
         l.setOrientation(Legend.LegendOrientation.HORIZONTAL);
         l.setDrawInside(false);
-        l.setXEntrySpace(7f);
-        l.setYEntrySpace(0f);
-        l.setYOffset(0f);
+        l.setXEntrySpace(7);
+        l.setYEntrySpace(0);
+        l.setYOffset(0);
 
         // entry label styling
         mChart.setEntryLabelColor(Color.WHITE);
         mChart.setEntryLabelTypeface(mTfRegular);
-        mChart.setEntryLabelTextSize(12f);
+        mChart.setEntryLabelTextSize(12);
     }
 
-    private void setData(int count, float range) {
+    private void setData(int count, double range) {
 
         ArrayList<PieEntry> values = new ArrayList<PieEntry>();
 
         for (int i = 0; i < count; i++) {
-            values.add(new PieEntry((float) ((Math.random() * range) + range / 5), mParties[i % mParties.length]));
+            values.add(new PieEntry(((Math.random() * range) + range / 5), mParties[i % mParties.length]));
         }
 
         PieDataSet dataSet = new PieDataSet(values, "Election Results");
-        dataSet.setSliceSpace(3f);
-        dataSet.setSelectionShift(5f);
+        dataSet.setSliceSpace(3);
+        dataSet.setSelectionShift(5);
 
         dataSet.setColors(ColorTemplate.MATERIAL_COLORS);
-        //dataSet.setSelectionShift(0f);
+        //dataSet.setSelectionShift(0);
 
         PieData data = new PieData(dataSet);
         data.setValueFormatter(new PercentFormatter());
-        data.setValueTextSize(11f);
+        data.setValueTextSize(11);
         data.setValueTextColor(Color.WHITE);
         data.setValueTypeface(mTfLight);
         mChart.setData(data);
@@ -113,10 +113,10 @@ public class HalfPieChartActivity extends DemoBase {
     private SpannableString generateCenterSpannableText() {
 
         SpannableString s = new SpannableString("MPAndroidChart\ndeveloped by Philipp Jahoda");
-        s.setSpan(new RelativeSizeSpan(1.7f), 0, 14, 0);
+        s.setSpan(new RelativeSizeSpan(1.7), 0, 14, 0);
         s.setSpan(new StyleSpan(Typeface.NORMAL), 14, s.length() - 15, 0);
         s.setSpan(new ForegroundColorSpan(Color.GRAY), 14, s.length() - 15, 0);
-        s.setSpan(new RelativeSizeSpan(.8f), 14, s.length() - 15, 0);
+        s.setSpan(new RelativeSizeSpan(.8), 14, s.length() - 15, 0);
         s.setSpan(new StyleSpan(Typeface.ITALIC), s.length() - 14, s.length(), 0);
         s.setSpan(new ForegroundColorSpan(ColorTemplate.getHoloBlue()), s.length() - 14, s.length(), 0);
         return s;

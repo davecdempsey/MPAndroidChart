@@ -13,16 +13,16 @@ import android.graphics.drawable.Drawable;
 public class CandleEntry extends Entry {
 
     /** shadow-high value */
-    private float mShadowHigh = 0f;
+    private double mShadowHigh = 0;
 
     /** shadow-low value */
-    private float mShadowLow = 0f;
+    private double mShadowLow = 0;
 
     /** close value */
-    private float mClose = 0f;
+    private double mClose = 0;
 
     /** open value */
-    private float mOpen = 0f;
+    private double mOpen = 0;
 
     /**
      * Constructor.
@@ -33,8 +33,8 @@ public class CandleEntry extends Entry {
      * @param open The open value
      * @param close The close value
      */
-    public CandleEntry(float x, float shadowH, float shadowL, float open, float close) {
-        super(x, (shadowH + shadowL) / 2f);
+    public CandleEntry(double x, double shadowH, double shadowL, double open, double close) {
+        super(x, (shadowH + shadowL) / 2);
 
         this.mShadowHigh = shadowH;
         this.mShadowLow = shadowL;
@@ -52,9 +52,9 @@ public class CandleEntry extends Entry {
      * @param close
      * @param data Spot for additional data this Entry represents
      */
-    public CandleEntry(float x, float shadowH, float shadowL, float open, float close,
+    public CandleEntry(double x, double shadowH, double shadowL, double open, double close,
                        Object data) {
-        super(x, (shadowH + shadowL) / 2f, data);
+        super(x, (shadowH + shadowL) / 2, data);
 
         this.mShadowHigh = shadowH;
         this.mShadowLow = shadowL;
@@ -72,9 +72,9 @@ public class CandleEntry extends Entry {
      * @param close
      * @param icon Icon image
      */
-    public CandleEntry(float x, float shadowH, float shadowL, float open, float close,
+    public CandleEntry(double x, double shadowH, double shadowL, double open, double close,
                        Drawable icon) {
-        super(x, (shadowH + shadowL) / 2f, icon);
+        super(x, (shadowH + shadowL) / 2, icon);
 
         this.mShadowHigh = shadowH;
         this.mShadowLow = shadowL;
@@ -93,9 +93,9 @@ public class CandleEntry extends Entry {
      * @param icon Icon image
      * @param data Spot for additional data this Entry represents
      */
-    public CandleEntry(float x, float shadowH, float shadowL, float open, float close,
+    public CandleEntry(double x, double shadowH, double shadowL, double open, double close,
                        Drawable icon, Object data) {
-        super(x, (shadowH + shadowL) / 2f, icon, data);
+        super(x, (shadowH + shadowL) / 2, icon, data);
 
         this.mShadowHigh = shadowH;
         this.mShadowLow = shadowL;
@@ -109,7 +109,7 @@ public class CandleEntry extends Entry {
      * 
      * @return
      */
-    public float getShadowRange() {
+    public double getShadowRange() {
         return Math.abs(mShadowHigh - mShadowLow);
     }
 
@@ -118,7 +118,7 @@ public class CandleEntry extends Entry {
      * 
      * @return
      */
-    public float getBodyRange() {
+    public double getBodyRange() {
         return Math.abs(mOpen - mClose);
     }
 
@@ -127,7 +127,7 @@ public class CandleEntry extends Entry {
      * low)
      */
     @Override
-    public float getY() {
+    public double getY() {
         return super.getY();
     }
 
@@ -144,11 +144,11 @@ public class CandleEntry extends Entry {
      * 
      * @return
      */
-    public float getHigh() {
+    public double getHigh() {
         return mShadowHigh;
     }
 
-    public void setHigh(float mShadowHigh) {
+    public void setHigh(double mShadowHigh) {
         this.mShadowHigh = mShadowHigh;
     }
 
@@ -157,11 +157,11 @@ public class CandleEntry extends Entry {
      * 
      * @return
      */
-    public float getLow() {
+    public double getLow() {
         return mShadowLow;
     }
 
-    public void setLow(float mShadowLow) {
+    public void setLow(double mShadowLow) {
         this.mShadowLow = mShadowLow;
     }
 
@@ -170,11 +170,11 @@ public class CandleEntry extends Entry {
      * 
      * @return
      */
-    public float getClose() {
+    public double getClose() {
         return mClose;
     }
 
-    public void setClose(float mClose) {
+    public void setClose(double mClose) {
         this.mClose = mClose;
     }
 
@@ -183,11 +183,11 @@ public class CandleEntry extends Entry {
      * 
      * @return
      */
-    public float getOpen() {
+    public double getOpen() {
         return mOpen;
     }
 
-    public void setOpen(float mOpen) {
+    public void setOpen(double mOpen) {
         this.mOpen = mOpen;
     }
 }

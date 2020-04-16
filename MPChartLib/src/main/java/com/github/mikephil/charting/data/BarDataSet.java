@@ -21,7 +21,7 @@ public class BarDataSet extends BarLineScatterCandleBubbleDataSet<BarEntry> impl
      */
     private int mBarShadowColor = Color.rgb(215, 215, 215);
 
-    private float mBarBorderWidth = 0.0f;
+    private double mBarBorderWidth = 0.0;
 
     private int mBarBorderColor = Color.BLACK;
 
@@ -82,7 +82,7 @@ public class BarDataSet extends BarLineScatterCandleBubbleDataSet<BarEntry> impl
 
         for (int i = 0; i < yVals.size(); i++) {
 
-            float[] vals = yVals.get(i).getYVals();
+            double[] vals = yVals.get(i).getYVals();
 
             if (vals == null)
                 mEntryCountStacks++;
@@ -99,7 +99,7 @@ public class BarDataSet extends BarLineScatterCandleBubbleDataSet<BarEntry> impl
 
         for (int i = 0; i < yVals.size(); i++) {
 
-            float[] vals = yVals.get(i).getYVals();
+            double[] vals = yVals.get(i).getYVals();
 
             if (vals != null && vals.length > mStackSize)
                 mStackSize = vals.length;
@@ -109,7 +109,7 @@ public class BarDataSet extends BarLineScatterCandleBubbleDataSet<BarEntry> impl
     @Override
     protected void calcMinMax(BarEntry e) {
 
-        if (e != null && !Float.isNaN(e.getY())) {
+        if (e != null && !Double.isNaN(e.getY())) {
 
             if (e.getYVals() == null) {
 
@@ -173,7 +173,7 @@ public class BarDataSet extends BarLineScatterCandleBubbleDataSet<BarEntry> impl
      *
      * @return
      */
-    public void setBarBorderWidth(float width) {
+    public void setBarBorderWidth(double width) {
         mBarBorderWidth = width;
     }
 
@@ -184,7 +184,7 @@ public class BarDataSet extends BarLineScatterCandleBubbleDataSet<BarEntry> impl
      * @return
      */
     @Override
-    public float getBarBorderWidth() {
+    public double getBarBorderWidth() {
         return mBarBorderWidth;
     }
 

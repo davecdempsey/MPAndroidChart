@@ -25,28 +25,28 @@ public interface IDataSet<T extends Entry> {
      *
      * @return
      */
-    float getYMin();
+    double getYMin();
 
     /**
      * returns the maximum y-value this DataSet holds
      *
      * @return
      */
-    float getYMax();
+    double getYMax();
 
     /**
      * returns the minimum x-value this DataSet holds
      *
      * @return
      */
-    float getXMin();
+    double getXMin();
 
     /**
      * returns the maximum x-value this DataSet holds
      *
      * @return
      */
-    float getXMax();
+    double getXMax();
 
     /**
      * Returns the number of y-values this DataSet represents -> the size of the y-values array
@@ -68,7 +68,7 @@ public interface IDataSet<T extends Entry> {
      * @param fromX
      * @param toX
      */
-    void calcMinMaxY(float fromX, float toX);
+    void calcMinMaxY(double fromX, double toX);
 
     /**
      * Returns the first Entry object found at the given x-value with binary
@@ -86,7 +86,7 @@ public interface IDataSet<T extends Entry> {
      *
      *
      */
-    T getEntryForXValue(float xValue, float closestToY, DataSet.Rounding rounding);
+    T getEntryForXValue(double xValue, double closestToY, DataSet.Rounding rounding);
 
     /**
      * Returns the first Entry object found at the given x-value with binary
@@ -101,7 +101,7 @@ public interface IDataSet<T extends Entry> {
      * @param closestToY If there are multiple y-values for the specified x-value,
      * @return
      */
-    T getEntryForXValue(float xValue, float closestToY);
+    T getEntryForXValue(double xValue, double closestToY);
 
     /**
      * Returns all Entry objects found at the given x-value with binary
@@ -112,7 +112,7 @@ public interface IDataSet<T extends Entry> {
      * @param xValue
      * @return
      */
-    List<T> getEntriesForXValue(float xValue);
+    List<T> getEntriesForXValue(double xValue);
 
     /**
      * Returns the Entry object found at the given index (NOT xIndex) in the values array.
@@ -136,7 +136,7 @@ public interface IDataSet<T extends Entry> {
      *                 if there is no Entry matching the provided x-value
      * @return
      */
-    int getEntryIndex(float xValue, float closestToY, DataSet.Rounding rounding);
+    int getEntryIndex(double xValue, double closestToY, DataSet.Rounding rounding);
 
     /**
      * Returns the position of the provided entry in the DataSets Entry array.
@@ -212,7 +212,7 @@ public interface IDataSet<T extends Entry> {
      *
      * @param xValue
      */
-    boolean removeEntryByXValue(float xValue);
+    boolean removeEntryByXValue(double xValue);
 
     /**
      * Removes the Entry object at the given index in the values array from the DataSet.
@@ -360,7 +360,7 @@ public interface IDataSet<T extends Entry> {
      *
      * @param size
      */
-    void setValueTextSize(float size);
+    void setValueTextSize(double size);
 
     /**
      * Returns only the first color of all colors that are set to be used for the values.
@@ -390,7 +390,7 @@ public interface IDataSet<T extends Entry> {
      *
      * @return
      */
-    float getValueTextSize();
+    double getValueTextSize();
 
     /**
      * The form to draw for this dataset in the legend.
@@ -402,16 +402,16 @@ public interface IDataSet<T extends Entry> {
     /**
      * The form size to draw for this dataset in the legend.
      * <p/>
-     * Return `Float.NaN` to use the default legend form size.
+     * Return `Double.NaN` to use the default legend form size.
      */
-    float getFormSize();
+    double getFormSize();
 
     /**
      * The line width for drawing the form of this dataset in the legend
      * <p/>
-     * Return `Float.NaN` to use the default legend form line width.
+     * Return `Double.NaN` to use the default legend form line width.
      */
-    float getFormLineWidth();
+    double getFormLineWidth();
 
     /**
      * The line dash path effect used for shapes that consist of lines.

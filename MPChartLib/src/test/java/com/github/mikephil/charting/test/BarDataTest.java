@@ -19,8 +19,8 @@ public class BarDataTest {
     @Test
     public void testGroupBars() {
 
-        float groupSpace = 5f;
-        float barSpace = 1f;
+        double groupSpace = 5;
+        double barSpace = 1;
 
         List<BarEntry> values1 = new ArrayList<>();
         List<BarEntry> values2 = new ArrayList<>();
@@ -34,39 +34,39 @@ public class BarDataTest {
         BarDataSet barDataSet2 = new BarDataSet(values2, "Set2");
 
         BarData data = new BarData(barDataSet1, barDataSet2);
-        data.setBarWidth(10f);
+        data.setBarWidth(10);
 
-        float groupWidth = data.getGroupWidth(groupSpace, barSpace);
-        assertEquals(27f, groupWidth, 0.01f);
+        double groupWidth = data.getGroupWidth(groupSpace, barSpace);
+        assertEquals(27, groupWidth, 0.01);
 
-        assertEquals(0f, values1.get(0).getX(), 0.01f);
-        assertEquals(1f, values1.get(1).getX(), 0.01f);
+        assertEquals(0, values1.get(0).getX(), 0.01);
+        assertEquals(1, values1.get(1).getX(), 0.01);
 
         data.groupBars(1000, groupSpace, barSpace);
 
         // 1000 + 2.5 + 0.5 + 5
-        assertEquals(1008f, values1.get(0).getX(), 0.01f);
-        assertEquals(1019f, values2.get(0).getX(), 0.01f);
-        assertEquals(1035f, values1.get(1).getX(), 0.01f);
-        assertEquals(1046f, values2.get(1).getX(), 0.01f);
+        assertEquals(1008, values1.get(0).getX(), 0.01);
+        assertEquals(1019, values2.get(0).getX(), 0.01);
+        assertEquals(1035, values1.get(1).getX(), 0.01);
+        assertEquals(1046, values2.get(1).getX(), 0.01);
 
         data.groupBars(-1000, groupSpace, barSpace);
 
-        assertEquals(-992f, values1.get(0).getX(), 0.01f);
-        assertEquals(-981f, values2.get(0).getX(), 0.01f);
-        assertEquals(-965f, values1.get(1).getX(), 0.01f);
-        assertEquals(-954f, values2.get(1).getX(), 0.01f);
+        assertEquals(-992, values1.get(0).getX(), 0.01);
+        assertEquals(-981, values2.get(0).getX(), 0.01);
+        assertEquals(-965, values1.get(1).getX(), 0.01);
+        assertEquals(-954, values2.get(1).getX(), 0.01);
 
-        data.setBarWidth(20f);
+        data.setBarWidth(20);
         groupWidth = data.getGroupWidth(groupSpace, barSpace);
-        assertEquals(47f, groupWidth, 0.01f);
+        assertEquals(47, groupWidth, 0.01);
 
-        data.setBarWidth(10f);
+        data.setBarWidth(10);
         data.groupBars(-20, groupSpace, barSpace);
 
-        assertEquals(-12f, values1.get(0).getX(), 0.01f);
-        assertEquals(-1f, values2.get(0).getX(), 0.01f);
-        assertEquals(15f, values1.get(1).getX(), 0.01f);
-        assertEquals(26f, values2.get(1).getX(), 0.01f);
+        assertEquals(-12, values1.get(0).getX(), 0.01);
+        assertEquals(-1, values2.get(0).getX(), 0.01);
+        assertEquals(15, values1.get(1).getX(), 0.01);
+        assertEquals(26, values2.get(1).getX(), 0.01);
     }
 }

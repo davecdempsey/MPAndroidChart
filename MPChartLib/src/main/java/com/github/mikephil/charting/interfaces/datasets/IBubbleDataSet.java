@@ -13,9 +13,9 @@ public interface IBubbleDataSet extends IBarLineScatterCandleBubbleDataSet<Bubbl
      *
      * @param width
      */
-    void setHighlightCircleWidth(float width);
+    void setHighlightCircleWidth(double width);
 
-    float getMaxSize();
+    double getMaxSize();
 
     boolean isNormalizeSizeEnabled();
 
@@ -23,5 +23,5 @@ public interface IBubbleDataSet extends IBarLineScatterCandleBubbleDataSet<Bubbl
      * Returns the width of the highlight-circle that surrounds the bubble
       * @return
      */
-    float getHighlightCircleWidth();
+    double getHighlightCircleWidth();
 }

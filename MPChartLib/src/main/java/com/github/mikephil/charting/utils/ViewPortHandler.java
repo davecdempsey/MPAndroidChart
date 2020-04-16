@@ -23,58 +23,58 @@ public class ViewPortHandler {
      */
     protected RectF mContentRect = new RectF();
 
-    protected float mChartWidth = 0f;
-    protected float mChartHeight = 0f;
+    protected double mChartWidth = 0;
+    protected double mChartHeight = 0;
 
     /**
      * minimum scale value on the y-axis
      */
-    private float mMinScaleY = 1f;
+    private double mMinScaleY = 1;
 
     /**
      * maximum scale value on the y-axis
      */
-    private float mMaxScaleY = Float.MAX_VALUE;
+    private double mMaxScaleY = Double.MAX_VALUE;
 
     /**
      * minimum scale value on the x-axis
      */
-    private float mMinScaleX = 1f;
+    private double mMinScaleX = 1;
 
     /**
      * maximum scale value on the x-axis
      */
-    private float mMaxScaleX = Float.MAX_VALUE;
+    private double mMaxScaleX = Double.MAX_VALUE;
 
     /**
      * contains the current scale factor of the x-axis
      */
-    private float mScaleX = 1f;
+    private double mScaleX = 1;
 
     /**
      * contains the current scale factor of the y-axis
      */
-    private float mScaleY = 1f;
+    private double mScaleY = 1;
 
     /**
      * current translation (drag distance) on the x-axis
      */
-    private float mTransX = 0f;
+    private double mTransX = 0;
 
     /**
      * current translation (drag distance) on the y-axis
      */
-    private float mTransY = 0f;
+    private double mTransY = 0;
 
     /**
      * offset that allows the chart to be dragged over its bounds on the x-axis
      */
-    private float mTransOffsetX = 0f;
+    private double mTransOffsetX = 0;
 
     /**
      * offset that allows the chart to be dragged over its bounds on the x-axis
      */
-    private float mTransOffsetY = 0f;
+    private double mTransOffsetY = 0;
 
     /**
      * Constructor - don't forget calling setChartDimens(...)
@@ -90,12 +90,12 @@ public class ViewPortHandler {
      * @param height
      */
 
-    public void setChartDimens(float width, float height) {
+    public void setChartDimens(double width, double height) {
 
-        float offsetLeft = this.offsetLeft();
-        float offsetTop = this.offsetTop();
-        float offsetRight = this.offsetRight();
-        float offsetBottom = this.offsetBottom();
+        double offsetLeft = this.offsetLeft();
+        double offsetTop = this.offsetTop();
+        double offsetRight = this.offsetRight();
+        double offsetBottom = this.offsetBottom();
 
         mChartHeight = height;
         mChartWidth = width;
@@ -110,49 +110,49 @@ public class ViewPortHandler {
             return false;
     }
 
-    public void restrainViewPort(float offsetLeft, float offsetTop, float offsetRight,
-                                 float offsetBottom) {
+    public void restrainViewPort(double offsetLeft, double offsetTop, double offsetRight,
+                                 double offsetBottom) {
         mContentRect.set(offsetLeft, offsetTop, mChartWidth - offsetRight, mChartHeight
                 - offsetBottom);
     }
 
-    public float offsetLeft() {
+    public double offsetLeft() {
         return mContentRect.left;
     }
 
-    public float offsetRight() {
+    public double offsetRight() {
         return mChartWidth - mContentRect.right;
     }
 
-    public float offsetTop() {
+    public double offsetTop() {
         return mContentRect.top;
     }
 
-    public float offsetBottom() {
+    public double offsetBottom() {
         return mChartHeight - mContentRect.bottom;
     }
 
-    public float contentTop() {
+    public double contentTop() {
         return mContentRect.top;
     }
 
-    public float contentLeft() {
+    public double contentLeft() {
         return mContentRect.left;
     }
 
-    public float contentRight() {
+    public double contentRight() {
         return mContentRect.right;
     }
 
-    public float contentBottom() {
+    public double contentBottom() {
         return mContentRect.bottom;
     }
 
-    public float contentWidth() {
+    public double contentWidth() {
         return mContentRect.width();
     }
 
-    public float contentHeight() {
+    public double contentHeight() {
         return mContentRect.height();
     }
 
@@ -164,11 +164,11 @@ public class ViewPortHandler {
         return MPPointF.getInstance(mContentRect.centerX(), mContentRect.centerY());
     }
 
-    public float getChartHeight() {
+    public double getChartHeight() {
         return mChartHeight;
     }
 
-    public float getChartWidth() {
+    public double getChartWidth() {
         return mChartWidth;
     }
 
@@ -177,7 +177,7 @@ public class ViewPortHandler {
      *
      * @return
      */
-    public float getSmallestContentExtension() {
+    public double getSmallestContentExtension() {
         return Math.min(mContentRect.width(), mContentRect.height());
     }
 
@@ -187,40 +187,40 @@ public class ViewPortHandler {
     /** CODE BELOW THIS RELATED TO SCALING AND GESTURES */
 
     /**
-     * Zooms in by 1.4f, x and y are the coordinates (in pixels) of the zoom
+     * Zooms in by 1.4, x and y are the coordinates (in pixels) of the zoom
      * center.
      *
      * @param x
      * @param y
      */
-    public Matrix zoomIn(float x, float y) {
+    public Matrix zoomIn(double x, double y) {
 
         Matrix save = new Matrix();
         zoomIn(x, y, save);
         return save;
     }
 
-    public void zoomIn(float x, float y, Matrix outputMatrix) {
+    public void zoomIn(double x, double y, Matrix outputMatrix) {
         outputMatrix.reset();
         outputMatrix.set(mMatrixTouch);
-        outputMatrix.postScale(1.4f, 1.4f, x, y);
+        outputMatrix.postScale(1.4, 1.4, x, y);
     }
 
     /**
-     * Zooms out by 0.7f, x and y are the coordinates (in pixels) of the zoom
+     * Zooms out by 0.7, x and y are the coordinates (in pixels) of the zoom
      * center.
      */
-    public Matrix zoomOut(float x, float y) {
+    public Matrix zoomOut(double x, double y) {
 
         Matrix save = new Matrix();
         zoomOut(x, y, save);
         return save;
     }
 
-    public void zoomOut(float x, float y, Matrix outputMatrix) {
+    public void zoomOut(double x, double y, Matrix outputMatrix) {
         outputMatrix.reset();
         outputMatrix.set(mMatrixTouch);
-        outputMatrix.postScale(0.7f, 0.7f, x, y);
+        outputMatrix.postScale(0.7, 0.7, x, y);
     }
 
     /**
@@ -230,7 +230,7 @@ public class ViewPortHandler {
     public void resetZoom(Matrix outputMatrix) {
         outputMatrix.reset();
         outputMatrix.set(mMatrixTouch);
-        outputMatrix.postScale(1.0f, 1.0f, 0.0f, 0.0f);
+        outputMatrix.postScale(1.0, 1.0, 0.0, 0.0);
     }
 
     /**
@@ -240,14 +240,14 @@ public class ViewPortHandler {
      * @param scaleY
      * @return
      */
-    public Matrix zoom(float scaleX, float scaleY) {
+    public Matrix zoom(double scaleX, double scaleY) {
 
         Matrix save = new Matrix();
         zoom(scaleX, scaleY, save);
         return save;
     }
 
-    public void zoom(float scaleX, float scaleY, Matrix outputMatrix) {
+    public void zoom(double scaleX, double scaleY, Matrix outputMatrix) {
         outputMatrix.reset();
         outputMatrix.set(mMatrixTouch);
         outputMatrix.postScale(scaleX, scaleY);
@@ -262,14 +262,14 @@ public class ViewPortHandler {
      * @param y
      * @return
      */
-    public Matrix zoom(float scaleX, float scaleY, float x, float y) {
+    public Matrix zoom(double scaleX, double scaleY, double x, double y) {
 
         Matrix save = new Matrix();
         zoom(scaleX, scaleY, x, y, save);
         return save;
     }
 
-    public void zoom(float scaleX, float scaleY, float x, float y, Matrix outputMatrix) {
+    public void zoom(double scaleX, double scaleY, double x, double y, Matrix outputMatrix) {
         outputMatrix.reset();
         outputMatrix.set(mMatrixTouch);
         outputMatrix.postScale(scaleX, scaleY, x, y);
@@ -282,14 +282,14 @@ public class ViewPortHandler {
      * @param scaleY
      * @return
      */
-    public Matrix setZoom(float scaleX, float scaleY) {
+    public Matrix setZoom(double scaleX, double scaleY) {
 
         Matrix save = new Matrix();
         setZoom(scaleX, scaleY, save);
         return save;
     }
 
-    public void setZoom(float scaleX, float scaleY, Matrix outputMatrix) {
+    public void setZoom(double scaleX, double scaleY, Matrix outputMatrix) {
         outputMatrix.reset();
         outputMatrix.set(mMatrixTouch);
         outputMatrix.setScale(scaleX, scaleY);
@@ -304,7 +304,7 @@ public class ViewPortHandler {
      * @param y
      * @return
      */
-    public Matrix setZoom(float scaleX, float scaleY, float x, float y) {
+    public Matrix setZoom(double scaleX, double scaleY, double x, double y) {
 
         Matrix save = new Matrix();
         save.set(mMatrixTouch);
@@ -314,7 +314,7 @@ public class ViewPortHandler {
         return save;
     }
 
-    protected float[] valsBufferForFitScreen = new float[9];
+    protected double[] valsBufferForFitScreen = new double[9];
 
     /**
      * Resets all zooming and dragging and makes the chart fit exactly it's
@@ -332,12 +332,12 @@ public class ViewPortHandler {
      * bounds.  Output Matrix is available for those who wish to cache the object.
      */
     public void fitScreen(Matrix outputMatrix) {
-        mMinScaleX = 1f;
-        mMinScaleY = 1f;
+        mMinScaleX = 1;
+        mMinScaleY = 1;
 
         outputMatrix.set(mMatrixTouch);
 
-        float[] vals = valsBufferForFitScreen;
+        double[] vals = valsBufferForFitScreen;
         for (int i = 0; i < 9; i++) {
             vals[i] = 0;
         }
@@ -345,10 +345,10 @@ public class ViewPortHandler {
         outputMatrix.getValues(vals);
 
         // reset all translations and scaling
-        vals[Matrix.MTRANS_X] = 0f;
-        vals[Matrix.MTRANS_Y] = 0f;
-        vals[Matrix.MSCALE_X] = 1f;
-        vals[Matrix.MSCALE_Y] = 1f;
+        vals[Matrix.MTRANS_X] = 0;
+        vals[Matrix.MTRANS_Y] = 0;
+        vals[Matrix.MSCALE_X] = 1;
+        vals[Matrix.MSCALE_Y] = 1;
 
         outputMatrix.setValues(vals);
     }
@@ -359,7 +359,7 @@ public class ViewPortHandler {
      * @param transformedPts
      * @return
      */
-    public Matrix translate(final float[] transformedPts) {
+    public Matrix translate(final double[] transformedPts) {
 
         Matrix save = new Matrix();
         translate(transformedPts, save);
@@ -372,11 +372,11 @@ public class ViewPortHandler {
      * @param transformedPts
      * @return
      */
-    public void translate(final float[] transformedPts, Matrix outputMatrix) {
+    public void translate(final double[] transformedPts, Matrix outputMatrix) {
         outputMatrix.reset();
         outputMatrix.set(mMatrixTouch);
-        final float x = transformedPts[0] - offsetLeft();
-        final float y = transformedPts[1] - offsetTop();
+        final double x = transformedPts[0] - offsetLeft();
+        final double y = transformedPts[1] - offsetTop();
         outputMatrix.postTranslate(-x, -y);
     }
 
@@ -392,14 +392,14 @@ public class ViewPortHandler {
      * @param view
      * @return save
      */
-    public void centerViewPort(final float[] transformedPts, final View view) {
+    public void centerViewPort(final double[] transformedPts, final View view) {
 
         Matrix save = mCenterViewPortMatrixBuffer;
         save.reset();
         save.set(mMatrixTouch);
 
-        final float x = transformedPts[0] - offsetLeft();
-        final float y = transformedPts[1] - offsetTop();
+        final double x = transformedPts[0] - offsetLeft();
+        final double y = transformedPts[1] - offsetTop();
 
         save.postTranslate(-x, -y);
 
@@ -409,7 +409,7 @@ public class ViewPortHandler {
     /**
      * buffer for storing the 9 matrix values of a 3x3 matrix
      */
-    protected final float[] matrixBuffer = new float[9];
+    protected final double[] matrixBuffer = new double[9];
 
     /**
      * call this method to refresh the graph with a given matrix
@@ -440,30 +440,30 @@ public class ViewPortHandler {
 
         matrix.getValues(matrixBuffer);
 
-        float curTransX = matrixBuffer[Matrix.MTRANS_X];
-        float curScaleX = matrixBuffer[Matrix.MSCALE_X];
+        double curTransX = matrixBuffer[Matrix.MTRANS_X];
+        double curScaleX = matrixBuffer[Matrix.MSCALE_X];
 
-        float curTransY = matrixBuffer[Matrix.MTRANS_Y];
-        float curScaleY = matrixBuffer[Matrix.MSCALE_Y];
+        double curTransY = matrixBuffer[Matrix.MTRANS_Y];
+        double curScaleY = matrixBuffer[Matrix.MSCALE_Y];
 
-        // min scale-x is 1f
+        // min scale-x is 1
         mScaleX = Math.min(Math.max(mMinScaleX, curScaleX), mMaxScaleX);
 
-        // min scale-y is 1f
+        // min scale-y is 1
         mScaleY = Math.min(Math.max(mMinScaleY, curScaleY), mMaxScaleY);
 
-        float width = 0f;
-        float height = 0f;
+        double width = 0;
+        double height = 0;
 
         if (content != null) {
             width = content.width();
             height = content.height();
         }
 
-        float maxTransX = -width * (mScaleX - 1f);
+        double maxTransX = -width * (mScaleX - 1);
         mTransX = Math.min(Math.max(curTransX, maxTransX - mTransOffsetX), mTransOffsetX);
 
-        float maxTransY = height * (mScaleY - 1f);
+        double maxTransY = height * (mScaleY - 1);
         mTransY = Math.max(Math.min(curTransY, maxTransY + mTransOffsetY), -mTransOffsetY);
 
         matrixBuffer[Matrix.MTRANS_X] = mTransX;
@@ -480,10 +480,10 @@ public class ViewPortHandler {
      *
      * @param xScale
      */
-    public void setMinimumScaleX(float xScale) {
+    public void setMinimumScaleX(double xScale) {
 
-        if (xScale < 1f)
-            xScale = 1f;
+        if (xScale < 1)
+            xScale = 1;
 
         mMinScaleX = xScale;
 
@@ -495,10 +495,10 @@ public class ViewPortHandler {
      *
      * @param xScale
      */
-    public void setMaximumScaleX(float xScale) {
+    public void setMaximumScaleX(double xScale) {
 
         if (xScale == 0.f)
-            xScale = Float.MAX_VALUE;
+            xScale = Double.MAX_VALUE;
 
         mMaxScaleX = xScale;
 
@@ -511,13 +511,13 @@ public class ViewPortHandler {
      * @param minScaleX
      * @param maxScaleX
      */
-    public void setMinMaxScaleX(float minScaleX, float maxScaleX) {
+    public void setMinMaxScaleX(double minScaleX, double maxScaleX) {
 
-        if (minScaleX < 1f)
-            minScaleX = 1f;
+        if (minScaleX < 1)
+            minScaleX = 1;
 
         if (maxScaleX == 0.f)
-            maxScaleX = Float.MAX_VALUE;
+            maxScaleX = Double.MAX_VALUE;
 
         mMinScaleX = minScaleX;
         mMaxScaleX = maxScaleX;
@@ -530,10 +530,10 @@ public class ViewPortHandler {
      *
      * @param yScale
      */
-    public void setMinimumScaleY(float yScale) {
+    public void setMinimumScaleY(double yScale) {
 
-        if (yScale < 1f)
-            yScale = 1f;
+        if (yScale < 1)
+            yScale = 1;
 
         mMinScaleY = yScale;
 
@@ -545,23 +545,23 @@ public class ViewPortHandler {
      *
      * @param yScale
      */
-    public void setMaximumScaleY(float yScale) {
+    public void setMaximumScaleY(double yScale) {
 
         if (yScale == 0.f)
-            yScale = Float.MAX_VALUE;
+            yScale = Double.MAX_VALUE;
 
         mMaxScaleY = yScale;
 
         limitTransAndScale(mMatrixTouch, mContentRect);
     }
 
-    public void setMinMaxScaleY(float minScaleY, float maxScaleY) {
+    public void setMinMaxScaleY(double minScaleY, double maxScaleY) {
 
-        if (minScaleY < 1f)
-            minScaleY = 1f;
+        if (minScaleY < 1)
+            minScaleY = 1;
 
         if (maxScaleY == 0.f)
-            maxScaleY = Float.MAX_VALUE;
+            maxScaleY = Double.MAX_VALUE;
 
         mMinScaleY = minScaleY;
         mMaxScaleY = maxScaleY;
@@ -585,63 +585,63 @@ public class ViewPortHandler {
      * BELOW METHODS FOR BOUNDS CHECK
      */
 
-    public boolean isInBoundsX(float x) {
+    public boolean isInBoundsX(double x) {
         return isInBoundsLeft(x) && isInBoundsRight(x);
     }
 
-    public boolean isInBoundsY(float y) {
+    public boolean isInBoundsY(double y) {
         return isInBoundsTop(y) && isInBoundsBottom(y);
     }
 
-    public boolean isInBounds(float x, float y) {
+    public boolean isInBounds(double x, double y) {
         return isInBoundsX(x) && isInBoundsY(y);
     }
 
-    public boolean isInBoundsLeft(float x) {
+    public boolean isInBoundsLeft(double x) {
         return mContentRect.left <= x + 1;
     }
 
-    public boolean isInBoundsRight(float x) {
-        x = (float) ((int) (x * 100.f)) / 100.f;
+    public boolean isInBoundsRight(double x) {
+        x =  ((int) (x * 100.0)) / 100.0;
         return mContentRect.right >= x - 1;
     }
 
-    public boolean isInBoundsTop(float y) {
+    public boolean isInBoundsTop(double y) {
         return mContentRect.top <= y;
     }
 
-    public boolean isInBoundsBottom(float y) {
-        y = (float) ((int) (y * 100.f)) / 100.f;
+    public boolean isInBoundsBottom(double y) {
+        y =  ((int) (y * 100.0)) / 100.0;
         return mContentRect.bottom >= y;
     }
 
     /**
      * returns the current x-scale factor
      */
-    public float getScaleX() {
+    public double getScaleX() {
         return mScaleX;
     }
 
     /**
      * returns the current y-scale factor
      */
-    public float getScaleY() {
+    public double getScaleY() {
         return mScaleY;
     }
 
-    public float getMinScaleX() {
+    public double getMinScaleX() {
         return mMinScaleX;
     }
 
-    public float getMaxScaleX() {
+    public double getMaxScaleX() {
         return mMaxScaleX;
     }
 
-    public float getMinScaleY() {
+    public double getMinScaleY() {
         return mMinScaleY;
     }
 
-    public float getMaxScaleY() {
+    public double getMaxScaleY() {
         return mMaxScaleY;
     }
 
@@ -650,7 +650,7 @@ public class ViewPortHandler {
      *
      * @return
      */
-    public float getTransX() {
+    public double getTransX() {
         return mTransX;
     }
 
@@ -659,7 +659,7 @@ public class ViewPortHandler {
      *
      * @return
      */
-    public float getTransY() {
+    public double getTransY() {
         return mTransY;
     }
 
@@ -679,7 +679,7 @@ public class ViewPortHandler {
      * @return
      */
     public boolean isFullyZoomedOutY() {
-        return !(mScaleY > mMinScaleY || mMinScaleY > 1f);
+        return !(mScaleY > mMinScaleY || mMinScaleY > 1);
     }
 
     /**
@@ -689,7 +689,7 @@ public class ViewPortHandler {
      * @return
      */
     public boolean isFullyZoomedOutX() {
-        return !(mScaleX > mMinScaleX || mMinScaleX > 1f);
+        return !(mScaleX > mMinScaleX || mMinScaleX > 1);
     }
 
     /**
@@ -698,7 +698,7 @@ public class ViewPortHandler {
      *
      * @param offset
      */
-    public void setDragOffsetX(float offset) {
+    public void setDragOffsetX(double offset) {
         mTransOffsetX = Utils.convertDpToPixel(offset);
     }
 
@@ -708,7 +708,7 @@ public class ViewPortHandler {
      *
      * @param offset
      */
-    public void setDragOffsetY(float offset) {
+    public void setDragOffsetY(double offset) {
         mTransOffsetY = Utils.convertDpToPixel(offset);
     }
 

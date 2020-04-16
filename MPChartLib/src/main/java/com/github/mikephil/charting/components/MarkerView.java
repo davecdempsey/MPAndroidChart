@@ -61,7 +61,7 @@ public class MarkerView extends RelativeLayout implements IMarker {
         }
     }
 
-    public void setOffset(float offsetX, float offsetY) {
+    public void setOffset(double offsetX, double offsetY) {
         mOffset.x = offsetX;
         mOffset.y = offsetY;
     }
@@ -80,7 +80,7 @@ public class MarkerView extends RelativeLayout implements IMarker {
     }
 
     @Override
-    public MPPointF getOffsetForDrawingAtPoint(float posX, float posY) {
+    public MPPointF getOffsetForDrawingAtPoint(double posX, double posY) {
 
         MPPointF offset = getOffset();
         mOffset2.x = offset.x;
@@ -88,8 +88,8 @@ public class MarkerView extends RelativeLayout implements IMarker {
 
         Chart chart = getChartView();
 
-        float width = getWidth();
-        float height = getHeight();
+        double width = getWidth();
+        double height = getHeight();
 
         if (posX + mOffset2.x < 0) {
             mOffset2.x = - posX;
@@ -116,7 +116,7 @@ public class MarkerView extends RelativeLayout implements IMarker {
     }
 
     @Override
-    public void draw(Canvas canvas, float posX, float posY) {
+    public void draw(Canvas canvas, double posX, double posY) {
 
         MPPointF offset = getOffsetForDrawingAtPoint(posX, posY);
 

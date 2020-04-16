@@ -17,7 +17,7 @@ import com.github.mikephil.charting.utils.Utils;
 public class Entry extends BaseEntry implements Parcelable {
 
     /** the x value */
-    private float x = 0f;
+    private double x = 0;
 
     public Entry() {
 
@@ -29,7 +29,7 @@ public class Entry extends BaseEntry implements Parcelable {
      * @param x the x value
      * @param y the y value (the actual value of the entry)
      */
-    public Entry(float x, float y) {
+    public Entry(double x, double y) {
         super(y);
         this.x = x;
     }
@@ -41,7 +41,7 @@ public class Entry extends BaseEntry implements Parcelable {
      * @param y the y value (the actual value of the entry)
      * @param data Spot for additional data this Entry represents.
      */
-    public Entry(float x, float y, Object data) {
+    public Entry(double x, double y, Object data) {
         super(y, data);
         this.x = x;
     }
@@ -53,7 +53,7 @@ public class Entry extends BaseEntry implements Parcelable {
      * @param y the y value (the actual value of the entry)
      * @param icon icon image
      */
-    public Entry(float x, float y, Drawable icon) {
+    public Entry(double x, double y, Drawable icon) {
         super(y, icon);
         this.x = x;
     }
@@ -66,7 +66,7 @@ public class Entry extends BaseEntry implements Parcelable {
      * @param icon icon image
      * @param data Spot for additional data this Entry represents.
      */
-    public Entry(float x, float y, Drawable icon, Object data) {
+    public Entry(double x, double y, Drawable icon, Object data) {
         super(y, icon, data);
         this.x = x;
     }
@@ -76,7 +76,7 @@ public class Entry extends BaseEntry implements Parcelable {
      * 
      * @return
      */
-    public float getX() {
+    public double getX() {
         return x;
     }
 
@@ -85,7 +85,7 @@ public class Entry extends BaseEntry implements Parcelable {
      * 
      * @param x
      */
-    public void setX(float x) {
+    public void setX(double x) {
         this.x = x;
     }
 
@@ -115,10 +115,10 @@ public class Entry extends BaseEntry implements Parcelable {
         if (e.getData() != this.getData())
             return false;
 
-        if (Math.abs(e.x - this.x) > Utils.FLOAT_EPSILON)
+        if (Math.abs(e.x - this.x) > Utils.Double_EPSILON)
             return false;
 
-        if (Math.abs(e.getY() - this.getY()) > Utils.FLOAT_EPSILON)
+        if (Math.abs(e.getY() - this.getY()) > Utils.Double_EPSILON)
             return false;
 
         return true;
@@ -139,8 +139,8 @@ public class Entry extends BaseEntry implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeFloat(this.x);
-        dest.writeFloat(this.getY());
+        dest.writeDouble(this.x);
+        dest.writeDouble(this.getY());
         if (getData() != null) {
             if (getData() instanceof Parcelable) {
                 dest.writeInt(1);
@@ -154,8 +154,8 @@ public class Entry extends BaseEntry implements Parcelable {
     }
 
     protected Entry(Parcel in) {
-        this.x = in.readFloat();
-        this.setY(in.readFloat());
+        this.x = in.readDouble();
+        this.setY(in.readDouble());
         if (in.readInt() == 1) {
             this.setData(in.readParcelable(Object.class.getClassLoader()));
         }

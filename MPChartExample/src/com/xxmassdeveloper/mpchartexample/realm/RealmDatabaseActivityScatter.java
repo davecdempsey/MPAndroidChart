@@ -55,7 +55,7 @@ public class RealmDatabaseActivityScatter extends RealmBaseActivity {
 
         RealmScatterDataSet<RealmDemoData> set = new RealmScatterDataSet<RealmDemoData>(result, "xValue", "yValue");
         set.setLabel("Realm ScatterDataSet");
-        set.setScatterShapeSize(9f);
+        set.setScatterShapeSize(9);
         set.setColor(ColorTemplate.rgb("#CDDC39"));
         set.setScatterShape(ScatterChart.ScatterShape.CIRCLE);
 

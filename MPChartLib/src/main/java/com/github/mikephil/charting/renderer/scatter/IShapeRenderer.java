@@ -24,5 +24,5 @@ public interface IShapeRenderer
      * @param renderPaint     Paint object used for styling and drawing
      */
     void renderShape(Canvas c, IScatterDataSet dataSet, ViewPortHandler viewPortHandler,
-                     float posX, float posY, Paint renderPaint);
+                     double posX, double posY, Paint renderPaint);
 }

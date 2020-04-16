@@ -13,14 +13,14 @@ public interface IScatterDataSet extends ILineScatterCandleRadarDataSet<Entry> {
      *
      * @return
      */
-    float getScatterShapeSize();
+    double getScatterShapeSize();
 
     /**
      * Returns radius of the hole in the shape
      *
      * @return
      */
-    float getScatterShapeHoleRadius();
+    double getScatterShapeHoleRadius();
 
     /**
      * Returns the color for the hole in the shape

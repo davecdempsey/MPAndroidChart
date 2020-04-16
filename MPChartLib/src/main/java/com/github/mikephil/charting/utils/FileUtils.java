@@ -52,13 +52,13 @@ public class FileUtils {
                 String[] split = line.split("#");
 
                 if (split.length <= 2) {
-                    entries.add(new Entry(Float.parseFloat(split[0]), Integer.parseInt(split[1])));
+                    entries.add(new Entry(Double.parseDouble(split[0]), Integer.parseInt(split[1])));
                 } else {
 
-                    float[] vals = new float[split.length - 1];
+                    double[] vals = new double[split.length - 1];
 
                     for (int i = 0; i < vals.length; i++) {
-                        vals[i] = Float.parseFloat(split[i]);
+                        vals[i] = Double.parseDouble(split[i]);
                     }
 
                     entries.add(new BarEntry(Integer.parseInt(split[split.length - 1]), vals));
@@ -88,7 +88,7 @@ public class FileUtils {
         //
         // while ((line = br.readLine()) != null) {
         // String[] split = line.split("#");
-        // entries.add(new Entry(Float.parseFloat(split[0]),
+        // entries.add(new Entry(Double.parseDouble(split[0]),
         // Integer.parseInt(split[1])));
         // }
         // } catch (IOException e) {
@@ -122,13 +122,13 @@ public class FileUtils {
                 String[] split = line.split("#");
 
                 if (split.length <= 2) {
-                    entries.add(new Entry(Float.parseFloat(split[1]), Float.parseFloat(split[0])));
+                    entries.add(new Entry(Double.parseDouble(split[1]), Double.parseDouble(split[0])));
                 } else {
 
-                    float[] vals = new float[split.length - 1];
+                    double[] vals = new double[split.length - 1];
 
                     for (int i = 0; i < vals.length; i++) {
-                        vals[i] = Float.parseFloat(split[i]);
+                        vals[i] = Double.parseDouble(split[i]);
                     }
 
                     entries.add(new BarEntry(Integer.parseInt(split[split.length - 1]), vals));
@@ -166,7 +166,7 @@ public class FileUtils {
         // while (line != null) {
         // // process line
         // String[] split = line.split("#");
-        // entries.add(new Entry(Float.parseFloat(split[0]),
+        // entries.add(new Entry(Double.parseDouble(split[0]),
         // Integer.parseInt(split[1])));
         // line = reader.readLine();
         // }
@@ -242,7 +242,7 @@ public class FileUtils {
                 // process line
                 String[] split = line.split("#");
 
-                entries.add(new BarEntry(Float.parseFloat(split[1]), Float.parseFloat(split[0])));
+                entries.add(new BarEntry(Double.parseDouble(split[1]), Double.parseDouble(split[0])));
 
                 line = reader.readLine();
             }
@@ -277,7 +277,7 @@ public class FileUtils {
         // while (line != null) {
         // // process line
         // String[] split = line.split("#");
-        // entries.add(new Entry(Float.parseFloat(split[0]),
+        // entries.add(new Entry(Double.parseDouble(split[0]),
         // Integer.parseInt(split[1])));
         // line = reader.readLine();
         // }

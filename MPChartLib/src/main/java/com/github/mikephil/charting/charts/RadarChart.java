@@ -27,12 +27,12 @@ public class RadarChart extends PieRadarChartBase<RadarData> {
     /**
      * width of the main web lines
      */
-    private float mWebLineWidth = 2.5f;
+    private double mWebLineWidth = 2.5;
 
     /**
      * width of the inner web lines
      */
-    private float mInnerWebLineWidth = 1.5f;
+    private double mInnerWebLineWidth = 1.5;
 
     /**
      * color for the main web lines
@@ -85,8 +85,8 @@ public class RadarChart extends PieRadarChartBase<RadarData> {
 
         mYAxis = new YAxis(AxisDependency.LEFT);
 
-        mWebLineWidth = Utils.convertDpToPixel(1.5f);
-        mInnerWebLineWidth = Utils.convertDpToPixel(0.75f);
+        mWebLineWidth = Utils.convertDpToPixel(1.5);
+        mInnerWebLineWidth = Utils.convertDpToPixel(0.75);
 
         mRenderer = new RadarChartRenderer(this, mAnimator, mViewPortHandler);
         mYAxisRenderer = new YAxisRendererRadarChart(mViewPortHandler, mYAxis, this);
@@ -164,9 +164,9 @@ public class RadarChart extends PieRadarChartBase<RadarData> {
      *
      * @return
      */
-    public float getFactor() {
+    public double getFactor() {
         RectF content = mViewPortHandler.getContentRect();
-        return Math.min(content.width() / 2f, content.height() / 2f) / mYAxis.mAxisRange;
+        return Math.min(content.width() / 2, content.height() / 2) / mYAxis.mAxisRange;
     }
 
     /**
@@ -174,17 +174,17 @@ public class RadarChart extends PieRadarChartBase<RadarData> {
      *
      * @return
      */
-    public float getSliceAngle() {
-        return 360f / (float) mData.getMaxEntryCountSet().getEntryCount();
+    public double getSliceAngle() {
+        return 360 /  mData.getMaxEntryCountSet().getEntryCount();
     }
 
     @Override
-    public int getIndexForAngle(float angle) {
+    public int getIndexForAngle(double angle) {
 
         // take the current angle of the chart into consideration
-        float a = Utils.getNormalizedAngle(angle - getRotationAngle());
+        double a = Utils.getNormalizedAngle(angle - getRotationAngle());
 
-        float sliceangle = getSliceAngle();
+        double sliceangle = getSliceAngle();
 
         int max = mData.getMaxEntryCountSet().getEntryCount();
 
@@ -192,7 +192,7 @@ public class RadarChart extends PieRadarChartBase<RadarData> {
 
         for (int i = 0; i < max; i++) {
 
-            float referenceAngle = sliceangle * (i + 1) - sliceangle / 2f;
+            double referenceAngle = sliceangle * (i + 1) - sliceangle / 2;
 
             if (referenceAngle > a) {
                 index = i;
@@ -217,11 +217,11 @@ public class RadarChart extends PieRadarChartBase<RadarData> {
      *
      * @param width
      */
-    public void setWebLineWidth(float width) {
+    public void setWebLineWidth(double width) {
         mWebLineWidth = Utils.convertDpToPixel(width);
     }
 
-    public float getWebLineWidth() {
+    public double getWebLineWidth() {
         return mWebLineWidth;
     }
 
@@ -231,11 +231,11 @@ public class RadarChart extends PieRadarChartBase<RadarData> {
      *
      * @param width
      */
-    public void setWebLineWidthInner(float width) {
+    public void setWebLineWidthInner(double width) {
         mInnerWebLineWidth = Utils.convertDpToPixel(width);
     }
 
-    public float getWebLineWidthInner() {
+    public double getWebLineWidthInner() {
         return mInnerWebLineWidth;
     }
 
@@ -319,34 +319,34 @@ public class RadarChart extends PieRadarChartBase<RadarData> {
     }
 
     @Override
-    protected float getRequiredLegendOffset() {
+    protected double getRequiredLegendOffset() {
         return mLegendRenderer.getLabelPaint().getTextSize() * 4.f;
     }
 
     @Override
-    protected float getRequiredBaseOffset() {
+    protected double getRequiredBaseOffset() {
         return mXAxis.isEnabled() && mXAxis.isDrawLabelsEnabled() ?
                 mXAxis.mLabelRotatedWidth :
-                Utils.convertDpToPixel(10f);
+                Utils.convertDpToPixel(10);
     }
 
     @Override
-    public float getRadius() {
+    public double getRadius() {
         RectF content = mViewPortHandler.getContentRect();
-        return Math.min(content.width() / 2f, content.height() / 2f);
+        return Math.min(content.width() / 2, content.height() / 2);
     }
 
     /**
      * Returns the maximum value this chart can display on it's y-axis.
      */
-    public float getYChartMax() {
+    public double getYChartMax() {
         return mYAxis.mAxisMaximum;
     }
 
     /**
      * Returns the minimum value this chart can display on it's y-axis.
      */
-    public float getYChartMin() {
+    public double getYChartMin() {
         return mYAxis.mAxisMinimum;
     }
 
@@ -355,7 +355,7 @@ public class RadarChart extends PieRadarChartBase<RadarData> {
      *
      * @return
      */
-    public float getYRange() {
+    public double getYRange() {
         return mYAxis.mAxisRange;
     }
 }

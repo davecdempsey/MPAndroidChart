@@ -12,23 +12,23 @@ public class MPPointF extends ObjectPool.Poolable {
 
     private static ObjectPool<MPPointF> pool;
 
-    public float x;
-    public float y;
+    public double x;
+    public double y;
 
     static {
         pool = ObjectPool.create(32, new MPPointF(0,0));
-        pool.setReplenishPercentage(0.5f);
+        pool.setReplenishPercentage(0.5);
     }
 
     public MPPointF() {
     }
 
-    public MPPointF(float x, float y) {
+    public MPPointF(double x, double y) {
         this.x = x;
         this.y = y;
     }
 
-    public static MPPointF getInstance(float x, float y) {
+    public static MPPointF getInstance(double x, double y) {
         MPPointF result = pool.get();
         result.x = x;
         result.y = y;
@@ -80,15 +80,15 @@ public class MPPointF extends ObjectPool.Poolable {
      * @param in The parcel to read the point's coordinates from
      */
     public void my_readFromParcel(Parcel in) {
-        x = in.readFloat();
-        y = in.readFloat();
+        x = in.readDouble();
+        y = in.readDouble();
     }
 
-    public float getX(){
+    public double getX(){
         return this.x;
     }
 
-    public float getY(){
+    public double getY(){
         return this.y;
     }
 

@@ -29,7 +29,7 @@ public class Description extends ComponentBase {
         super();
 
         // default size
-        mTextSize = Utils.convertDpToPixel(8f);
+        mTextSize = Utils.convertDpToPixel(8);
     }
 
     /**
@@ -57,7 +57,7 @@ public class Description extends ComponentBase {
      * @param x - xcoordinate
      * @param y - ycoordinate
      */
-    public void setPosition(float x, float y) {
+    public void setPosition(double x, double y) {
         if (mPosition == null) {
             mPosition = MPPointF.getInstance(x, y);
         } else {

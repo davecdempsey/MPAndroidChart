@@ -84,7 +84,7 @@ public class BarChartActivity extends DemoBase implements OnSeekBarChangeListene
         xAxis.setPosition(XAxisPosition.BOTTOM);
         xAxis.setTypeface(mTfLight);
         xAxis.setDrawGridLines(false);
-        xAxis.setGranularity(1f); // only intervals of 1 day
+        xAxis.setGranularity(1); // only intervals of 1 day
         xAxis.setLabelCount(7);
         xAxis.setValueFormatter(xAxisFormatter);
 
@@ -95,16 +95,16 @@ public class BarChartActivity extends DemoBase implements OnSeekBarChangeListene
         leftAxis.setLabelCount(8, false);
         leftAxis.setValueFormatter(custom);
         leftAxis.setPosition(YAxisLabelPosition.OUTSIDE_CHART);
-        leftAxis.setSpaceTop(15f);
-        leftAxis.setAxisMinimum(0f); // this replaces setStartAtZero(true)
+        leftAxis.setSpaceTop(15);
+        leftAxis.setAxisMinimum(0); // this replaces setStartAtZero(true)
 
         YAxis rightAxis = mChart.getAxisRight();
         rightAxis.setDrawGridLines(false);
         rightAxis.setTypeface(mTfLight);
         rightAxis.setLabelCount(8, false);
         rightAxis.setValueFormatter(custom);
-        rightAxis.setSpaceTop(15f);
-        rightAxis.setAxisMinimum(0f); // this replaces setStartAtZero(true)
+        rightAxis.setSpaceTop(15);
+        rightAxis.setAxisMinimum(0); // this replaces setStartAtZero(true)
 
         Legend l = mChart.getLegend();
         l.setVerticalAlignment(Legend.LegendVerticalAlignment.BOTTOM);
@@ -112,9 +112,9 @@ public class BarChartActivity extends DemoBase implements OnSeekBarChangeListene
         l.setOrientation(Legend.LegendOrientation.HORIZONTAL);
         l.setDrawInside(false);
         l.setForm(LegendForm.SQUARE);
-        l.setFormSize(9f);
-        l.setTextSize(11f);
-        l.setXEntrySpace(4f);
+        l.setFormSize(9);
+        l.setTextSize(11);
+        l.setXEntrySpace(4);
         // l.setExtra(ColorTemplate.VORDIPLOM_COLORS, new String[] { "abc",
         // "def", "ghj", "ikl", "mno" });
         // l.setCustom(ColorTemplate.VORDIPLOM_COLORS, new String[] { "abc",
@@ -234,15 +234,15 @@ public class BarChartActivity extends DemoBase implements OnSeekBarChangeListene
         // TODO Auto-generated method stub
     }
 
-    private void setData(int count, float range) {
+    private void setData(int count, double range) {
 
-        float start = 1f;
+        double start = 1;
 
         ArrayList<BarEntry> yVals1 = new ArrayList<BarEntry>();
 
         for (int i = (int) start; i < start + count + 1; i++) {
-            float mult = (range + 1);
-            float val = (float) (Math.random() * mult);
+            double mult = (range + 1);
+            double val = Math.random() * mult;
 
             if (Math.random() * 100 < 25) {
                 yVals1.add(new BarEntry(i, val, getResources().getDrawable(R.drawable.star)));
@@ -270,9 +270,9 @@ public class BarChartActivity extends DemoBase implements OnSeekBarChangeListene
             dataSets.add(set1);
 
             BarData data = new BarData(dataSets);
-            data.setValueTextSize(10f);
+            data.setValueTextSize(10);
             data.setValueTypeface(mTfLight);
-            data.setBarWidth(0.9f);
+            data.setBarWidth(0.9);
 
             mChart.setData(data);
         }

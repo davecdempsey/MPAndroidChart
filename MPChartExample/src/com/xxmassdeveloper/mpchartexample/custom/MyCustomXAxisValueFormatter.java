@@ -22,12 +22,12 @@ public class MyCustomXAxisValueFormatter implements IAxisValueFormatter
     }
 
     @Override
-    public String getFormattedValue(float value, AxisBase axis) {
+    public String getFormattedValue(double value, AxisBase axis) {
 
         //Log.i("TRANS", "x: " + viewPortHandler.getTransX() + ", y: " + viewPortHandler.getTransY());
 
         // e.g. adjust the x-axis values depending on scale / zoom level
-        final float xScale = mViewPortHandler.getScaleX();
+        final double xScale = mViewPortHandler.getScaleX();
         if (xScale > 5)
             return "4";
         else if (xScale > 3)

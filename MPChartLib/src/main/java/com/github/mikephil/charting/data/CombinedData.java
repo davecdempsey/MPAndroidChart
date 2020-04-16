@@ -60,15 +60,15 @@ public class CombinedData extends BarLineScatterCandleBubbleData<IBarLineScatter
         }
         mDataSets.clear();
 
-        mYMax = -Float.MAX_VALUE;
-        mYMin = Float.MAX_VALUE;
-        mXMax = -Float.MAX_VALUE;
-        mXMin = Float.MAX_VALUE;
+        mYMax = -Double.MAX_VALUE;
+        mYMin = Double.MAX_VALUE;
+        mXMax = -Double.MAX_VALUE;
+        mXMin = Double.MAX_VALUE;
 
-        mLeftAxisMax = -Float.MAX_VALUE;
-        mLeftAxisMin = Float.MAX_VALUE;
-        mRightAxisMax = -Float.MAX_VALUE;
-        mRightAxisMin = Float.MAX_VALUE;
+        mLeftAxisMax = -Double.MAX_VALUE;
+        mLeftAxisMin = Double.MAX_VALUE;
+        mRightAxisMax = -Double.MAX_VALUE;
+        mRightAxisMin = Double.MAX_VALUE;
 
         List<BarLineScatterCandleBubbleData> allData = getAllData();
 
@@ -192,7 +192,7 @@ public class CombinedData extends BarLineScatterCandleBubbleData<IBarLineScatter
                 .getEntriesForXValue(highlight.getX());
         for (Entry entry : entries)
             if (entry.getY() == highlight.getY() ||
-                    Float.isNaN(highlight.getY()))
+                    Double.isNaN(highlight.getY()))
                 return entry;
 
         return null;
@@ -256,7 +256,7 @@ public class CombinedData extends BarLineScatterCandleBubbleData<IBarLineScatter
 
     @Deprecated
     @Override
-    public boolean removeEntry(float xValue, int dataSetIndex) {
+    public boolean removeEntry(double xValue, int dataSetIndex) {
         Log.e("MPAndroidChart", "removeEntry(...) not supported for CombinedData");
         return false;
     }

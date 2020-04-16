@@ -42,17 +42,17 @@ public class RealmWikiExample extends RealmBaseActivity {
         setup(lineChart);
         setup(barChart);
 
-        lineChart.setExtraBottomOffset(5f);
-        barChart.setExtraBottomOffset(5f);
+        lineChart.setExtraBottomOffset(5);
+        barChart.setExtraBottomOffset(5);
 
         lineChart.getAxisLeft().setDrawGridLines(false);
         lineChart.getXAxis().setDrawGridLines(false);
         lineChart.getXAxis().setLabelCount(5);
-        lineChart.getXAxis().setGranularity(1f);
+        lineChart.getXAxis().setGranularity(1);
         barChart.getAxisLeft().setDrawGridLines(false);
         barChart.getXAxis().setDrawGridLines(false);
         barChart.getXAxis().setLabelCount(5);
-        barChart.getXAxis().setGranularity(1f);
+        barChart.getXAxis().setGranularity(1);
     }
 
     @Override
@@ -62,15 +62,15 @@ public class RealmWikiExample extends RealmBaseActivity {
         mRealm.beginTransaction();
 
         // write some demo-data into the realm.io database
-        Score score1 = new Score(100f, 0f, "Peter");
+        Score score1 = new Score(100, 0, "Peter");
         mRealm.copyToRealm(score1);
-        Score score2 = new Score(110f, 1f, "Lisa");
+        Score score2 = new Score(110, 1, "Lisa");
         mRealm.copyToRealm(score2);
-        Score score3 = new Score(130f, 2f, "Dennis");
+        Score score3 = new Score(130, 2, "Dennis");
         mRealm.copyToRealm(score3);
-        Score score4 = new Score(70f, 3f, "Luke");
+        Score score4 = new Score(70, 3, "Luke");
         mRealm.copyToRealm(score4);
-        Score score5 = new Score(80f, 4f, "Sarah");
+        Score score5 = new Score(80, 4, "Sarah");
         mRealm.copyToRealm(score5);
 
         mRealm.commitTransaction();
@@ -87,7 +87,7 @@ public class RealmWikiExample extends RealmBaseActivity {
 
         IAxisValueFormatter formatter = new IAxisValueFormatter() {
             @Override
-            public String getFormattedValue(float value, AxisBase axis) {
+            public String getFormattedValue(double value, AxisBase axis) {
                 return results.get((int) value).getPlayerName();
             }
         };
@@ -101,8 +101,8 @@ public class RealmWikiExample extends RealmBaseActivity {
         lineDataSet.setDrawCircleHole(false);
         lineDataSet.setColor(ColorTemplate.rgb("#FF5722"));
         lineDataSet.setCircleColor(ColorTemplate.rgb("#FF5722"));
-        lineDataSet.setLineWidth(1.8f);
-        lineDataSet.setCircleRadius(3.6f);
+        lineDataSet.setLineWidth(1.8);
+        lineDataSet.setCircleRadius(3.6);
 
         ArrayList<ILineDataSet> dataSets = new ArrayList<ILineDataSet>();
         dataSets.add(lineDataSet);

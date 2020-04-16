@@ -29,7 +29,7 @@ public class CombinedHighlighter extends ChartHighlighter<CombinedDataProvider> 
     }
 
     @Override
-    protected List<Highlight> getHighlightsAtXValue(float xVal, float x, float y) {
+    protected List<Highlight> getHighlightsAtXValue(double xVal, double x, double y) {
 
         mHighlightBuffer.clear();
 
@@ -70,17 +70,17 @@ public class CombinedHighlighter extends ChartHighlighter<CombinedDataProvider> 
         return mHighlightBuffer;
     }
 
-//    protected Highlight getClosest(float x, float y, Highlight... highs) {
+//    protected Highlight getClosest(double x, double y, Highlight... highs) {
 //
 //        Highlight closest = null;
-//        float minDistance = Float.MAX_VALUE;
+//        double minDistance = Double.MAX_VALUE;
 //
 //        for (Highlight high : highs) {
 //
 //            if (high == null)
 //                continue;
 //
-//            float tempDistance = getDistance(x, y, high.getXPx(), high.getYPx());
+//            double tempDistance = getDistance(x, y, high.getXPx(), high.getYPx());
 //
 //            if (tempDistance < minDistance) {
 //                minDistance = tempDistance;

@@ -10,14 +10,14 @@ import io.realm.RealmObject;
  */
 public class RealmDemoData extends RealmObject {
 
-    private float yValue;
-    private float xValue;
+    private double yValue;
+    private double xValue;
 
-    private float open, close, high, low;
+    private double open, close, high, low;
 
-    private float bubbleSize;
+    private double bubbleSize;
 
-    private RealmList<RealmFloat> stackValues;
+    private RealmList<RealmDouble> stackValues;
 
     private String someStringField;
 
@@ -32,11 +32,11 @@ public class RealmDemoData extends RealmObject {
 
     }
 
-    public RealmDemoData(float yValue) {
+    public RealmDemoData(double yValue) {
         this.yValue = yValue;
     }
 
-    public RealmDemoData(float xValue, float yValue) {
+    public RealmDemoData(double xValue, double yValue) {
         this.xValue = xValue;
         this.yValue = yValue;
     }
@@ -47,12 +47,12 @@ public class RealmDemoData extends RealmObject {
      * @param xValue
      * @param stackValues
      */
-    public RealmDemoData(float xValue, float[] stackValues) {
+    public RealmDemoData(double xValue, double[] stackValues) {
         this.xValue = xValue;
-        this.stackValues = new RealmList<RealmFloat>();
+        this.stackValues = new RealmList<RealmDouble>();
 
-        for (float val : stackValues) {
-            this.stackValues.add(new RealmFloat(val));
+        for (double val : stackValues) {
+            this.stackValues.add(new RealmDouble(val));
         }
     }
 
@@ -65,8 +65,8 @@ public class RealmDemoData extends RealmObject {
      * @param open
      * @param close
      */
-    public RealmDemoData(float xValue, float high, float low, float open, float close) {
-        this.yValue = (high + low) / 2f;
+    public RealmDemoData(double xValue, double high, double low, double open, double close) {
+        this.yValue = (high + low) / 2;
         this.high = high;
         this.low = low;
         this.open = open;
@@ -81,7 +81,7 @@ public class RealmDemoData extends RealmObject {
      * @param yValue
      * @param bubbleSize
      */
-    public RealmDemoData(float xValue, float yValue, float bubbleSize) {
+    public RealmDemoData(double xValue, double yValue, double bubbleSize) {
         this.xValue = xValue;
         this.yValue = yValue;
         this.bubbleSize = bubbleSize;
@@ -93,72 +93,72 @@ public class RealmDemoData extends RealmObject {
      * @param yValue
      * @param label
      */
-    public RealmDemoData(float yValue, String label) {
+    public RealmDemoData(double yValue, String label) {
         this.yValue = yValue;
         this.label = label;
     }
 
-    public float getyValue() {
+    public double getyValue() {
         return yValue;
     }
 
-    public void setyValue(float yValue) {
+    public void setyValue(double yValue) {
         this.yValue = yValue;
     }
 
-    public float getxValue() {
+    public double getxValue() {
         return xValue;
     }
 
-    public void setxValue(float xValue) {
+    public void setxValue(double xValue) {
         this.xValue = xValue;
     }
 
-    public RealmList<RealmFloat> getStackValues() {
+    public RealmList<RealmDouble> getStackValues() {
         return stackValues;
     }
 
-    public void setStackValues(RealmList<RealmFloat> stackValues) {
+    public void setStackValues(RealmList<RealmDouble> stackValues) {
         this.stackValues = stackValues;
     }
 
-    public float getOpen() {
+    public double getOpen() {
         return open;
     }
 
-    public void setOpen(float open) {
+    public void setOpen(double open) {
         this.open = open;
     }
 
-    public float getClose() {
+    public double getClose() {
         return close;
     }
 
-    public void setClose(float close) {
+    public void setClose(double close) {
         this.close = close;
     }
 
-    public float getHigh() {
+    public double getHigh() {
         return high;
     }
 
-    public void setHigh(float high) {
+    public void setHigh(double high) {
         this.high = high;
     }
 
-    public float getLow() {
+    public double getLow() {
         return low;
     }
 
-    public void setLow(float low) {
+    public void setLow(double low) {
         this.low = low;
     }
 
-    public float getBubbleSize() {
+    public double getBubbleSize() {
         return bubbleSize;
     }
 
-    public void setBubbleSize(float bubbleSize) {
+    public void setBubbleSize(double bubbleSize) {
         this.bubbleSize = bubbleSize;
     }
 

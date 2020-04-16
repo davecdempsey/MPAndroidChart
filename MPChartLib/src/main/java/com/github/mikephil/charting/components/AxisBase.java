@@ -26,21 +26,21 @@ public abstract class AxisBase extends ComponentBase {
 
     private int mGridColor = Color.GRAY;
 
-    private float mGridLineWidth = 1f;
+    private double mGridLineWidth = 1;
 
     private int mAxisLineColor = Color.GRAY;
 
-    private float mAxisLineWidth = 1f;
+    private double mAxisLineWidth = 1;
 
     /**
      * the actual array of entries
      */
-    public float[] mEntries = new float[]{};
+    public double[] mEntries = new double[]{};
 
     /**
      * axis label entries only used for centered labels
      */
-    public float[] mCenteredEntries = new float[]{};
+    public double[] mCenteredEntries = new double[]{};
 
     /**
      * the number of entries the legend contains
@@ -60,7 +60,7 @@ public abstract class AxisBase extends ComponentBase {
     /**
      * the minimum interval between axis values
      */
-    protected float mGranularity = 1.0f;
+    protected double mGranularity = 1.0;
 
     /**
      * When true, axis labels are controlled by the `granularity` property.
@@ -115,12 +115,12 @@ public abstract class AxisBase extends ComponentBase {
     /**
      * Extra spacing for `axisMinimum` to be added to automatically calculated `axisMinimum`
      */
-    protected float mSpaceMin = 0.f;
+    protected double mSpaceMin = 0.f;
 
     /**
      * Extra spacing for `axisMaximum` to be added to automatically calculated `axisMaximum`
      */
-    protected float mSpaceMax = 0.f;
+    protected double mSpaceMax = 0.f;
 
     /**
      * flag indicating that the axis-min value has been customized
@@ -135,25 +135,25 @@ public abstract class AxisBase extends ComponentBase {
     /**
      * don't touch this direclty, use setter
      */
-    public float mAxisMaximum = 0f;
+    public double mAxisMaximum = 0;
 
     /**
      * don't touch this directly, use setter
      */
-    public float mAxisMinimum = 0f;
+    public double mAxisMinimum = 0;
 
     /**
      * the total range of values this axis covers
      */
-    public float mAxisRange = 0f;
+    public double mAxisRange = 0;
 
     /**
      * default constructor
      */
     public AxisBase() {
-        this.mTextSize = Utils.convertDpToPixel(10f);
-        this.mXOffset = Utils.convertDpToPixel(5f);
-        this.mYOffset = Utils.convertDpToPixel(5f);
+        this.mTextSize = Utils.convertDpToPixel(10);
+        this.mXOffset = Utils.convertDpToPixel(5);
+        this.mYOffset = Utils.convertDpToPixel(5);
         this.mLimitLines = new ArrayList<LimitLine>();
     }
 
@@ -232,7 +232,7 @@ public abstract class AxisBase extends ComponentBase {
      *
      * @param width
      */
-    public void setAxisLineWidth(float width) {
+    public void setAxisLineWidth(double width) {
         mAxisLineWidth = Utils.convertDpToPixel(width);
     }
 
@@ -241,7 +241,7 @@ public abstract class AxisBase extends ComponentBase {
      *
      * @return
      */
-    public float getAxisLineWidth() {
+    public double getAxisLineWidth() {
         return mAxisLineWidth;
     }
 
@@ -251,7 +251,7 @@ public abstract class AxisBase extends ComponentBase {
      *
      * @param width
      */
-    public void setGridLineWidth(float width) {
+    public void setGridLineWidth(double width) {
         mGridLineWidth = Utils.convertDpToPixel(width);
     }
 
@@ -261,7 +261,7 @@ public abstract class AxisBase extends ComponentBase {
      *
      * @return
      */
-    public float getGridLineWidth() {
+    public double getGridLineWidth() {
         return mGridLineWidth;
     }
 
@@ -374,7 +374,7 @@ public abstract class AxisBase extends ComponentBase {
     /**
      * @return the minimum interval between axis values
      */
-    public float getGranularity() {
+    public double getGranularity() {
         return mGranularity;
     }
 
@@ -384,7 +384,7 @@ public abstract class AxisBase extends ComponentBase {
      *
      * @param granularity
      */
-    public void setGranularity(float granularity) {
+    public void setGranularity(double granularity) {
         mGranularity = granularity;
         // set this to true if it was disabled, as it makes no sense to call this method with granularity disabled
         mGranularityEnabled = true;
@@ -513,8 +513,8 @@ public abstract class AxisBase extends ComponentBase {
      * @param spaceLength the length of space in between the pieces
      * @param phase       offset, in degrees (normally, use 0)
      */
-    public void enableGridDashedLine(float lineLength, float spaceLength, float phase) {
-        mGridDashPathEffect = new DashPathEffect(new float[]{
+    public void enableGridDashedLine(double lineLength, double spaceLength, double phase) {
+        mGridDashPathEffect = new DashPathEffect(new double[]{
                 lineLength, spaceLength
         }, phase);
     }
@@ -565,8 +565,8 @@ public abstract class AxisBase extends ComponentBase {
      * @param spaceLength the length of space in between the pieces
      * @param phase       offset, in degrees (normally, use 0)
      */
-    public void enableAxisLineDashedLine(float lineLength, float spaceLength, float phase) {
-        mAxisLineDashPathEffect = new DashPathEffect(new float[]{
+    public void enableAxisLineDashedLine(double lineLength, double spaceLength, double phase) {
+        mAxisLineDashPathEffect = new DashPathEffect(new double[]{
                 lineLength, spaceLength
         }, phase);
     }
@@ -611,11 +611,11 @@ public abstract class AxisBase extends ComponentBase {
      * ###### BELOW CODE RELATED TO CUSTOM AXIS VALUES ######
      */
 
-    public float getAxisMaximum() {
+    public double getAxisMaximum() {
         return mAxisMaximum;
     }
 
-    public float getAxisMinimum() {
+    public double getAxisMinimum() {
         return mAxisMinimum;
     }
 
@@ -664,7 +664,7 @@ public abstract class AxisBase extends ComponentBase {
      *
      * @param min
      */
-    public void setAxisMinimum(float min) {
+    public void setAxisMinimum(double min) {
         mCustomAxisMin = true;
         mAxisMinimum = min;
         this.mAxisRange = Math.abs(mAxisMaximum - min);
@@ -676,7 +676,7 @@ public abstract class AxisBase extends ComponentBase {
      * @param min
      */
     @Deprecated
-    public void setAxisMinValue(float min) {
+    public void setAxisMinValue(double min) {
         setAxisMinimum(min);
     }
 
@@ -687,7 +687,7 @@ public abstract class AxisBase extends ComponentBase {
      *
      * @param max
      */
-    public void setAxisMaximum(float max) {
+    public void setAxisMaximum(double max) {
         mCustomAxisMax = true;
         mAxisMaximum = max;
         this.mAxisRange = Math.abs(max - mAxisMinimum);
@@ -699,7 +699,7 @@ public abstract class AxisBase extends ComponentBase {
      * @param max
      */
     @Deprecated
-    public void setAxisMaxValue(float max) {
+    public void setAxisMaxValue(double max) {
         setAxisMaximum(max);
     }
 
@@ -710,19 +710,19 @@ public abstract class AxisBase extends ComponentBase {
      * @param dataMin the min value according to chart data
      * @param dataMax the max value according to chart data
      */
-    public void calculate(float dataMin, float dataMax) {
+    public void calculate(double dataMin, double dataMax) {
 
         // if custom, use value as is, else use data value
-        float min = mCustomAxisMin ? mAxisMinimum : (dataMin - mSpaceMin);
-        float max = mCustomAxisMax ? mAxisMaximum : (dataMax + mSpaceMax);
+        double min = mCustomAxisMin ? mAxisMinimum : (dataMin - mSpaceMin);
+        double max = mCustomAxisMax ? mAxisMaximum : (dataMax + mSpaceMax);
 
         // temporary range (before calculations)
-        float range = Math.abs(max - min);
+        double range = Math.abs(max - min);
 
         // in case all values are equal
-        if (range == 0f) {
-            max = max + 1f;
-            min = min - 1f;
+        if (range == 0) {
+            max = max + 1;
+            min = min - 1;
         }
 
         this.mAxisMinimum = min;
@@ -735,7 +735,7 @@ public abstract class AxisBase extends ComponentBase {
     /**
      * Gets extra spacing for `axisMinimum` to be added to automatically calculated `axisMinimum`
      */
-    public float getSpaceMin()
+    public double getSpaceMin()
     {
         return mSpaceMin;
     }
@@ -743,7 +743,7 @@ public abstract class AxisBase extends ComponentBase {
     /**
      * Sets extra spacing for `axisMinimum` to be added to automatically calculated `axisMinimum`
      */
-    public void setSpaceMin(float mSpaceMin)
+    public void setSpaceMin(double mSpaceMin)
     {
         this.mSpaceMin = mSpaceMin;
     }
@@ -751,7 +751,7 @@ public abstract class AxisBase extends ComponentBase {
     /**
      * Gets extra spacing for `axisMaximum` to be added to automatically calculated `axisMaximum`
      */
-    public float getSpaceMax()
+    public double getSpaceMax()
     {
         return mSpaceMax;
     }
@@ -759,7 +759,7 @@ public abstract class AxisBase extends ComponentBase {
     /**
      * Sets extra spacing for `axisMaximum` to be added to automatically calculated `axisMaximum`
      */
-    public void setSpaceMax(float mSpaceMax)
+    public void setSpaceMax(double mSpaceMax)
     {
         this.mSpaceMax = mSpaceMax;
     }

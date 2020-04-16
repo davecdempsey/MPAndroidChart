@@ -41,8 +41,8 @@ public class SineCosineFragment extends SimpleFragment {
         
         YAxis leftAxis = mChart.getAxisLeft();
         leftAxis.setTypeface(tf);
-        leftAxis.setAxisMaximum(1.2f);
-        leftAxis.setAxisMinimum(-1.2f);
+        leftAxis.setAxisMaximum(1.2);
+        leftAxis.setAxisMinimum(-1.2);
         
         mChart.getAxisRight().setEnabled(false);
         

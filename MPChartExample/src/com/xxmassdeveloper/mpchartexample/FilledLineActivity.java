@@ -51,8 +51,8 @@ public class FilledLineActivity extends DemoBase {
         xAxis.setEnabled(false);
 
         YAxis leftAxis = mChart.getAxisLeft();
-        leftAxis.setAxisMaximum(900f);
-        leftAxis.setAxisMinimum(-250f);
+        leftAxis.setAxisMaximum(900);
+        leftAxis.setAxisMinimum(-250);
         leftAxis.setDrawAxisLine(false);
         leftAxis.setDrawZeroLine(false);
         leftAxis.setDrawGridLines(false);
@@ -65,12 +65,12 @@ public class FilledLineActivity extends DemoBase {
         mChart.invalidate();
     }
 
-    private void setData(int count, float range) {
+    private void setData(int count, double range) {
 
         ArrayList<Entry> yVals1 = new ArrayList<Entry>();
 
         for (int i = 0; i < count; i++) {
-            float val = (float) (Math.random() * range) + 50;// + (float)
+            double val = (Math.random() * range) + 50;// + 
             // ((mult *
             // 0.1) / 10);
             yVals1.add(new Entry(i, val));
@@ -79,7 +79,7 @@ public class FilledLineActivity extends DemoBase {
         ArrayList<Entry> yVals2 = new ArrayList<Entry>();
 
         for (int i = 0; i < count; i++) {
-            float val = (float) (Math.random() * range) + 450;// + (float)
+            double val = (Math.random() * range) + 450;// + 
             // ((mult *
             // 0.1) / 10);
             yVals2.add(new Entry(i, val));
@@ -102,8 +102,8 @@ public class FilledLineActivity extends DemoBase {
             set1.setAxisDependency(YAxis.AxisDependency.LEFT);
             set1.setColor(Color.rgb(255, 241, 46));
             set1.setDrawCircles(false);
-            set1.setLineWidth(2f);
-            set1.setCircleRadius(3f);
+            set1.setLineWidth(2);
+            set1.setCircleRadius(3);
             set1.setFillAlpha(255);
             set1.setDrawFilled(true);
             set1.setFillColor(Color.WHITE);
@@ -111,7 +111,7 @@ public class FilledLineActivity extends DemoBase {
             set1.setDrawCircleHole(false);
             set1.setFillFormatter(new IFillFormatter() {
                 @Override
-                public float getFillLinePosition(ILineDataSet dataSet, LineDataProvider dataProvider) {
+                public double getFillLinePosition(ILineDataSet dataSet, LineDataProvider dataProvider) {
                     return mChart.getAxisLeft().getAxisMinimum();
                 }
             });
@@ -121,8 +121,8 @@ public class FilledLineActivity extends DemoBase {
             set2.setAxisDependency(YAxis.AxisDependency.LEFT);
             set2.setColor(Color.rgb(255, 241, 46));
             set2.setDrawCircles(false);
-            set2.setLineWidth(2f);
-            set2.setCircleRadius(3f);
+            set2.setLineWidth(2);
+            set2.setCircleRadius(3);
             set2.setFillAlpha(255);
             set2.setDrawFilled(true);
             set2.setFillColor(Color.WHITE);
@@ -130,7 +130,7 @@ public class FilledLineActivity extends DemoBase {
             set2.setHighLightColor(Color.rgb(244, 117, 117));
             set2.setFillFormatter(new IFillFormatter() {
                 @Override
-                public float getFillLinePosition(ILineDataSet dataSet, LineDataProvider dataProvider) {
+                public double getFillLinePosition(ILineDataSet dataSet, LineDataProvider dataProvider) {
                     return mChart.getAxisLeft().getAxisMaximum();
                 }
             });

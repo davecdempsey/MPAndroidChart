@@ -103,8 +103,8 @@ public class ListViewMultiChartActivity extends DemoBase {
         }
 
         LineDataSet d1 = new LineDataSet(e1, "New DataSet " + cnt + ", (1)");
-        d1.setLineWidth(2.5f);
-        d1.setCircleRadius(4.5f);
+        d1.setLineWidth(2.5);
+        d1.setCircleRadius(4.5);
         d1.setHighLightColor(Color.rgb(244, 117, 117));
         d1.setDrawValues(false);
         
@@ -115,8 +115,8 @@ public class ListViewMultiChartActivity extends DemoBase {
         }
 
         LineDataSet d2 = new LineDataSet(e2, "New DataSet " + cnt + ", (2)");
-        d2.setLineWidth(2.5f);
-        d2.setCircleRadius(4.5f);
+        d2.setLineWidth(2.5);
+        d2.setCircleRadius(4.5);
         d2.setHighLightColor(Color.rgb(244, 117, 117));
         d2.setColor(ColorTemplate.VORDIPLOM_COLORS[0]);
         d2.setCircleColor(ColorTemplate.VORDIPLOM_COLORS[0]);
@@ -148,7 +148,7 @@ public class ListViewMultiChartActivity extends DemoBase {
         d.setHighLightAlpha(255);
         
         BarData cd = new BarData(d);
-        cd.setBarWidth(0.9f);
+        cd.setBarWidth(0.9);
         return cd;
     }
     
@@ -162,13 +162,13 @@ public class ListViewMultiChartActivity extends DemoBase {
         ArrayList<PieEntry> entries = new ArrayList<PieEntry>();
 
         for (int i = 0; i < 4; i++) {
-            entries.add(new PieEntry((float) ((Math.random() * 70) + 30), "Quarter " + (i+1)));
+            entries.add(new PieEntry(((Math.random() * 70) + 30), "Quarter " + (i+1)));
         }
 
         PieDataSet d = new PieDataSet(entries, "");
         
         // space between slices
-        d.setSliceSpace(2f);
+        d.setSliceSpace(2);
         d.setColors(ColorTemplate.VORDIPLOM_COLORS);
         
         PieData cd = new PieData(d);

@@ -95,12 +95,12 @@ public class ListViewBarChartActivity extends DemoBase {
             YAxis leftAxis = holder.chart.getAxisLeft();
             leftAxis.setTypeface(mTfLight);
             leftAxis.setLabelCount(5, false);
-            leftAxis.setSpaceTop(15f);
+            leftAxis.setSpaceTop(15);
             
             YAxis rightAxis = holder.chart.getAxisRight();
             rightAxis.setTypeface(mTfLight);
             rightAxis.setLabelCount(5, false);
-            rightAxis.setSpaceTop(15f);
+            rightAxis.setSpaceTop(15);
 
             // set data
             holder.chart.setData(data);
@@ -129,7 +129,7 @@ public class ListViewBarChartActivity extends DemoBase {
         ArrayList<BarEntry> entries = new ArrayList<BarEntry>();
 
         for (int i = 0; i < 12; i++) {
-            entries.add(new BarEntry(i, (float) (Math.random() * 70) + 30));
+            entries.add(new BarEntry(i, (Math.random() * 70) + 30));
         }
 
         BarDataSet d = new BarDataSet(entries, "New DataSet " + cnt);
@@ -140,7 +140,7 @@ public class ListViewBarChartActivity extends DemoBase {
         sets.add(d);
         
         BarData cd = new BarData(sets);
-        cd.setBarWidth(0.9f);
+        cd.setBarWidth(0.9);
         return cd;
     }
 }

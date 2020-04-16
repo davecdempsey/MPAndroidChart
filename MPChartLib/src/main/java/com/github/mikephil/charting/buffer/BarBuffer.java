@@ -12,7 +12,7 @@ public class BarBuffer extends AbstractBuffer<IBarDataSet> {
     protected boolean mInverted = false;
 
     /** width of the bar on the x-axis, in values (not pixels) */
-    protected float mBarWidth = 1f;
+    protected double mBarWidth = 1;
 
     public BarBuffer(int size, int dataSetCount, boolean containsStacks) {
         super(size);
@@ -20,7 +20,7 @@ public class BarBuffer extends AbstractBuffer<IBarDataSet> {
         this.mContainsStacks = containsStacks;
     }
 
-    public void setBarWidth(float barWidth) {
+    public void setBarWidth(double barWidth) {
         this.mBarWidth = barWidth;
     }
 
@@ -32,7 +32,7 @@ public class BarBuffer extends AbstractBuffer<IBarDataSet> {
         this.mInverted = inverted;
     }
 
-    protected void addBar(float left, float top, float right, float bottom) {
+    protected void addBar(double left, double top, double right, double bottom) {
 
         buffer[index++] = left;
         buffer[index++] = top;
@@ -43,8 +43,8 @@ public class BarBuffer extends AbstractBuffer<IBarDataSet> {
     @Override
     public void feed(IBarDataSet data) {
 
-        float size = data.getEntryCount() * phaseX;
-        float barWidthHalf = mBarWidth / 2f;
+        double size = data.getEntryCount() * phaseX;
+        double barWidthHalf = mBarWidth / 2;
 
         for (int i = 0; i < size; i++) {
 
@@ -53,15 +53,15 @@ public class BarBuffer extends AbstractBuffer<IBarDataSet> {
             if(e == null)
                 continue;
 
-            float x = e.getX();
-            float y = e.getY();
-            float[] vals = e.getYVals();
+            double x = e.getX();
+            double y = e.getY();
+            double[] vals = e.getYVals();
 
             if (!mContainsStacks || vals == null) {
 
-                float left = x - barWidthHalf;
-                float right = x + barWidthHalf;
-                float bottom, top;
+                double left = x - barWidthHalf;
+                double right = x + barWidthHalf;
+                double bottom, top;
 
                 if (mInverted) {
                     bottom = y >= 0 ? y : 0;
@@ -81,20 +81,20 @@ public class BarBuffer extends AbstractBuffer<IBarDataSet> {
 
             } else {
 
-                float posY = 0f;
-                float negY = -e.getNegativeSum();
-                float yStart = 0f;
+                double posY = 0;
+                double negY = -e.getNegativeSum();
+                double yStart = 0;
 
                 // fill the stack
                 for (int k = 0; k < vals.length; k++) {
 
-                    float value = vals[k];
+                    double value = vals[k];
 
-                    if (value == 0.0f && (posY == 0.0f || negY == 0.0f)) {
+                    if (value == 0.0 && (posY == 0.0 || negY == 0.0)) {
                         // Take care of the situation of a 0.0 value, which overlaps a non-zero bar
                         y = value;
                         yStart = y;
-                    } else if (value >= 0.0f) {
+                    } else if (value >= 0.0) {
                         y = posY;
                         yStart = posY + value;
                         posY = yStart;
@@ -104,9 +104,9 @@ public class BarBuffer extends AbstractBuffer<IBarDataSet> {
                         negY += Math.abs(value);
                     }
 
-                    float left = x - barWidthHalf;
-                    float right = x + barWidthHalf;
-                    float bottom, top;
+                    double left = x - barWidthHalf;
+                    double right = x + barWidthHalf;
+                    double bottom, top;
 
                     if (mInverted) {
                         bottom = y >= yStart ? y : yStart;

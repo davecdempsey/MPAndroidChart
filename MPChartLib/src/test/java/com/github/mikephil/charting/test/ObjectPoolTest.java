@@ -215,7 +215,7 @@ public class ObjectPoolTest {
 
         testPoolables.clear();
 
-        TestPoolable.getPool().setReplenishPercentage(0.5f);
+        TestPoolable.getPool().setReplenishPercentage(0.5);
         int i = 16;
         while(i > 0){
             testPoolables.add(TestPoolable.getInstance(0,0));

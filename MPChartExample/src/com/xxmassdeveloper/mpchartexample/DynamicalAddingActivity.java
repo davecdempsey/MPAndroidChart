@@ -61,7 +61,7 @@ public class DynamicalAddingActivity extends DemoBase implements OnChartValueSel
 
         // choose a random dataSet
         int randomDataSetIndex = (int) (Math.random() * data.getDataSetCount());
-        float yValue = (float) (Math.random() * 10) + 50f;
+        double yValue = (Math.random() * 10) + 50;
 
         data.addEntry(new Entry(data.getDataSetByIndex(randomDataSetIndex).getEntryCount(), yValue), randomDataSetIndex);
         data.notifyDataChanged();
@@ -73,7 +73,7 @@ public class DynamicalAddingActivity extends DemoBase implements OnChartValueSel
         //mChart.setVisibleYRangeMaximum(15, AxisDependency.LEFT);
 //            
 //            // this automatically refreshes the chart (calls invalidate())
-        mChart.moveViewTo(data.getEntryCount() - 7, 50f, AxisDependency.LEFT);
+        mChart.moveViewTo(data.getEntryCount() - 7, 50, AxisDependency.LEFT);
 
     }
 
@@ -87,7 +87,7 @@ public class DynamicalAddingActivity extends DemoBase implements OnChartValueSel
 
             if (set != null) {
 
-                Entry e = set.getEntryForXValue(set.getEntryCount() - 1, Float.NaN);
+                Entry e = set.getEntryForXValue(set.getEntryCount() - 1, Double.NaN);
 
                 data.removeEntry(e, 0);
                 // or remove by index
@@ -110,19 +110,19 @@ public class DynamicalAddingActivity extends DemoBase implements OnChartValueSel
             ArrayList<Entry> yVals = new ArrayList<Entry>();
 
             for (int i = 0; i < data.getEntryCount(); i++) {
-                yVals.add(new Entry(i, (float) (Math.random() * 50f) + 50f * count));
+                yVals.add(new Entry(i, (Math.random() * 50) + 50 * count));
             }
 
             LineDataSet set = new LineDataSet(yVals, "DataSet " + count);
-            set.setLineWidth(2.5f);
-            set.setCircleRadius(4.5f);
+            set.setLineWidth(2.5);
+            set.setCircleRadius(4.5);
 
             int color = mColors[count % mColors.length];
 
             set.setColor(color);
             set.setCircleColor(color);
             set.setHighLightColor(color);
-            set.setValueTextSize(10f);
+            set.setValueTextSize(10);
             set.setValueTextColor(color);
 
             data.addDataSet(set);
@@ -198,13 +198,13 @@ public class DynamicalAddingActivity extends DemoBase implements OnChartValueSel
     private LineDataSet createSet() {
 
         LineDataSet set = new LineDataSet(null, "DataSet 1");
-        set.setLineWidth(2.5f);
-        set.setCircleRadius(4.5f);
+        set.setLineWidth(2.5);
+        set.setCircleRadius(4.5);
         set.setColor(Color.rgb(240, 99, 99));
         set.setCircleColor(Color.rgb(240, 99, 99));
         set.setHighLightColor(Color.rgb(190, 190, 190));
         set.setAxisDependency(AxisDependency.LEFT);
-        set.setValueTextSize(10f);
+        set.setValueTextSize(10);
 
         return set;
     }

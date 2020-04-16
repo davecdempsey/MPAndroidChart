@@ -8,16 +8,16 @@ import io.realm.RealmObject;
  */
 public class Score extends RealmObject {
 
-    private float totalScore;
+    private double totalScore;
 
-    private float scoreNr;
+    private double scoreNr;
 
     private String playerName;
 
     public Score() {
     }
 
-    public Score(float totalScore, float scoreNr, String playerName) {
+    public Score(double totalScore, double scoreNr, String playerName) {
         this.scoreNr = scoreNr;
         this.playerName = playerName;
         this.totalScore = totalScore;
@@ -25,19 +25,19 @@ public class Score extends RealmObject {
 
     // all getters and setters...
 
-    public float getTotalScore() {
+    public double getTotalScore() {
         return totalScore;
     }
 
-    public void setTotalScore(float totalScore) {
+    public void setTotalScore(double totalScore) {
         this.totalScore = totalScore;
     }
 
-    public float getScoreNr() {
+    public double getScoreNr() {
         return scoreNr;
     }
 
-    public void setScoreNr(float scoreNr) {
+    public void setScoreNr(double scoreNr) {
         this.scoreNr = scoreNr;
     }
 

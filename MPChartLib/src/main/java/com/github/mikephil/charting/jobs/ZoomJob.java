@@ -19,10 +19,10 @@ public class ZoomJob extends ViewPortJob {
 
     static {
         pool = ObjectPool.create(1, new ZoomJob(null, 0, 0, 0, 0, null, null, null));
-        pool.setReplenishPercentage(0.5f);
+        pool.setReplenishPercentage(0.5);
     }
 
-    public static ZoomJob getInstance(ViewPortHandler viewPortHandler, float scaleX, float scaleY, float xValue, float yValue,
+    public static ZoomJob getInstance(ViewPortHandler viewPortHandler, double scaleX, double scaleY, double xValue, double yValue,
                                       Transformer trans, YAxis.AxisDependency axis, View v) {
         ZoomJob result = pool.get();
         result.xValue = xValue;
@@ -40,12 +40,12 @@ public class ZoomJob extends ViewPortJob {
         pool.recycle(instance);
     }
 
-    protected float scaleX;
-    protected float scaleY;
+    protected double scaleX;
+    protected double scaleY;
 
     protected YAxis.AxisDependency axisDependency;
 
-    public ZoomJob(ViewPortHandler viewPortHandler, float scaleX, float scaleY, float xValue, float yValue, Transformer trans,
+    public ZoomJob(ViewPortHandler viewPortHandler, double scaleX, double scaleY, double xValue, double yValue, Transformer trans,
                    YAxis.AxisDependency axis, View v) {
         super(viewPortHandler, xValue, yValue, trans, v);
 
@@ -63,11 +63,11 @@ public class ZoomJob extends ViewPortJob {
         mViewPortHandler.zoom(scaleX, scaleY, save);
         mViewPortHandler.refresh(save, view, false);
 
-        float yValsInView = ((BarLineChartBase) view).getAxis(axisDependency).mAxisRange / mViewPortHandler.getScaleY();
-        float xValsInView = ((BarLineChartBase) view).getXAxis().mAxisRange / mViewPortHandler.getScaleX();
+        double yValsInView = ((BarLineChartBase) view).getAxis(axisDependency).mAxisRange / mViewPortHandler.getScaleY();
+        double xValsInView = ((BarLineChartBase) view).getXAxis().mAxisRange / mViewPortHandler.getScaleX();
 
-        pts[0] = xValue - xValsInView / 2f;
-        pts[1] = yValue + yValsInView / 2f;
+        pts[0] = xValue - xValsInView / 2;
+        pts[1] = yValue + yValsInView / 2;
 
         mTrans.pointValuesToPixel(pts);
 

@@ -40,16 +40,16 @@ public class ChartDataTest {
 
         ScatterData data = new ScatterData(set1, set2);
 
-        assertEquals(-2, data.getYMin(YAxis.AxisDependency.LEFT), 0.01f);
-        assertEquals(50f, data.getYMax(YAxis.AxisDependency.LEFT), 0.01f);
+        assertEquals(-2, data.getYMin(YAxis.AxisDependency.LEFT), 0.01);
+        assertEquals(50, data.getYMax(YAxis.AxisDependency.LEFT), 0.01);
 
         assertEquals(6, data.getEntryCount());
 
-        assertEquals(-1f, data.getXMin(), 0.01f);
-        assertEquals(21f, data.getXMax(), 0.01f);
+        assertEquals(-1, data.getXMin(), 0.01);
+        assertEquals(21, data.getXMax(), 0.01);
 
-        assertEquals(-2f, data.getYMin(), 0.01f);
-        assertEquals(50f, data.getYMax(), 0.01f);
+        assertEquals(-2, data.getYMin(), 0.01);
+        assertEquals(50, data.getYMax(), 0.01);
 
         assertEquals(3, data.getMaxEntryCountSet().getEntryCount());
 
@@ -59,24 +59,24 @@ public class ChartDataTest {
         assertEquals(set1, data.getMaxEntryCountSet());
         assertEquals(4, data.getMaxEntryCountSet().getEntryCount());
 
-        assertEquals(-10f, data.getYMin(YAxis.AxisDependency.LEFT), 0.01f);
-        assertEquals(50f, data.getYMax(YAxis.AxisDependency.LEFT), 0.01f);
+        assertEquals(-10, data.getYMin(YAxis.AxisDependency.LEFT), 0.01);
+        assertEquals(50, data.getYMax(YAxis.AxisDependency.LEFT), 0.01);
 
-        assertEquals(-10f, data.getXMin(), 0.01f);
-        assertEquals(21f, data.getXMax(), 0.01f);
+        assertEquals(-10, data.getXMin(), 0.01);
+        assertEquals(21, data.getXMax(), 0.01);
 
-        assertEquals(-10f, data.getYMin(), 0.01f);
-        assertEquals(50f, data.getYMax(), 0.01f);
+        assertEquals(-10, data.getYMin(), 0.01);
+        assertEquals(50, data.getYMax(), 0.01);
 
         data.addEntry(new Entry(-100, 100), 0);
         data.addEntry(new Entry(0, -100), 0);
 
-        assertEquals(-100f, data.getYMin(YAxis.AxisDependency.LEFT), 0.01f);
-        assertEquals(100f, data.getYMax(YAxis.AxisDependency.LEFT), 0.01f);
+        assertEquals(-100, data.getYMin(YAxis.AxisDependency.LEFT), 0.01);
+        assertEquals(100, data.getYMax(YAxis.AxisDependency.LEFT), 0.01);
 
         // right axis will adapt left axis values if no right axis values are present
-        assertEquals(-100, data.getYMin(YAxis.AxisDependency.RIGHT), 0.01f);
-        assertEquals(100f, data.getYMax(YAxis.AxisDependency.RIGHT), 0.01f);
+        assertEquals(-100, data.getYMin(YAxis.AxisDependency.RIGHT), 0.01);
+        assertEquals(100, data.getYMax(YAxis.AxisDependency.RIGHT), 0.01);
 
         List<Entry> entries3 = new ArrayList<Entry>();
         entries3.add(new Entry(0, 200));
@@ -89,22 +89,22 @@ public class ChartDataTest {
 
         assertEquals(3, data.getDataSetCount());
 
-        assertEquals(-100f, data.getYMin(YAxis.AxisDependency.LEFT), 0.01f);
-        assertEquals(100f, data.getYMax(YAxis.AxisDependency.LEFT), 0.01f);
+        assertEquals(-100, data.getYMin(YAxis.AxisDependency.LEFT), 0.01);
+        assertEquals(100, data.getYMax(YAxis.AxisDependency.LEFT), 0.01);
 
-        assertEquals(-50f, data.getYMin(YAxis.AxisDependency.RIGHT), 0.01f);
-        assertEquals(200f, data.getYMax(YAxis.AxisDependency.RIGHT), 0.01f);
+        assertEquals(-50, data.getYMin(YAxis.AxisDependency.RIGHT), 0.01);
+        assertEquals(200, data.getYMax(YAxis.AxisDependency.RIGHT), 0.01);
 
         LineData lineData = new LineData();
 
-        assertEquals(Float.MAX_VALUE, lineData.getYMin(), 0.01f);
-        assertEquals(-Float.MAX_VALUE, lineData.getYMax(), 0.01f);
+        assertEquals(Double.MAX_VALUE, lineData.getYMin(), 0.01);
+        assertEquals(-Double.MAX_VALUE, lineData.getYMax(), 0.01);
 
-        assertEquals(Float.MAX_VALUE, lineData.getYMin(YAxis.AxisDependency.LEFT), 0.01f);
-        assertEquals(-Float.MAX_VALUE, lineData.getYMax(YAxis.AxisDependency.LEFT), 0.01f);
+        assertEquals(Double.MAX_VALUE, lineData.getYMin(YAxis.AxisDependency.LEFT), 0.01);
+        assertEquals(-Double.MAX_VALUE, lineData.getYMax(YAxis.AxisDependency.LEFT), 0.01);
 
-        assertEquals(Float.MAX_VALUE, lineData.getYMin(YAxis.AxisDependency.RIGHT), 0.01f);
-        assertEquals(-Float.MAX_VALUE, lineData.getYMax(YAxis.AxisDependency.RIGHT), 0.01f);
+        assertEquals(Double.MAX_VALUE, lineData.getYMin(YAxis.AxisDependency.RIGHT), 0.01);
+        assertEquals(-Double.MAX_VALUE, lineData.getYMax(YAxis.AxisDependency.RIGHT), 0.01);
 
         assertEquals(0, lineData.getDataSetCount());
 
@@ -120,17 +120,17 @@ public class ChartDataTest {
         assertEquals(2, lineSet1.getEntryCount());
         assertEquals(2, lineData.getEntryCount());
 
-        assertEquals(10, lineData.getXMin(), 0.01f);
-        assertEquals(1000f, lineData.getXMax(), 0.01f);
+        assertEquals(10, lineData.getXMin(), 0.01);
+        assertEquals(1000, lineData.getXMax(), 0.01);
 
-        assertEquals(90, lineData.getYMin(), 0.01f);
-        assertEquals(1000, lineData.getYMax(), 0.01f);
+        assertEquals(90, lineData.getYMin(), 0.01);
+        assertEquals(1000, lineData.getYMax(), 0.01);
 
-        assertEquals(90, lineData.getYMin(YAxis.AxisDependency.LEFT), 0.01f);
-        assertEquals(1000f, lineData.getYMax(YAxis.AxisDependency.LEFT), 0.01f);
+        assertEquals(90, lineData.getYMin(YAxis.AxisDependency.LEFT), 0.01);
+        assertEquals(1000, lineData.getYMax(YAxis.AxisDependency.LEFT), 0.01);
 
-        assertEquals(90, lineData.getYMin(YAxis.AxisDependency.RIGHT), 0.01f);
-        assertEquals(1000, lineData.getYMax(YAxis.AxisDependency.RIGHT), 0.01f);
+        assertEquals(90, lineData.getYMin(YAxis.AxisDependency.RIGHT), 0.01);
+        assertEquals(1000, lineData.getYMax(YAxis.AxisDependency.RIGHT), 0.01);
 
         List<Entry> lineEntries2 = new ArrayList<Entry>();
         lineEntries2.add(new Entry(-1000, 2000));
@@ -148,62 +148,62 @@ public class ChartDataTest {
         assertEquals(3, lineSet2.getEntryCount());
         assertEquals(5, lineData.getEntryCount());
 
-        assertEquals(-1000, lineData.getXMin(), 0.01f);
-        assertEquals(2000, lineData.getXMax(), 0.01f);
+        assertEquals(-1000, lineData.getXMin(), 0.01);
+        assertEquals(2000, lineData.getXMax(), 0.01);
 
-        assertEquals(-3000, lineData.getYMin(), 0.01f);
-        assertEquals(2500, lineData.getYMax(), 0.01f);
+        assertEquals(-3000, lineData.getYMin(), 0.01);
+        assertEquals(2500, lineData.getYMax(), 0.01);
 
-        assertEquals(90, lineData.getYMin(YAxis.AxisDependency.LEFT), 0.01f);
-        assertEquals(1000f, lineData.getYMax(YAxis.AxisDependency.LEFT), 0.01f);
+        assertEquals(90, lineData.getYMin(YAxis.AxisDependency.LEFT), 0.01);
+        assertEquals(1000, lineData.getYMax(YAxis.AxisDependency.LEFT), 0.01);
 
-        assertEquals(-3000, lineData.getYMin(YAxis.AxisDependency.RIGHT), 0.01f);
-        assertEquals(2500, lineData.getYMax(YAxis.AxisDependency.RIGHT), 0.01f);
+        assertEquals(-3000, lineData.getYMin(YAxis.AxisDependency.RIGHT), 0.01);
+        assertEquals(2500, lineData.getYMax(YAxis.AxisDependency.RIGHT), 0.01);
 
         assertTrue(lineData.removeEntry(e, 1));
 
-        assertEquals(-1000, lineData.getXMin(), 0.01f);
-        assertEquals(2000, lineData.getXMax(), 0.01f);
+        assertEquals(-1000, lineData.getXMin(), 0.01);
+        assertEquals(2000, lineData.getXMax(), 0.01);
 
-        assertEquals(-3000, lineData.getYMin(), 0.01f);
-        assertEquals(2000, lineData.getYMax(), 0.01f);
+        assertEquals(-3000, lineData.getYMin(), 0.01);
+        assertEquals(2000, lineData.getYMax(), 0.01);
 
-        assertEquals(90, lineData.getYMin(YAxis.AxisDependency.LEFT), 0.01f);
-        assertEquals(1000f, lineData.getYMax(YAxis.AxisDependency.LEFT), 0.01f);
+        assertEquals(90, lineData.getYMin(YAxis.AxisDependency.LEFT), 0.01);
+        assertEquals(1000, lineData.getYMax(YAxis.AxisDependency.LEFT), 0.01);
 
-        assertEquals(-3000, lineData.getYMin(YAxis.AxisDependency.RIGHT), 0.01f);
-        assertEquals(2000, lineData.getYMax(YAxis.AxisDependency.RIGHT), 0.01f);
+        assertEquals(-3000, lineData.getYMin(YAxis.AxisDependency.RIGHT), 0.01);
+        assertEquals(2000, lineData.getYMax(YAxis.AxisDependency.RIGHT), 0.01);
 
         assertEquals(2, lineData.getDataSetCount());
         assertTrue(lineData.removeDataSet(lineSet2));
         assertEquals(1, lineData.getDataSetCount());
 
-        assertEquals(10, lineData.getXMin(), 0.01f);
-        assertEquals(1000, lineData.getXMax(), 0.01f);
+        assertEquals(10, lineData.getXMin(), 0.01);
+        assertEquals(1000, lineData.getXMax(), 0.01);
 
-        assertEquals(90, lineData.getYMin(), 0.01f);
-        assertEquals(1000, lineData.getYMax(), 0.01f);
+        assertEquals(90, lineData.getYMin(), 0.01);
+        assertEquals(1000, lineData.getYMax(), 0.01);
 
-        assertEquals(90, lineData.getYMin(YAxis.AxisDependency.LEFT), 0.01f);
-        assertEquals(1000f, lineData.getYMax(YAxis.AxisDependency.LEFT), 0.01f);
+        assertEquals(90, lineData.getYMin(YAxis.AxisDependency.LEFT), 0.01);
+        assertEquals(1000, lineData.getYMax(YAxis.AxisDependency.LEFT), 0.01);
 
-        assertEquals(90, lineData.getYMin(YAxis.AxisDependency.RIGHT), 0.01f);
-        assertEquals(1000, lineData.getYMax(YAxis.AxisDependency.RIGHT), 0.01f);
+        assertEquals(90, lineData.getYMin(YAxis.AxisDependency.RIGHT), 0.01);
+        assertEquals(1000, lineData.getYMax(YAxis.AxisDependency.RIGHT), 0.01);
 
         assertTrue(lineData.removeDataSet(lineSet1));
         assertEquals(0, lineData.getDataSetCount());
 
-        assertEquals(Float.MAX_VALUE, lineData.getXMin(), 0.01f);
-        assertEquals(-Float.MAX_VALUE, lineData.getXMax(), 0.01f);
+        assertEquals(Double.MAX_VALUE, lineData.getXMin(), 0.01);
+        assertEquals(-Double.MAX_VALUE, lineData.getXMax(), 0.01);
 
-        assertEquals(Float.MAX_VALUE, lineData.getYMin(), 0.01f);
-        assertEquals(-Float.MAX_VALUE, lineData.getYMax(), 0.01f);
+        assertEquals(Double.MAX_VALUE, lineData.getYMin(), 0.01);
+        assertEquals(-Double.MAX_VALUE, lineData.getYMax(), 0.01);
 
-        assertEquals(Float.MAX_VALUE, lineData.getYMin(YAxis.AxisDependency.LEFT), 0.01f);
-        assertEquals(-Float.MAX_VALUE, lineData.getYMax(YAxis.AxisDependency.LEFT), 0.01f);
+        assertEquals(Double.MAX_VALUE, lineData.getYMin(YAxis.AxisDependency.LEFT), 0.01);
+        assertEquals(-Double.MAX_VALUE, lineData.getYMax(YAxis.AxisDependency.LEFT), 0.01);
 
-        assertEquals(Float.MAX_VALUE, lineData.getYMin(YAxis.AxisDependency.RIGHT), 0.01f);
-        assertEquals(-Float.MAX_VALUE, lineData.getYMax(YAxis.AxisDependency.RIGHT), 0.01f);
+        assertEquals(Double.MAX_VALUE, lineData.getYMin(YAxis.AxisDependency.RIGHT), 0.01);
+        assertEquals(-Double.MAX_VALUE, lineData.getYMax(YAxis.AxisDependency.RIGHT), 0.01);
 
         assertFalse(lineData.removeDataSet(lineSet1));
         assertFalse(lineData.removeDataSet(lineSet2));

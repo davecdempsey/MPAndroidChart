@@ -39,10 +39,10 @@ public class BarChartPositiveNegative extends DemoBase {
         mTf = Typeface.createFromAsset(getAssets(), "OpenSans-Regular.ttf");
         mChart = (BarChart) findViewById(R.id.chart1);
         mChart.setBackgroundColor(Color.WHITE);
-        mChart.setExtraTopOffset(-30f);
-        mChart.setExtraBottomOffset(10f);
-        mChart.setExtraLeftOffset(70f);
-        mChart.setExtraRightOffset(70f);
+        mChart.setExtraTopOffset(-30);
+        mChart.setExtraBottomOffset(10);
+        mChart.setExtraLeftOffset(70);
+        mChart.setExtraRightOffset(70);
 
         mChart.setDrawBarShadow(false);
         mChart.setDrawValueAboveBar(true);
@@ -60,34 +60,34 @@ public class BarChartPositiveNegative extends DemoBase {
         xAxis.setDrawGridLines(false);
         xAxis.setDrawAxisLine(false);
         xAxis.setTextColor(Color.LTGRAY);
-        xAxis.setTextSize(13f);
+        xAxis.setTextSize(13);
         xAxis.setLabelCount(5);
         xAxis.setCenterAxisLabels(true);
-        xAxis.setGranularity(1f);
+        xAxis.setGranularity(1);
 
         YAxis left = mChart.getAxisLeft();
         left.setDrawLabels(false);
-        left.setSpaceTop(25f);
-        left.setSpaceBottom(25f);
+        left.setSpaceTop(25);
+        left.setSpaceBottom(25);
         left.setDrawAxisLine(false);
         left.setDrawGridLines(false);
         left.setDrawZeroLine(true); // draw a zero line
         left.setZeroLineColor(Color.GRAY);
-        left.setZeroLineWidth(0.7f);
+        left.setZeroLineWidth(0.7);
         mChart.getAxisRight().setEnabled(false);
         mChart.getLegend().setEnabled(false);
 
         // THIS IS THE ORIGINAL DATA YOU WANT TO PLOT
         final List<Data> data = new ArrayList<>();
-        data.add(new Data(0f, -224.1f, "12-29"));
-        data.add(new Data(1f, 238.5f, "12-30"));
-        data.add(new Data(2f, 1280.1f, "12-31"));
-        data.add(new Data(3f, -442.3f, "01-01"));
-        data.add(new Data(4f, -2280.1f, "01-02"));
+        data.add(new Data(0, -224.1, "12-29"));
+        data.add(new Data(1, 238.5, "12-30"));
+        data.add(new Data(2, 1280.1, "12-31"));
+        data.add(new Data(3, -442.3, "01-01"));
+        data.add(new Data(4, -2280.1, "01-02"));
 
         xAxis.setValueFormatter(new IAxisValueFormatter() {
             @Override
-            public String getFormattedValue(float value, AxisBase axis) {
+            public String getFormattedValue(double value, AxisBase axis) {
                 return data.get(Math.min(Math.max((int) value, 0), data.size()-1)).xAxisValue;
             }
         });
@@ -130,10 +130,10 @@ public class BarChartPositiveNegative extends DemoBase {
             set.setValueTextColors(colors);
 
             BarData data = new BarData(set);
-            data.setValueTextSize(13f);
+            data.setValueTextSize(13);
             data.setValueTypeface(mTf);
             data.setValueFormatter(new ValueFormatter());
-            data.setBarWidth(0.8f);
+            data.setBarWidth(0.8);
 
             mChart.setData(data);
             mChart.invalidate();
@@ -146,10 +146,10 @@ public class BarChartPositiveNegative extends DemoBase {
     private class Data {
 
         public String xAxisValue;
-        public float yValue;
-        public float xValue;
+        public double yValue;
+        public double xValue;
 
-        public Data(float xValue, float yValue, String xAxisValue) {
+        public Data(double xValue, double yValue, String xAxisValue) {
             this.xAxisValue = xAxisValue;
             this.yValue = yValue;
             this.xValue = xValue;
@@ -166,7 +166,7 @@ public class BarChartPositiveNegative extends DemoBase {
         }
 
         @Override
-        public String getFormattedValue(float value, Entry entry, int dataSetIndex, ViewPortHandler viewPortHandler) {
+        public String getFormattedValue(double value, Entry entry, int dataSetIndex, ViewPortHandler viewPortHandler) {
             return mFormat.format(value);
         }
     }

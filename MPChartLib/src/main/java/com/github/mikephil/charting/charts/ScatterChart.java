@@ -36,8 +36,8 @@ public class ScatterChart extends BarLineChartBase<ScatterData> implements Scatt
 
         mRenderer = new ScatterChartRenderer(this, mAnimator, mViewPortHandler);
 
-        getXAxis().setSpaceMin(0.5f);
-        getXAxis().setSpaceMax(0.5f);
+        getXAxis().setSpaceMin(0.5);
+        getXAxis().setSpaceMax(0.5);
     }
 
     @Override

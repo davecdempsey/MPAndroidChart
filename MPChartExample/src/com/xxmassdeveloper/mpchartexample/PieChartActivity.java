@@ -61,7 +61,7 @@ public class PieChartActivity extends DemoBase implements OnSeekBarChangeListene
         mChart.getDescription().setEnabled(false);
         mChart.setExtraOffsets(5, 10, 5, 5);
 
-        mChart.setDragDecelerationFrictionCoef(0.95f);
+        mChart.setDragDecelerationFrictionCoef(0.95);
 
         mChart.setCenterTextTypeface(mTfLight);
         mChart.setCenterText(generateCenterSpannableText());
@@ -72,8 +72,8 @@ public class PieChartActivity extends DemoBase implements OnSeekBarChangeListene
         mChart.setTransparentCircleColor(Color.WHITE);
         mChart.setTransparentCircleAlpha(110);
 
-        mChart.setHoleRadius(58f);
-        mChart.setTransparentCircleRadius(61f);
+        mChart.setHoleRadius(58);
+        mChart.setTransparentCircleRadius(61);
 
         mChart.setDrawCenterText(true);
 
@@ -101,14 +101,14 @@ public class PieChartActivity extends DemoBase implements OnSeekBarChangeListene
         l.setHorizontalAlignment(Legend.LegendHorizontalAlignment.RIGHT);
         l.setOrientation(Legend.LegendOrientation.VERTICAL);
         l.setDrawInside(false);
-        l.setXEntrySpace(7f);
-        l.setYEntrySpace(0f);
-        l.setYOffset(0f);
+        l.setXEntrySpace(7);
+        l.setYEntrySpace(0);
+        l.setYOffset(0);
 
         // entry label styling
         mChart.setEntryLabelColor(Color.WHITE);
         mChart.setEntryLabelTypeface(mTfRegular);
-        mChart.setEntryLabelTextSize(12f);
+        mChart.setEntryLabelTextSize(12);
     }
 
     @Override
@@ -195,16 +195,16 @@ public class PieChartActivity extends DemoBase implements OnSeekBarChangeListene
         setData(mSeekBarX.getProgress(), mSeekBarY.getProgress());
     }
 
-    private void setData(int count, float range) {
+    private void setData(int count, double range) {
 
-        float mult = range;
+        double mult = range;
 
         ArrayList<PieEntry> entries = new ArrayList<PieEntry>();
 
         // NOTE: The order of the entries when being added to the entries array determines their position around the center of
         // the chart.
         for (int i = 0; i < count ; i++) {
-            entries.add(new PieEntry((float) ((Math.random() * mult) + mult / 5),
+            entries.add(new PieEntry(((Math.random() * mult) + mult / 5),
                     mParties[i % mParties.length],
                     getResources().getDrawable(R.drawable.star)));
         }
@@ -213,9 +213,9 @@ public class PieChartActivity extends DemoBase implements OnSeekBarChangeListene
 
         dataSet.setDrawIcons(false);
 
-        dataSet.setSliceSpace(3f);
+        dataSet.setSliceSpace(3);
         dataSet.setIconsOffset(new MPPointF(0, 40));
-        dataSet.setSelectionShift(5f);
+        dataSet.setSelectionShift(5);
 
         // add a lot of colors
 
@@ -239,11 +239,11 @@ public class PieChartActivity extends DemoBase implements OnSeekBarChangeListene
         colors.add(ColorTemplate.getHoloBlue());
 
         dataSet.setColors(colors);
-        //dataSet.setSelectionShift(0f);
+        //dataSet.setSelectionShift(0);
 
         PieData data = new PieData(dataSet);
         data.setValueFormatter(new PercentFormatter());
-        data.setValueTextSize(11f);
+        data.setValueTextSize(11);
         data.setValueTextColor(Color.WHITE);
         data.setValueTypeface(mTfLight);
         mChart.setData(data);
@@ -257,10 +257,10 @@ public class PieChartActivity extends DemoBase implements OnSeekBarChangeListene
     private SpannableString generateCenterSpannableText() {
 
         SpannableString s = new SpannableString("MPAndroidChart\ndeveloped by Philipp Jahoda");
-        s.setSpan(new RelativeSizeSpan(1.7f), 0, 14, 0);
+        s.setSpan(new RelativeSizeSpan(1.7), 0, 14, 0);
         s.setSpan(new StyleSpan(Typeface.NORMAL), 14, s.length() - 15, 0);
         s.setSpan(new ForegroundColorSpan(Color.GRAY), 14, s.length() - 15, 0);
-        s.setSpan(new RelativeSizeSpan(.8f), 14, s.length() - 15, 0);
+        s.setSpan(new RelativeSizeSpan(.8), 14, s.length() - 15, 0);
         s.setSpan(new StyleSpan(Typeface.ITALIC), s.length() - 14, s.length(), 0);
         s.setSpan(new ForegroundColorSpan(ColorTemplate.getHoloBlue()), s.length() - 14, s.length(), 0);
         return s;

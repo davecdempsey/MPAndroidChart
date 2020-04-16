@@ -35,12 +35,12 @@ public class PieChartFrag extends SimpleFragment {
         
         mChart.setCenterTextTypeface(tf);
         mChart.setCenterText(generateCenterText());
-        mChart.setCenterTextSize(10f);
+        mChart.setCenterTextSize(10);
         mChart.setCenterTextTypeface(tf);
          
         // radius of the center hole in percent of maximum radius
-        mChart.setHoleRadius(45f);
-        mChart.setTransparentCircleRadius(50f);
+        mChart.setHoleRadius(45);
+        mChart.setTransparentCircleRadius(50);
         
         Legend l = mChart.getLegend();
         l.setVerticalAlignment(Legend.LegendVerticalAlignment.TOP);
@@ -55,7 +55,7 @@ public class PieChartFrag extends SimpleFragment {
 
     private SpannableString generateCenterText() {
         SpannableString s = new SpannableString("Revenues\nQuarters 2015");
-        s.setSpan(new RelativeSizeSpan(2f), 0, 8, 0);
+        s.setSpan(new RelativeSizeSpan(2), 0, 8, 0);
         s.setSpan(new ForegroundColorSpan(Color.GRAY), 8, s.length(), 0);
         return s;
     }

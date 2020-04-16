@@ -76,18 +76,18 @@ public class BarChartActivitySinus extends DemoBase implements OnSeekBarChangeLi
         YAxis leftAxis = mChart.getAxisLeft();
         leftAxis.setTypeface(mTfLight);
         leftAxis.setLabelCount(6, false);
-        leftAxis.setAxisMinimum(-2.5f);
-        leftAxis.setAxisMaximum(2.5f);
+        leftAxis.setAxisMinimum(-2.5);
+        leftAxis.setAxisMaximum(2.5);
         leftAxis.setGranularityEnabled(true);
-        leftAxis.setGranularity(0.1f);
+        leftAxis.setGranularity(0.1);
 
         YAxis rightAxis = mChart.getAxisRight();
         rightAxis.setDrawGridLines(false);
         rightAxis.setTypeface(mTfLight);
         rightAxis.setLabelCount(6, false);
-        rightAxis.setAxisMinimum(-2.5f);
-        rightAxis.setAxisMaximum(2.5f);
-        rightAxis.setGranularity(0.1f);
+        rightAxis.setAxisMinimum(-2.5);
+        rightAxis.setAxisMaximum(2.5);
+        rightAxis.setGranularity(0.1);
 
         mSeekBarX.setOnSeekBarChangeListener(this);
         mSeekBarX.setProgress(150); // set data
@@ -98,9 +98,9 @@ public class BarChartActivitySinus extends DemoBase implements OnSeekBarChangeLi
         l.setOrientation(Legend.LegendOrientation.HORIZONTAL);
         l.setDrawInside(false);
         l.setForm(LegendForm.SQUARE);
-        l.setFormSize(9f);
-        l.setTextSize(11f);
-        l.setXEntrySpace(4f);
+        l.setFormSize(9);
+        l.setTextSize(11);
+        l.setXEntrySpace(4);
 
         mChart.animateXY(2000, 2000);
     }
@@ -219,10 +219,10 @@ public class BarChartActivitySinus extends DemoBase implements OnSeekBarChangeLi
         }
 
         BarData data = new BarData(set);
-        data.setValueTextSize(10f);
+        data.setValueTextSize(10);
         data.setValueTypeface(mTfLight);
         data.setDrawValues(false);
-        data.setBarWidth(0.8f);
+        data.setBarWidth(0.8);
 
         mChart.setData(data);
     }

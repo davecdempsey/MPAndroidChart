@@ -59,30 +59,30 @@ public class StackedBarActivityNegative extends DemoBase implements
         mChart.setHighlightFullBarEnabled(false);
         
         mChart.getAxisLeft().setEnabled(false);
-        mChart.getAxisRight().setAxisMaximum(25f);
-        mChart.getAxisRight().setAxisMinimum(-25f);
+        mChart.getAxisRight().setAxisMaximum(25);
+        mChart.getAxisRight().setAxisMinimum(-25);
         mChart.getAxisRight().setDrawGridLines(false);
         mChart.getAxisRight().setDrawZeroLine(true);
         mChart.getAxisRight().setLabelCount(7, false);
         mChart.getAxisRight().setValueFormatter(new CustomFormatter());
-        mChart.getAxisRight().setTextSize(9f);
+        mChart.getAxisRight().setTextSize(9);
 
         XAxis xAxis = mChart.getXAxis();
         xAxis.setPosition(XAxisPosition.BOTH_SIDED);
         xAxis.setDrawGridLines(false);
         xAxis.setDrawAxisLine(false);
-        xAxis.setTextSize(9f);
-        xAxis.setAxisMinimum(0f);
-        xAxis.setAxisMaximum(110f);
+        xAxis.setTextSize(9);
+        xAxis.setAxisMinimum(0);
+        xAxis.setAxisMaximum(110);
         xAxis.setCenterAxisLabels(true);
         xAxis.setLabelCount(12);
-        xAxis.setGranularity(10f);
+        xAxis.setGranularity(10);
         xAxis.setValueFormatter(new IAxisValueFormatter() {
 
             private DecimalFormat format = new DecimalFormat("###");
 
             @Override
-            public String getFormattedValue(float value, AxisBase axis) {
+            public String getFormattedValue(double value, AxisBase axis) {
                 return format.format(value) + "-" + format.format(value + 10);
             }
         });
@@ -92,29 +92,29 @@ public class StackedBarActivityNegative extends DemoBase implements
         l.setHorizontalAlignment(Legend.LegendHorizontalAlignment.RIGHT);
         l.setOrientation(Legend.LegendOrientation.HORIZONTAL);
         l.setDrawInside(false);
-        l.setFormSize(8f);
-        l.setFormToTextSpace(4f);
-        l.setXEntrySpace(6f);
+        l.setFormSize(8);
+        l.setFormToTextSpace(4);
+        l.setXEntrySpace(6);
 
         // IMPORTANT: When using negative values in stacked bars, always make sure the negative values are in the array first
         ArrayList<BarEntry> yValues = new ArrayList<BarEntry>();
-        yValues.add(new BarEntry(5, new float[]{ -10, 10 }));
-        yValues.add(new BarEntry(15, new float[]{ -12, 13 }));
-        yValues.add(new BarEntry(25, new float[]{ -15, 15 }));
-        yValues.add(new BarEntry(35, new float[]{ -17, 17 }));
-        yValues.add(new BarEntry(45, new float[]{ -19, 20 }));
-        yValues.add(new BarEntry(45, new float[]{ -19, 20 }, getResources().getDrawable(R.drawable.star)));
-        yValues.add(new BarEntry(55, new float[]{ -19, 19 }));
-        yValues.add(new BarEntry(65, new float[]{ -16, 16 }));
-        yValues.add(new BarEntry(75, new float[]{ -13, 14 }));
-        yValues.add(new BarEntry(85, new float[]{ -10, 11 }));
-        yValues.add(new BarEntry(95, new float[]{ -5, 6 }));
-        yValues.add(new BarEntry(105, new float[]{ -1, 2 }));
+        yValues.add(new BarEntry(5, new double[]{ -10, 10 }));
+        yValues.add(new BarEntry(15, new double[]{ -12, 13 }));
+        yValues.add(new BarEntry(25, new double[]{ -15, 15 }));
+        yValues.add(new BarEntry(35, new double[]{ -17, 17 }));
+        yValues.add(new BarEntry(45, new double[]{ -19, 20 }));
+        yValues.add(new BarEntry(45, new double[]{ -19, 20 }, getResources().getDrawable(R.drawable.star)));
+        yValues.add(new BarEntry(55, new double[]{ -19, 19 }));
+        yValues.add(new BarEntry(65, new double[]{ -16, 16 }));
+        yValues.add(new BarEntry(75, new double[]{ -13, 14 }));
+        yValues.add(new BarEntry(85, new double[]{ -10, 11 }));
+        yValues.add(new BarEntry(95, new double[]{ -5, 6 }));
+        yValues.add(new BarEntry(105, new double[]{ -1, 2 }));
 
         BarDataSet set = new BarDataSet(yValues, "Age Distribution");
         set.setDrawIcons(false);
         set.setValueFormatter(new CustomFormatter());
-        set.setValueTextSize(7f);
+        set.setValueTextSize(7);
         set.setAxisDependency(YAxis.AxisDependency.RIGHT);
         set.setColors(new int[] {Color.rgb(67,67,72), Color.rgb(124,181,236)});
         set.setStackLabels(new String[]{
@@ -124,7 +124,7 @@ public class StackedBarActivityNegative extends DemoBase implements
         String []xLabels = new String[]{"0-10", "10-20", "20-30", "30-40", "40-50", "50-60", "60-70", "70-80", "80-90", "90-100", "100+"};
 
         BarData data = new BarData(set);
-        data.setBarWidth(8.5f);
+        data.setBarWidth(8.5);
         mChart.setData(data);
         mChart.invalidate();
     }
@@ -244,13 +244,13 @@ public class StackedBarActivityNegative extends DemoBase implements
 
         // data
         @Override
-        public String getFormattedValue(float value, Entry entry, int dataSetIndex, ViewPortHandler viewPortHandler) {
+        public String getFormattedValue(double value, Entry entry, int dataSetIndex, ViewPortHandler viewPortHandler) {
             return mFormat.format(Math.abs(value)) + "m";
         }
 
         // YAxis
         @Override
-        public String getFormattedValue(float value, AxisBase axis) {
+        public String getFormattedValue(double value, AxisBase axis) {
             return mFormat.format(Math.abs(value)) + "m";
         }
     }

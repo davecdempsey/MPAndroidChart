@@ -79,20 +79,20 @@ public class HorizontalBarChartActivity extends DemoBase implements OnSeekBarCha
         xl.setTypeface(mTfLight);
         xl.setDrawAxisLine(true);
         xl.setDrawGridLines(false);
-        xl.setGranularity(10f);
+        xl.setGranularity(10);
 
         YAxis yl = mChart.getAxisLeft();
         yl.setTypeface(mTfLight);
         yl.setDrawAxisLine(true);
         yl.setDrawGridLines(true);
-        yl.setAxisMinimum(0f); // this replaces setStartAtZero(true)
+        yl.setAxisMinimum(0); // this replaces setStartAtZero(true)
 //        yl.setInverted(true);
 
         YAxis yr = mChart.getAxisRight();
         yr.setTypeface(mTfLight);
         yr.setDrawAxisLine(true);
         yr.setDrawGridLines(false);
-        yr.setAxisMinimum(0f); // this replaces setStartAtZero(true)
+        yr.setAxisMinimum(0); // this replaces setStartAtZero(true)
 //        yr.setInverted(true);
 
         setData(12, 50);
@@ -111,8 +111,8 @@ public class HorizontalBarChartActivity extends DemoBase implements OnSeekBarCha
         l.setHorizontalAlignment(Legend.LegendHorizontalAlignment.LEFT);
         l.setOrientation(Legend.LegendOrientation.HORIZONTAL);
         l.setDrawInside(false);
-        l.setFormSize(8f);
-        l.setXEntrySpace(4f);
+        l.setFormSize(8);
+        l.setXEntrySpace(4);
     }
 
     @Override
@@ -228,14 +228,14 @@ public class HorizontalBarChartActivity extends DemoBase implements OnSeekBarCha
 
     }
 
-    private void setData(int count, float range) {
+    private void setData(int count, double range) {
 
-        float barWidth = 9f;
-        float spaceForBar = 10f;
+        double barWidth = 9;
+        double spaceForBar = 10;
         ArrayList<BarEntry> yVals1 = new ArrayList<BarEntry>();
 
         for (int i = 0; i < count; i++) {
-            float val = (float) (Math.random() * range);
+            double val = (Math.random() * range);
             yVals1.add(new BarEntry(i * spaceForBar, val,
                     getResources().getDrawable(R.drawable.star)));
         }
@@ -257,7 +257,7 @@ public class HorizontalBarChartActivity extends DemoBase implements OnSeekBarCha
             dataSets.add(set1);
 
             BarData data = new BarData(dataSets);
-            data.setValueTextSize(10f);
+            data.setValueTextSize(10);
             data.setValueTypeface(mTfLight);
             data.setBarWidth(barWidth);
             mChart.setData(data);

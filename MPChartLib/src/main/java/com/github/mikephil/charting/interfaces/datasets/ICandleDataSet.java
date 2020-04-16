@@ -15,7 +15,7 @@ public interface ICandleDataSet extends ILineScatterCandleRadarDataSet<CandleEnt
      *
      * @return
      */
-    float getBarSpace();
+    double getBarSpace();
 
     /**
      * Returns whether the candle bars should show?
@@ -32,7 +32,7 @@ public interface ICandleDataSet extends ILineScatterCandleRadarDataSet<CandleEnt
      *
      * @return
      */
-    float getShadowWidth();
+    double getShadowWidth();
 
     /**
      * Returns shadow color for all entries

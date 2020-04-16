@@ -45,7 +45,7 @@ public class ScatterChartRenderer extends LineScatterCandleRadarRenderer {
         }
     }
 
-    float[] mPixelBuffer = new float[2];
+    double[] mPixelBuffer = new double[2];
 
     protected void drawDataSet(Canvas c, IScatterDataSet dataSet) {
 
@@ -53,7 +53,7 @@ public class ScatterChartRenderer extends LineScatterCandleRadarRenderer {
 
         Transformer trans = mChart.getTransformer(dataSet.getAxisDependency());
 
-        float phaseY = mAnimator.getPhaseY();
+        double phaseY = mAnimator.getPhaseY();
 
         IShapeRenderer renderer = dataSet.getShapeRenderer();
         if (renderer == null) {
@@ -62,8 +62,8 @@ public class ScatterChartRenderer extends LineScatterCandleRadarRenderer {
         }
 
         int max = (int)(Math.min(
-                Math.ceil((float)dataSet.getEntryCount() * mAnimator.getPhaseX()),
-                (float)dataSet.getEntryCount()));
+                Math.ceil(dataSet.getEntryCount() * mAnimator.getPhaseX()),
+                dataSet.getEntryCount()));
 
         for (int i = 0; i < max; i++) {
 
@@ -109,11 +109,11 @@ public class ScatterChartRenderer extends LineScatterCandleRadarRenderer {
 
                 mXBounds.set(mChart, dataSet);
 
-                float[] positions = mChart.getTransformer(dataSet.getAxisDependency())
+                double[] positions = mChart.getTransformer(dataSet.getAxisDependency())
                         .generateTransformedValuesScatter(dataSet,
                                 mAnimator.getPhaseX(), mAnimator.getPhaseY(), mXBounds.min, mXBounds.max);
 
-                float shapeSize = Utils.convertDpToPixel(dataSet.getScatterShapeSize());
+                double shapeSize = Utils.convertDpToPixel(dataSet.getScatterShapeSize());
 
                 MPPointF iconsOffset = MPPointF.getInstance(dataSet.getIconsOffset());
                 iconsOffset.x = Utils.convertDpToPixel(iconsOffset.x);
@@ -185,10 +185,10 @@ public class ScatterChartRenderer extends LineScatterCandleRadarRenderer {
             MPPointD pix = mChart.getTransformer(set.getAxisDependency()).getPixelForValues(e.getX(), e.getY() * mAnimator
                     .getPhaseY());
 
-            high.setDraw((float) pix.x, (float) pix.y);
+            high.setDraw( pix.x,  pix.y);
 
             // draw the lines
-            drawHighlightLines(c, (float) pix.x, (float) pix.y, set);
+            drawHighlightLines(c,  pix.x,  pix.y, set);
         }
     }
 }

@@ -46,17 +46,17 @@ public class YAxis extends AxisBase {
     /**
      * Width of the zero line in pixels
      */
-    protected float mZeroLineWidth = 1f;
+    protected double mZeroLineWidth = 1;
 
     /**
      * axis space from the largest value to the top in percent of the total axis range
      */
-    protected float mSpacePercentTop = 10f;
+    protected double mSpacePercentTop = 10;
 
     /**
      * axis space from the smallest value to the bottom in percent of the total axis range
      */
-    protected float mSpacePercentBottom = 10f;
+    protected double mSpacePercentBottom = 10;
 
     /**
      * the position of the y-labels relative to the chart
@@ -80,14 +80,14 @@ public class YAxis extends AxisBase {
      * <p/>
      * default: 0.0
      */
-    protected float mMinWidth = 0.f;
+    protected double mMinWidth = 0.f;
 
     /**
      * the maximum width that the axis can take (in dp).
      * use Inifinity for disabling the maximum
-     * default: Float.POSITIVE_INFINITY (no maximum specified)
+     * default: Double.POSITIVE_INFINITY (no maximum specified)
      */
-    protected float mMaxWidth = Float.POSITIVE_INFINITY;
+    protected double mMaxWidth = Double.POSITIVE_INFINITY;
 
     /**
      * Enum that specifies the axis a DataSet should be plotted against, either LEFT or RIGHT.
@@ -103,13 +103,13 @@ public class YAxis extends AxisBase {
 
         // default left
         this.mAxisDependency = AxisDependency.LEFT;
-        this.mYOffset = 0f;
+        this.mYOffset = 0;
     }
 
     public YAxis(AxisDependency position) {
         super();
         this.mAxisDependency = position;
-        this.mYOffset = 0f;
+        this.mYOffset = 0;
     }
 
     public AxisDependency getAxisDependency() {
@@ -119,7 +119,7 @@ public class YAxis extends AxisBase {
     /**
      * @return the minimum width that the axis should take (in dp).
      */
-    public float getMinWidth() {
+    public double getMinWidth() {
         return mMinWidth;
     }
 
@@ -128,14 +128,14 @@ public class YAxis extends AxisBase {
      *
      * @param minWidth
      */
-    public void setMinWidth(float minWidth) {
+    public void setMinWidth(double minWidth) {
         mMinWidth = minWidth;
     }
 
     /**
      * @return the maximum width that the axis can take (in dp).
      */
-    public float getMaxWidth() {
+    public double getMaxWidth() {
         return mMaxWidth;
     }
 
@@ -144,7 +144,7 @@ public class YAxis extends AxisBase {
      *
      * @param maxWidth
      */
-    public void setMaxWidth(float maxWidth) {
+    public void setMaxWidth(double maxWidth) {
         mMaxWidth = maxWidth;
     }
 
@@ -222,44 +222,44 @@ public class YAxis extends AxisBase {
     @Deprecated
     public void setStartAtZero(boolean startAtZero) {
         if (startAtZero)
-            setAxisMinimum(0f);
+            setAxisMinimum(0);
         else
             resetAxisMinimum();
     }
 
     /**
-     * Sets the top axis space in percent of the full range. Default 10f
+     * Sets the top axis space in percent of the full range. Default 10
      *
      * @param percent
      */
-    public void setSpaceTop(float percent) {
+    public void setSpaceTop(double percent) {
         mSpacePercentTop = percent;
     }
 
     /**
-     * Returns the top axis space in percent of the full range. Default 10f
+     * Returns the top axis space in percent of the full range. Default 10
      *
      * @return
      */
-    public float getSpaceTop() {
+    public double getSpaceTop() {
         return mSpacePercentTop;
     }
 
     /**
-     * Sets the bottom axis space in percent of the full range. Default 10f
+     * Sets the bottom axis space in percent of the full range. Default 10
      *
      * @param percent
      */
-    public void setSpaceBottom(float percent) {
+    public void setSpaceBottom(double percent) {
         mSpacePercentBottom = percent;
     }
 
     /**
-     * Returns the bottom axis space in percent of the full range. Default 10f
+     * Returns the bottom axis space in percent of the full range. Default 10
      *
      * @return
      */
-    public float getSpaceBottom() {
+    public double getSpaceBottom() {
         return mSpacePercentBottom;
     }
 
@@ -290,7 +290,7 @@ public class YAxis extends AxisBase {
         mZeroLineColor = color;
     }
 
-    public float getZeroLineWidth() {
+    public double getZeroLineWidth() {
         return mZeroLineWidth;
     }
 
@@ -299,7 +299,7 @@ public class YAxis extends AxisBase {
      *
      * @param width
      */
-    public void setZeroLineWidth(float width) {
+    public void setZeroLineWidth(double width) {
         this.mZeroLineWidth = Utils.convertDpToPixel(width);
     }
 
@@ -309,20 +309,20 @@ public class YAxis extends AxisBase {
      * @param p
      * @return
      */
-    public float getRequiredWidthSpace(Paint p) {
+    public double getRequiredWidthSpace(Paint p) {
 
         p.setTextSize(mTextSize);
 
         String label = getLongestLabel();
-        float width = (float) Utils.calcTextWidth(p, label) + getXOffset() * 2f;
+        double width =  Utils.calcTextWidth(p, label) + getXOffset() * 2;
 
-        float minWidth = getMinWidth();
-        float maxWidth = getMaxWidth();
+        double minWidth = getMinWidth();
+        double maxWidth = getMaxWidth();
 
         if (minWidth > 0.f)
             minWidth = Utils.convertDpToPixel(minWidth);
 
-        if (maxWidth > 0.f && maxWidth != Float.POSITIVE_INFINITY)
+        if (maxWidth > 0.f && maxWidth != Double.POSITIVE_INFINITY)
             maxWidth = Utils.convertDpToPixel(maxWidth);
 
         width = Math.max(minWidth, Math.min(width, maxWidth > 0.0 ? maxWidth : width));
@@ -336,12 +336,12 @@ public class YAxis extends AxisBase {
      * @param p
      * @return
      */
-    public float getRequiredHeightSpace(Paint p) {
+    public double getRequiredHeightSpace(Paint p) {
 
         p.setTextSize(mTextSize);
 
         String label = getLongestLabel();
-        return (float) Utils.calcTextHeight(p, label) + getYOffset() * 2f;
+        return  Utils.calcTextHeight(p, label) + getYOffset() * 2;
     }
 
     /**
@@ -358,25 +358,25 @@ public class YAxis extends AxisBase {
     }
 
     @Override
-    public void calculate(float dataMin, float dataMax) {
+    public void calculate(double dataMin, double dataMax) {
 
         // if custom, use value as is, else use data value
-        float min = mCustomAxisMin ? mAxisMinimum : dataMin;
-        float max = mCustomAxisMax ? mAxisMaximum : dataMax;
+        double min = mCustomAxisMin ? mAxisMinimum : dataMin;
+        double max = mCustomAxisMax ? mAxisMaximum : dataMax;
 
         // temporary range (before calculations)
-        float range = Math.abs(max - min);
+        double range = Math.abs(max - min);
 
         // in case all values are equal
-        if (range == 0f) {
-            max = max + 1f;
-            min = min - 1f;
+        if (range == 0) {
+            max = max + 1;
+            min = min - 1;
         }
 
-        float bottomSpace = range / 100f * getSpaceBottom();
+        double bottomSpace = range / 100 * getSpaceBottom();
         this.mAxisMinimum = (min - bottomSpace);
             
-        float topSpace = range / 100f * getSpaceTop();
+        double topSpace = range / 100 * getSpaceTop();
         this.mAxisMaximum = (max + topSpace);
 
         // calc actual range

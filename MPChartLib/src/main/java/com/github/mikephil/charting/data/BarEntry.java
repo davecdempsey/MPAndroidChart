@@ -16,7 +16,7 @@ public class BarEntry extends Entry {
     /**
      * the values the stacked barchart holds
      */
-    private float[] mYVals;
+    private double[] mYVals;
 
     /**
      * the ranges for the individual stack values - automatically calculated
@@ -26,12 +26,12 @@ public class BarEntry extends Entry {
     /**
      * the sum of all negative values this entry (if stacked) contains
      */
-    private float mNegativeSum;
+    private double mNegativeSum;
 
     /**
      * the sum of all positive values this entry (if stacked) contains
      */
-    private float mPositiveSum;
+    private double mPositiveSum;
 
     /**
      * Constructor for normal bars (not stacked).
@@ -39,7 +39,7 @@ public class BarEntry extends Entry {
      * @param x
      * @param y
      */
-    public BarEntry(float x, float y) {
+    public BarEntry(double x, double y) {
         super(x, y);
     }
 
@@ -50,7 +50,7 @@ public class BarEntry extends Entry {
      * @param y
      * @param data - Spot for additional data this Entry represents.
      */
-    public BarEntry(float x, float y, Object data) {
+    public BarEntry(double x, double y, Object data) {
         super(x, y, data);
     }
 
@@ -61,7 +61,7 @@ public class BarEntry extends Entry {
      * @param y
      * @param icon - icon image
      */
-    public BarEntry(float x, float y, Drawable icon) {
+    public BarEntry(double x, double y, Drawable icon) {
         super(x, y, icon);
     }
 
@@ -73,7 +73,7 @@ public class BarEntry extends Entry {
      * @param icon - icon image
      * @param data - Spot for additional data this Entry represents.
      */
-    public BarEntry(float x, float y, Drawable icon, Object data) {
+    public BarEntry(double x, double y, Drawable icon, Object data) {
         super(x, y, icon, data);
     }
 
@@ -83,7 +83,7 @@ public class BarEntry extends Entry {
      * @param x
      * @param vals - the stack values, use at least 2
      */
-    public BarEntry(float x, float[] vals) {
+    public BarEntry(double x, double[] vals) {
         super(x, calcSum(vals));
 
         this.mYVals = vals;
@@ -98,7 +98,7 @@ public class BarEntry extends Entry {
      * @param vals - the stack values, use at least 2
      * @param data - Spot for additional data this Entry represents.
      */
-    public BarEntry(float x, float[] vals, Object data) {
+    public BarEntry(double x, double[] vals, Object data) {
         super(x, calcSum(vals), data);
 
         this.mYVals = vals;
@@ -113,7 +113,7 @@ public class BarEntry extends Entry {
      * @param vals - the stack values, use at least 2
      * @param icon - icon image
      */
-    public BarEntry(float x, float[] vals, Drawable icon) {
+    public BarEntry(double x, double[] vals, Drawable icon) {
         super(x, calcSum(vals), icon);
 
         this.mYVals = vals;
@@ -129,7 +129,7 @@ public class BarEntry extends Entry {
      * @param icon - icon image
      * @param data - Spot for additional data this Entry represents.
      */
-    public BarEntry(float x, float[] vals, Drawable icon, Object data) {
+    public BarEntry(double x, double[] vals, Drawable icon, Object data) {
         super(x, calcSum(vals), icon, data);
 
         this.mYVals = vals;
@@ -153,7 +153,7 @@ public class BarEntry extends Entry {
      *
      * @return
      */
-    public float[] getYVals() {
+    public double[] getYVals() {
         return mYVals;
     }
 
@@ -162,7 +162,7 @@ public class BarEntry extends Entry {
      *
      * @param vals
      */
-    public void setVals(float[] vals) {
+    public void setVals(double[] vals) {
         setY(calcSum(vals));
         mYVals = vals;
         calcPosNegSum();
@@ -175,7 +175,7 @@ public class BarEntry extends Entry {
      * @return
      */
     @Override
-    public float getY() {
+    public double getY() {
         return super.getY();
     }
 
@@ -201,16 +201,16 @@ public class BarEntry extends Entry {
      * Use `getSumBelow(stackIndex)` instead.
      */
     @Deprecated
-    public float getBelowSum(int stackIndex) {
+    public double getBelowSum(int stackIndex) {
         return getSumBelow(stackIndex);
     }
 
-    public float getSumBelow(int stackIndex) {
+    public double getSumBelow(int stackIndex) {
 
         if (mYVals == null)
             return 0;
 
-        float remainder = 0f;
+        double remainder = 0;
         int index = mYVals.length - 1;
 
         while (index > stackIndex && index >= 0) {
@@ -226,7 +226,7 @@ public class BarEntry extends Entry {
      *
      * @return
      */
-    public float getPositiveSum() {
+    public double getPositiveSum() {
         return mPositiveSum;
     }
 
@@ -235,7 +235,7 @@ public class BarEntry extends Entry {
      *
      * @return
      */
-    public float getNegativeSum() {
+    public double getNegativeSum() {
         return mNegativeSum;
     }
 
@@ -247,11 +247,11 @@ public class BarEntry extends Entry {
             return;
         }
 
-        float sumNeg = 0f;
-        float sumPos = 0f;
+        double sumNeg = 0;
+        double sumPos = 0;
 
-        for (float f : mYVals) {
-            if (f <= 0f)
+        for (double f : mYVals) {
+            if (f <= 0)
                 sumNeg += Math.abs(f);
             else
                 sumPos += f;
@@ -267,14 +267,14 @@ public class BarEntry extends Entry {
      * @param vals
      * @return
      */
-    private static float calcSum(float[] vals) {
+    private static double calcSum(double[] vals) {
 
         if (vals == null)
-            return 0f;
+            return 0;
 
-        float sum = 0f;
+        double sum = 0;
 
-        for (float f : vals)
+        for (double f : vals)
             sum += f;
 
         return sum;
@@ -282,19 +282,19 @@ public class BarEntry extends Entry {
 
     protected void calcRanges() {
 
-        float[] values = getYVals();
+        double[] values = getYVals();
 
         if (values == null || values.length == 0)
             return;
 
         mRanges = new Range[values.length];
 
-        float negRemain = -getNegativeSum();
-        float posRemain = 0f;
+        double negRemain = -getNegativeSum();
+        double posRemain = 0;
 
         for (int i = 0; i < mRanges.length; i++) {
 
-            float value = values[i];
+            double value = values[i];
 
             if (value < 0) {
                 mRanges[i] = new Range(negRemain, negRemain - value);

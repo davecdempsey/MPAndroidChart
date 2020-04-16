@@ -81,8 +81,8 @@ public class BubbleChartActivity extends DemoBase implements OnSeekBarChangeList
 
         YAxis yl = mChart.getAxisLeft();
         yl.setTypeface(mTfLight);
-        yl.setSpaceTop(30f);
-        yl.setSpaceBottom(30f);
+        yl.setSpaceTop(30);
+        yl.setSpaceBottom(30);
         yl.setDrawZeroLine(false);
         
         mChart.getAxisRight().setEnabled(false);
@@ -172,22 +172,22 @@ public class BubbleChartActivity extends DemoBase implements OnSeekBarChangeList
         ArrayList<BubbleEntry> yVals3 = new ArrayList<BubbleEntry>();
 
         for (int i = 0; i < count; i++) {
-            float val = (float) (Math.random() * range);
-            float size = (float) (Math.random() * range);
+            double val = (Math.random() * range);
+            double size = (Math.random() * range);
 
             yVals1.add(new BubbleEntry(i, val, size, getResources().getDrawable(R.drawable.star)));
         }
 
         for (int i = 0; i < count; i++) {
-            float val = (float) (Math.random() * range);
-            float size = (float) (Math.random() * range);
+            double val = (Math.random() * range);
+            double size = (Math.random() * range);
 
             yVals2.add(new BubbleEntry(i, val, size, getResources().getDrawable(R.drawable.star)));
         }
 
         for (int i = 0; i < count; i++) {
-            float val = (float) (Math.random() * range);
-            float size = (float) (Math.random() * range);
+            double val = (Math.random() * range);
+            double size = (Math.random() * range);
 
             yVals3.add(new BubbleEntry(i, val, size));
         }
@@ -217,9 +217,9 @@ public class BubbleChartActivity extends DemoBase implements OnSeekBarChangeList
         BubbleData data = new BubbleData(dataSets);
         data.setDrawValues(false);
         data.setValueTypeface(mTfLight);
-        data.setValueTextSize(8f);
+        data.setValueTextSize(8);
         data.setValueTextColor(Color.WHITE);
-        data.setHighlightCircleWidth(1.5f);
+        data.setHighlightCircleWidth(1.5);
 
         mChart.setData(data);
         mChart.invalidate();

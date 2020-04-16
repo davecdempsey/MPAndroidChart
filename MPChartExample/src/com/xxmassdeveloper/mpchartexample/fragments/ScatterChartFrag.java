@@ -54,12 +54,12 @@ public class ScatterChartFrag extends SimpleFragment {
         Legend l = mChart.getLegend();
         l.setWordWrapEnabled(true);
         l.setTypeface(tf);
-        l.setFormSize(14f);
-        l.setTextSize(9f);
+        l.setFormSize(14);
+        l.setTextSize(9);
         
         // increase the space between legend & bottom and legend & content
-        l.setYOffset(13f);       
-        mChart.setExtraBottomOffset(16f);
+        l.setYOffset(13);       
+        mChart.setExtraBottomOffset(16);
         
         return v;
     }

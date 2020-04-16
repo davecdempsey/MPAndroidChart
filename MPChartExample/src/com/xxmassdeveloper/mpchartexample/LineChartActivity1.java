@@ -96,42 +96,42 @@ public class LineChartActivity1 extends DemoBase implements OnSeekBarChangeListe
         mChart.setMarker(mv); // Set the marker to the chart
 
         // x-axis limit line
-        LimitLine llXAxis = new LimitLine(10f, "Index 10");
-        llXAxis.setLineWidth(4f);
-        llXAxis.enableDashedLine(10f, 10f, 0f);
+        LimitLine llXAxis = new LimitLine(10, "Index 10");
+        llXAxis.setLineWidth(4);
+        llXAxis.enableDashedLine(10, 10, 0);
         llXAxis.setLabelPosition(LimitLabelPosition.RIGHT_BOTTOM);
-        llXAxis.setTextSize(10f);
+        llXAxis.setTextSize(10);
 
         XAxis xAxis = mChart.getXAxis();
-        xAxis.enableGridDashedLine(10f, 10f, 0f);
+        xAxis.enableGridDashedLine(10, 10, 0);
         //xAxis.setValueFormatter(new MyCustomXAxisValueFormatter());
         //xAxis.addLimitLine(llXAxis); // add x-axis limit line
 
 
         Typeface tf = Typeface.createFromAsset(getAssets(), "OpenSans-Regular.ttf");
 
-        LimitLine ll1 = new LimitLine(150f, "Upper Limit");
-        ll1.setLineWidth(4f);
-        ll1.enableDashedLine(10f, 10f, 0f);
+        LimitLine ll1 = new LimitLine(150, "Upper Limit");
+        ll1.setLineWidth(4);
+        ll1.enableDashedLine(10, 10, 0);
         ll1.setLabelPosition(LimitLabelPosition.RIGHT_TOP);
-        ll1.setTextSize(10f);
+        ll1.setTextSize(10);
         ll1.setTypeface(tf);
 
-        LimitLine ll2 = new LimitLine(-30f, "Lower Limit");
-        ll2.setLineWidth(4f);
-        ll2.enableDashedLine(10f, 10f, 0f);
+        LimitLine ll2 = new LimitLine(-30, "Lower Limit");
+        ll2.setLineWidth(4);
+        ll2.enableDashedLine(10, 10, 0);
         ll2.setLabelPosition(LimitLabelPosition.RIGHT_BOTTOM);
-        ll2.setTextSize(10f);
+        ll2.setTextSize(10);
         ll2.setTypeface(tf);
 
         YAxis leftAxis = mChart.getAxisLeft();
         leftAxis.removeAllLimitLines(); // reset all limit lines to avoid overlapping lines
         leftAxis.addLimitLine(ll1);
         leftAxis.addLimitLine(ll2);
-        leftAxis.setAxisMaximum(200f);
-        leftAxis.setAxisMinimum(-50f);
-        //leftAxis.setYOffset(20f);
-        leftAxis.enableGridDashedLine(10f, 10f, 0f);
+        leftAxis.setAxisMaximum(200);
+        leftAxis.setAxisMinimum(-50);
+        //leftAxis.setYOffset(20);
+        leftAxis.enableGridDashedLine(10, 10, 0);
         leftAxis.setDrawZeroLine(false);
 
         // limit lines are drawn behind data (and not on top)
@@ -139,14 +139,14 @@ public class LineChartActivity1 extends DemoBase implements OnSeekBarChangeListe
 
         mChart.getAxisRight().setEnabled(false);
 
-        //mChart.getViewPortHandler().setMaximumScaleY(2f);
-        //mChart.getViewPortHandler().setMaximumScaleX(2f);
+        //mChart.getViewPortHandler().setMaximumScaleY(2);
+        //mChart.getViewPortHandler().setMaximumScaleX(2);
 
         // add data
         setData(45, 100);
 
 //        mChart.setVisibleXRange(20);
-//        mChart.setVisibleYRange(20f, AxisDependency.LEFT);
+//        mChart.setVisibleYRange(20, AxisDependency.LEFT);
 //        mChart.centerViewTo(20, 50, AxisDependency.LEFT);
 
         mChart.animateX(2500);
@@ -348,13 +348,13 @@ public class LineChartActivity1 extends DemoBase implements OnSeekBarChangeListe
 
     }
 
-    private void setData(int count, float range) {
+    private void setData(int count, double range) {
 
         ArrayList<Entry> values = new ArrayList<Entry>();
 
         for (int i = 0; i < count; i++) {
 
-            float val = (float) (Math.random() * range) + 3;
+            double val = (Math.random() * range) + 3;
             values.add(new Entry(i, val, getResources().getDrawable(R.drawable.star)));
         }
 
@@ -373,17 +373,17 @@ public class LineChartActivity1 extends DemoBase implements OnSeekBarChangeListe
             set1.setDrawIcons(false);
 
             // set the line to be drawn like this "- - - - - -"
-            set1.enableDashedLine(10f, 5f, 0f);
-            set1.enableDashedHighlightLine(10f, 5f, 0f);
+            set1.enableDashedLine(10, 5, 0);
+            set1.enableDashedHighlightLine(10, 5, 0);
             set1.setColor(Color.BLACK);
             set1.setCircleColor(Color.BLACK);
-            set1.setLineWidth(1f);
-            set1.setCircleRadius(3f);
+            set1.setLineWidth(1);
+            set1.setCircleRadius(3);
             set1.setDrawCircleHole(false);
-            set1.setValueTextSize(9f);
+            set1.setValueTextSize(9);
             set1.setDrawFilled(true);
-            set1.setFormLineWidth(1f);
-            set1.setFormLineDashEffect(new DashPathEffect(new float[]{10f, 5f}, 0f));
+            set1.setFormLineWidth(1);
+            set1.setFormLineDashEffect(new DashPathEffect(new double[]{10, 5}, 0));
             set1.setFormSize(15.f);
 
             if (Utils.getSDKInt() >= 18) {
@@ -436,17 +436,17 @@ public class LineChartActivity1 extends DemoBase implements OnSeekBarChangeListe
     }
 
     @Override
-    public void onChartFling(MotionEvent me1, MotionEvent me2, float velocityX, float velocityY) {
+    public void onChartFling(MotionEvent me1, MotionEvent me2, double velocityX, double velocityY) {
         Log.i("Fling", "Chart flinged. VeloX: " + velocityX + ", VeloY: " + velocityY);
     }
 
     @Override
-    public void onChartScale(MotionEvent me, float scaleX, float scaleY) {
+    public void onChartScale(MotionEvent me, double scaleX, double scaleY) {
         Log.i("Scale / Zoom", "ScaleX: " + scaleX + ", ScaleY: " + scaleY);
     }
 
     @Override
-    public void onChartTranslate(MotionEvent me, float dX, float dY) {
+    public void onChartTranslate(MotionEvent me, double dX, double dY) {
         Log.i("Translate / Move", "dX: " + dX + ", dY: " + dY);
     }
 

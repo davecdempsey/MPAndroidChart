@@ -33,8 +33,8 @@ public class CandleStickChart extends BarLineChartBase<CandleData> implements Ca
 
         mRenderer = new CandleStickChartRenderer(this, mAnimator, mViewPortHandler);
 
-        getXAxis().setSpaceMin(0.5f);
-        getXAxis().setSpaceMax(0.5f);
+        getXAxis().setSpaceMin(0.5);
+        getXAxis().setSpaceMax(0.5);
     }
 
     @Override

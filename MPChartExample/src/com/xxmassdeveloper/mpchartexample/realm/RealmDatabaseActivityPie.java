@@ -62,7 +62,7 @@ public class RealmDatabaseActivityPie extends RealmBaseActivity {
         PieData data = new PieData(set);
         styleData(data);
         data.setValueTextColor(Color.WHITE);
-        data.setValueTextSize(12f);
+        data.setValueTextSize(12);
 
         // set data
         mChart.setData(data);
@@ -73,10 +73,10 @@ public class RealmDatabaseActivityPie extends RealmBaseActivity {
 
         SpannableString s = new SpannableString("Realm.io\nmobile database");
         s.setSpan(new ForegroundColorSpan(Color.rgb(240, 115, 126)), 0, 8, 0);
-        s.setSpan(new RelativeSizeSpan(2.2f), 0, 8, 0);
+        s.setSpan(new RelativeSizeSpan(2.2), 0, 8, 0);
         s.setSpan(new StyleSpan(Typeface.ITALIC), 9, s.length(), 0);
         s.setSpan(new ForegroundColorSpan(ColorTemplate.getHoloBlue()), 9, s.length(), 0);
-        s.setSpan(new RelativeSizeSpan(0.85f), 9, s.length(), 0);
+        s.setSpan(new RelativeSizeSpan(0.85), 9, s.length(), 0);
         return s;
     }
 }

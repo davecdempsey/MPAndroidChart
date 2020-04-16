@@ -64,7 +64,7 @@ public class LineChartActivity2 extends DemoBase implements OnSeekBarChangeListe
         // enable touch gestures
         mChart.setTouchEnabled(true);
 
-        mChart.setDragDecelerationFrictionCoef(0.9f);
+        mChart.setDragDecelerationFrictionCoef(0.9);
 
         // enable scaling and dragging
         mChart.setDragEnabled(true);
@@ -89,17 +89,17 @@ public class LineChartActivity2 extends DemoBase implements OnSeekBarChangeListe
         // modify the legend ...
         l.setForm(LegendForm.LINE);
         l.setTypeface(mTfLight);
-        l.setTextSize(11f);
+        l.setTextSize(11);
         l.setTextColor(Color.WHITE);
         l.setVerticalAlignment(Legend.LegendVerticalAlignment.BOTTOM);
         l.setHorizontalAlignment(Legend.LegendHorizontalAlignment.LEFT);
         l.setOrientation(Legend.LegendOrientation.HORIZONTAL);
         l.setDrawInside(false);
-//        l.setYOffset(11f);
+//        l.setYOffset(11);
 
         XAxis xAxis = mChart.getXAxis();
         xAxis.setTypeface(mTfLight);
-        xAxis.setTextSize(11f);
+        xAxis.setTextSize(11);
         xAxis.setTextColor(Color.WHITE);
         xAxis.setDrawGridLines(false);
         xAxis.setDrawAxisLine(false);
@@ -107,8 +107,8 @@ public class LineChartActivity2 extends DemoBase implements OnSeekBarChangeListe
         YAxis leftAxis = mChart.getAxisLeft();
         leftAxis.setTypeface(mTfLight);
         leftAxis.setTextColor(ColorTemplate.getHoloBlue());
-        leftAxis.setAxisMaximum(200f);
-        leftAxis.setAxisMinimum(0f);
+        leftAxis.setAxisMaximum(200);
+        leftAxis.setAxisMinimum(0);
         leftAxis.setDrawGridLines(true);
         leftAxis.setGranularityEnabled(true);
 
@@ -241,7 +241,7 @@ public class LineChartActivity2 extends DemoBase implements OnSeekBarChangeListe
             }
             case R.id.animateX: {
                 mChart.animateX(3000);
-                //mChart.highlightValue(9.7f, 1, false);
+                //mChart.highlightValue(9.7, 1, false);
                 break;
             }
             case R.id.animateY: {
@@ -280,21 +280,21 @@ public class LineChartActivity2 extends DemoBase implements OnSeekBarChangeListe
         mChart.invalidate();
     }
 
-    private void setData(int count, float range) {
+    private void setData(int count, double range) {
 
         ArrayList<Entry> yVals1 = new ArrayList<Entry>();
 
         for (int i = 0; i < count; i++) {
-            float mult = range / 2f;
-            float val = (float) (Math.random() * mult) + 50;
+            double mult = range / 2;
+            double val = (Math.random() * mult) + 50;
             yVals1.add(new Entry(i, val));
         }
 
         ArrayList<Entry> yVals2 = new ArrayList<Entry>();
 
         for (int i = 0; i < count-1; i++) {
-            float mult = range;
-            float val = (float) (Math.random() * mult) + 450;
+            double mult = range;
+            double val = (Math.random() * mult) + 450;
             yVals2.add(new Entry(i, val));
 //            if(i == 10) {
 //                yVals2.add(new Entry(i, val + 50));
@@ -304,8 +304,8 @@ public class LineChartActivity2 extends DemoBase implements OnSeekBarChangeListe
         ArrayList<Entry> yVals3 = new ArrayList<Entry>();
 
         for (int i = 0; i < count; i++) {
-            float mult = range;
-            float val = (float) (Math.random() * mult) + 500;
+            double mult = range;
+            double val = (Math.random() * mult) + 500;
             yVals3.add(new Entry(i, val));
         }
 
@@ -328,13 +328,13 @@ public class LineChartActivity2 extends DemoBase implements OnSeekBarChangeListe
             set1.setAxisDependency(AxisDependency.LEFT);
             set1.setColor(ColorTemplate.getHoloBlue());
             set1.setCircleColor(Color.WHITE);
-            set1.setLineWidth(2f);
-            set1.setCircleRadius(3f);
+            set1.setLineWidth(2);
+            set1.setCircleRadius(3);
             set1.setFillAlpha(65);
             set1.setFillColor(ColorTemplate.getHoloBlue());
             set1.setHighLightColor(Color.rgb(244, 117, 117));
             set1.setDrawCircleHole(false);
-            //set1.setFillFormatter(new MyFillFormatter(0f));
+            //set1.setFillFormatter(new MyFillFormatter(0));
             //set1.setDrawHorizontalHighlightIndicator(false);
             //set1.setVisible(false);
             //set1.setCircleHoleColor(Color.WHITE);
@@ -344,20 +344,20 @@ public class LineChartActivity2 extends DemoBase implements OnSeekBarChangeListe
             set2.setAxisDependency(AxisDependency.RIGHT);
             set2.setColor(Color.RED);
             set2.setCircleColor(Color.WHITE);
-            set2.setLineWidth(2f);
-            set2.setCircleRadius(3f);
+            set2.setLineWidth(2);
+            set2.setCircleRadius(3);
             set2.setFillAlpha(65);
             set2.setFillColor(Color.RED);
             set2.setDrawCircleHole(false);
             set2.setHighLightColor(Color.rgb(244, 117, 117));
-            //set2.setFillFormatter(new MyFillFormatter(900f));
+            //set2.setFillFormatter(new MyFillFormatter(900));
 
             set3 = new LineDataSet(yVals3, "DataSet 3");
             set3.setAxisDependency(AxisDependency.RIGHT);
             set3.setColor(Color.YELLOW);
             set3.setCircleColor(Color.WHITE);
-            set3.setLineWidth(2f);
-            set3.setCircleRadius(3f);
+            set3.setLineWidth(2);
+            set3.setCircleRadius(3);
             set3.setFillAlpha(65);
             set3.setFillColor(ColorTemplate.colorWithAlpha(Color.YELLOW, 200));
             set3.setDrawCircleHole(false);
@@ -366,7 +366,7 @@ public class LineChartActivity2 extends DemoBase implements OnSeekBarChangeListe
             // create a data object with the datasets
             LineData data = new LineData(set1, set2, set3);
             data.setValueTextColor(Color.WHITE);
-            data.setValueTextSize(9f);
+            data.setValueTextSize(9);
 
             // set data
             mChart.setData(data);
@@ -379,9 +379,9 @@ public class LineChartActivity2 extends DemoBase implements OnSeekBarChangeListe
 
         mChart.centerViewToAnimated(e.getX(), e.getY(), mChart.getData().getDataSetByIndex(h.getDataSetIndex())
                 .getAxisDependency(), 500);
-        //mChart.zoomAndCenterAnimated(2.5f, 2.5f, e.getX(), e.getY(), mChart.getData().getDataSetByIndex(dataSetIndex)
+        //mChart.zoomAndCenterAnimated(2.5, 2.5, e.getX(), e.getY(), mChart.getData().getDataSetByIndex(dataSetIndex)
         // .getAxisDependency(), 1000);
-        //mChart.zoomAndCenterAnimated(1.8f, 1.8f, e.getX(), e.getY(), mChart.getData().getDataSetByIndex(dataSetIndex)
+        //mChart.zoomAndCenterAnimated(1.8, 1.8, e.getX(), e.getY(), mChart.getData().getDataSetByIndex(dataSetIndex)
         // .getAxisDependency(), 1000);
     }
 

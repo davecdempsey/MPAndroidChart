@@ -68,7 +68,7 @@ public class DrawChartActivity extends DemoBase implements OnChartValueSelectedL
 
         mChart.getLegend().setEnabled(false);
 
-        // mChart.setYRange(-40f, 40f, true);
+        // mChart.setYRange(-40, 40, true);
         // call this to reset the changed y-range
         // mChart.resetYRange(true);
     }
@@ -79,8 +79,8 @@ public class DrawChartActivity extends DemoBase implements OnChartValueSelectedL
 
         // create a dataset and give it a type (0)
         LineDataSet set1 = new LineDataSet(yVals, "DataSet");
-        set1.setLineWidth(3f);
-        set1.setCircleRadius(5f);
+        set1.setLineWidth(3);
+        set1.setCircleRadius(5);
 
         // create a data object with the datasets
         LineData data = new LineData(set1);

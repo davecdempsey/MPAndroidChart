@@ -21,12 +21,12 @@ public abstract class ComponentBase {
     /**
      * the offset in pixels this component has on the x-axis
      */
-    protected float mXOffset = 5f;
+    protected double mXOffset = 5;
 
     /**
      * the offset in pixels this component has on the Y-axis
      */
-    protected float mYOffset = 5f;
+    protected double mYOffset = 5;
 
     /**
      * the typeface used for the labels
@@ -36,7 +36,7 @@ public abstract class ComponentBase {
     /**
      * the text size of the labels
      */
-    protected float mTextSize = Utils.convertDpToPixel(10f);
+    protected double mTextSize = Utils.convertDpToPixel(10);
 
     /**
      * the text color to use for the labels
@@ -54,7 +54,7 @@ public abstract class ComponentBase {
      *
      * @return
      */
-    public float getXOffset() {
+    public double getXOffset() {
         return mXOffset;
     }
 
@@ -63,7 +63,7 @@ public abstract class ComponentBase {
      *
      * @param xOffset
      */
-    public void setXOffset(float xOffset) {
+    public void setXOffset(double xOffset) {
         mXOffset = Utils.convertDpToPixel(xOffset);
     }
 
@@ -73,7 +73,7 @@ public abstract class ComponentBase {
      *
      * @return
      */
-    public float getYOffset() {
+    public double getYOffset() {
         return mYOffset;
     }
 
@@ -84,7 +84,7 @@ public abstract class ComponentBase {
      *
      * @param yOffset
      */
-    public void setYOffset(float yOffset) {
+    public void setYOffset(double yOffset) {
         mYOffset = Utils.convertDpToPixel(yOffset);
     }
 
@@ -107,17 +107,17 @@ public abstract class ComponentBase {
     }
 
     /**
-     * sets the size of the label text in density pixels min = 6f, max = 24f, default
-     * 10f
+     * sets the size of the label text in density pixels min = 6, max = 24, default
+     * 10
      *
      * @param size the text size, in DP
      */
-    public void setTextSize(float size) {
+    public void setTextSize(double size) {
 
-        if (size > 24f)
-            size = 24f;
-        if (size < 6f)
-            size = 6f;
+        if (size > 24)
+            size = 24;
+        if (size < 6)
+            size = 6;
 
         mTextSize = Utils.convertDpToPixel(size);
     }
@@ -127,7 +127,7 @@ public abstract class ComponentBase {
      *
      * @return
      */
-    public float getTextSize() {
+    public double getTextSize() {
         return mTextSize;
     }
 

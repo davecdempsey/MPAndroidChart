@@ -35,7 +35,7 @@ public class BubbleChartRenderer extends BarLineScatterCandleBubbleRenderer {
         mRenderPaint.setStyle(Style.FILL);
 
         mHighlightPaint.setStyle(Style.STROKE);
-        mHighlightPaint.setStrokeWidth(Utils.convertDpToPixel(1.5f));
+        mHighlightPaint.setStrokeWidth(Utils.convertDpToPixel(1.5));
     }
 
     @Override
@@ -55,13 +55,13 @@ public class BubbleChartRenderer extends BarLineScatterCandleBubbleRenderer {
         }
     }
 
-    private float[] sizeBuffer = new float[4];
-    private float[] pointBuffer = new float[2];
+    private double[] sizeBuffer = new double[4];
+    private double[] pointBuffer = new double[2];
 
-    protected float getShapeSize(float entrySize, float maxSize, float reference, boolean normalizeSize) {
-        final float factor = normalizeSize ? ((maxSize == 0f) ? 1f : (float) Math.sqrt(entrySize / maxSize)) :
+    protected double getShapeSize(double entrySize, double maxSize, double reference, boolean normalizeSize) {
+        final double factor = normalizeSize ? ((maxSize == 0) ? 1 :  Math.sqrt(entrySize / maxSize)) :
                 entrySize;
-        final float shapeSize = reference * factor;
+        final double shapeSize = reference * factor;
         return shapeSize;
     }
 
@@ -69,21 +69,21 @@ public class BubbleChartRenderer extends BarLineScatterCandleBubbleRenderer {
 
         Transformer trans = mChart.getTransformer(dataSet.getAxisDependency());
 
-        float phaseY = mAnimator.getPhaseY();
+        double phaseY = mAnimator.getPhaseY();
 
         mXBounds.set(mChart, dataSet);
 
-        sizeBuffer[0] = 0f;
-        sizeBuffer[2] = 1f;
+        sizeBuffer[0] = 0;
+        sizeBuffer[2] = 1;
 
         trans.pointValuesToPixel(sizeBuffer);
 
         boolean normalizeSize = dataSet.isNormalizeSizeEnabled();
 
         // calcualte the full width of 1 step on the x-axis
-        final float maxBubbleWidth = Math.abs(sizeBuffer[2] - sizeBuffer[0]);
-        final float maxBubbleHeight = Math.abs(mViewPortHandler.contentBottom() - mViewPortHandler.contentTop());
-        final float referenceSize = Math.min(maxBubbleHeight, maxBubbleWidth);
+        final double maxBubbleWidth = Math.abs(sizeBuffer[2] - sizeBuffer[0]);
+        final double maxBubbleHeight = Math.abs(mViewPortHandler.contentBottom() - mViewPortHandler.contentTop());
+        final double referenceSize = Math.min(maxBubbleHeight, maxBubbleWidth);
 
         for (int j = mXBounds.min; j <= mXBounds.range + mXBounds.min; j++) {
 
@@ -93,7 +93,7 @@ public class BubbleChartRenderer extends BarLineScatterCandleBubbleRenderer {
             pointBuffer[1] = (entry.getY()) * phaseY;
             trans.pointValuesToPixel(pointBuffer);
 
-            float shapeHalf = getShapeSize(entry.getSize(), dataSet.getMaxSize(), referenceSize, normalizeSize) / 2f;
+            double shapeHalf = getShapeSize(entry.getSize(), dataSet.getMaxSize(), referenceSize, normalizeSize) / 2;
 
             if (!mViewPortHandler.isInBoundsTop(pointBuffer[1] + shapeHalf)
                     || !mViewPortHandler.isInBoundsBottom(pointBuffer[1] - shapeHalf))
@@ -125,7 +125,7 @@ public class BubbleChartRenderer extends BarLineScatterCandleBubbleRenderer {
 
             final List<IBubbleDataSet> dataSets = bubbleData.getDataSets();
 
-            float lineHeight = Utils.calcTextHeight(mValuePaint, "1");
+            double lineHeight = Utils.calcTextHeight(mValuePaint, "1");
 
             for (int i = 0; i < dataSets.size(); i++) {
 
@@ -137,15 +137,15 @@ public class BubbleChartRenderer extends BarLineScatterCandleBubbleRenderer {
                 // apply the text-styling defined by the DataSet
                 applyValueTextStyle(dataSet);
 
-                final float phaseX = Math.max(0.f, Math.min(1.f, mAnimator.getPhaseX()));
-                final float phaseY = mAnimator.getPhaseY();
+                final double phaseX = Math.max(0.f, Math.min(1.f, mAnimator.getPhaseX()));
+                final double phaseY = mAnimator.getPhaseY();
 
                 mXBounds.set(mChart, dataSet);
 
-                final float[] positions = mChart.getTransformer(dataSet.getAxisDependency())
+                final double[] positions = mChart.getTransformer(dataSet.getAxisDependency())
                         .generateTransformedValuesBubble(dataSet, phaseY, mXBounds.min, mXBounds.max);
 
-                final float alpha = phaseX == 1 ? phaseY : phaseX;
+                final double alpha = phaseX == 1 ? phaseY : phaseX;
 
                 MPPointF iconsOffset = MPPointF.getInstance(dataSet.getIconsOffset());
                 iconsOffset.x = Utils.convertDpToPixel(iconsOffset.x);
@@ -157,8 +157,8 @@ public class BubbleChartRenderer extends BarLineScatterCandleBubbleRenderer {
                     valueTextColor = Color.argb(Math.round(255.f * alpha), Color.red(valueTextColor),
                             Color.green(valueTextColor), Color.blue(valueTextColor));
 
-                    float x = positions[j];
-                    float y = positions[j + 1];
+                    double x = positions[j];
+                    double y = positions[j + 1];
 
                     if (!mViewPortHandler.isInBoundsRight(x))
                         break;
@@ -170,7 +170,7 @@ public class BubbleChartRenderer extends BarLineScatterCandleBubbleRenderer {
 
                     if (dataSet.isDrawValuesEnabled()) {
                         drawValue(c, dataSet.getValueFormatter(), entry.getSize(), entry, i, x,
-                                y + (0.5f * lineHeight), valueTextColor);
+                                y + (0.5 * lineHeight), valueTextColor);
                     }
 
                     if (entry.getIcon() != null && dataSet.isDrawIconsEnabled()) {
@@ -196,14 +196,14 @@ public class BubbleChartRenderer extends BarLineScatterCandleBubbleRenderer {
     public void drawExtras(Canvas c) {
     }
 
-    private float[] _hsvBuffer = new float[3];
+    private double[] _hsvBuffer = new double[3];
 
     @Override
     public void drawHighlighted(Canvas c, Highlight[] indices) {
 
         BubbleData bubbleData = mChart.getBubbleData();
 
-        float phaseY = mAnimator.getPhaseY();
+        double phaseY = mAnimator.getPhaseY();
 
         for (Highlight high : indices) {
 
@@ -222,18 +222,18 @@ public class BubbleChartRenderer extends BarLineScatterCandleBubbleRenderer {
 
             Transformer trans = mChart.getTransformer(set.getAxisDependency());
 
-            sizeBuffer[0] = 0f;
-            sizeBuffer[2] = 1f;
+            sizeBuffer[0] = 0;
+            sizeBuffer[2] = 1;
 
             trans.pointValuesToPixel(sizeBuffer);
 
             boolean normalizeSize = set.isNormalizeSizeEnabled();
 
             // calcualte the full width of 1 step on the x-axis
-            final float maxBubbleWidth = Math.abs(sizeBuffer[2] - sizeBuffer[0]);
-            final float maxBubbleHeight = Math.abs(
+            final double maxBubbleWidth = Math.abs(sizeBuffer[2] - sizeBuffer[0]);
+            final double maxBubbleHeight = Math.abs(
                     mViewPortHandler.contentBottom() - mViewPortHandler.contentTop());
-            final float referenceSize = Math.min(maxBubbleHeight, maxBubbleWidth);
+            final double referenceSize = Math.min(maxBubbleHeight, maxBubbleWidth);
 
             pointBuffer[0] = entry.getX();
             pointBuffer[1] = (entry.getY()) * phaseY;
@@ -241,10 +241,10 @@ public class BubbleChartRenderer extends BarLineScatterCandleBubbleRenderer {
 
             high.setDraw(pointBuffer[0], pointBuffer[1]);
 
-            float shapeHalf = getShapeSize(entry.getSize(),
+            double shapeHalf = getShapeSize(entry.getSize(),
                     set.getMaxSize(),
                     referenceSize,
-                    normalizeSize) / 2f;
+                    normalizeSize) / 2;
 
             if (!mViewPortHandler.isInBoundsTop(pointBuffer[1] + shapeHalf)
                     || !mViewPortHandler.isInBoundsBottom(pointBuffer[1] - shapeHalf))
@@ -260,7 +260,7 @@ public class BubbleChartRenderer extends BarLineScatterCandleBubbleRenderer {
 
             Color.RGBToHSV(Color.red(originalColor), Color.green(originalColor),
                     Color.blue(originalColor), _hsvBuffer);
-            _hsvBuffer[2] *= 0.5f;
+            _hsvBuffer[2] *= 0.5;
             final int color = Color.HSVToColor(Color.alpha(originalColor), _hsvBuffer);
 
             mHighlightPaint.setColor(color);

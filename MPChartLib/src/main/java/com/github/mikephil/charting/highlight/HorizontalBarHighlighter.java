@@ -21,13 +21,13 @@ public class HorizontalBarHighlighter extends BarHighlighter {
 	}
 
 	@Override
-	public Highlight getHighlight(float x, float y) {
+	public Highlight getHighlight(double x, double y) {
 
 		BarData barData = mChart.getBarData();
 
 		MPPointD pos = getValsForTouch(y, x);
 
-		Highlight high = getHighlightForX((float) pos.y, y, x);
+		Highlight high = getHighlightForX( pos.y, y, x);
 		if (high == null)
 			return null;
 
@@ -36,8 +36,8 @@ public class HorizontalBarHighlighter extends BarHighlighter {
 
 			return getStackedHighlight(high,
 					set,
-					(float) pos.y,
-					(float) pos.x);
+					 pos.y,
+					 pos.x);
 		}
 
 		MPPointD.recycleInstance(pos);
@@ -46,7 +46,7 @@ public class HorizontalBarHighlighter extends BarHighlighter {
 	}
 
 	@Override
-	protected List<Highlight> buildHighlights(IDataSet set, int dataSetIndex, float xVal, DataSet.Rounding rounding) {
+	protected List<Highlight> buildHighlights(IDataSet set, int dataSetIndex, double xVal, DataSet.Rounding rounding) {
 
 		ArrayList<Highlight> highlights = new ArrayList<>();
 
@@ -54,7 +54,7 @@ public class HorizontalBarHighlighter extends BarHighlighter {
 		List<Entry> entries = set.getEntriesForXValue(xVal);
 		if (entries.size() == 0) {
 			// Try to find closest x-value and take all entries for that x-value
-			final Entry closest = set.getEntryForXValue(xVal, Float.NaN, rounding);
+			final Entry closest = set.getEntryForXValue(xVal, Double.NaN, rounding);
 			if (closest != null)
 			{
 				//noinspection unchecked
@@ -71,7 +71,7 @@ public class HorizontalBarHighlighter extends BarHighlighter {
 
 			highlights.add(new Highlight(
 					e.getX(), e.getY(),
-					(float) pixels.x, (float) pixels.y,
+					 pixels.x,  pixels.y,
 					dataSetIndex, set.getAxisDependency()));
 		}
 
@@ -79,7 +79,7 @@ public class HorizontalBarHighlighter extends BarHighlighter {
 	}
 
 	@Override
-	protected float getDistance(float x1, float y1, float x2, float y2) {
+	protected double getDistance(double x1, double y1, double x2, double y2) {
 		return Math.abs(y1 - y2);
 	}
 }

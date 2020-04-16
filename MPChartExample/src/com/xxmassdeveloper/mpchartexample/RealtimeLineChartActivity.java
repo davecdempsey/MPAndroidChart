@@ -80,8 +80,8 @@ public class RealtimeLineChartActivity extends DemoBase implements
         YAxis leftAxis = mChart.getAxisLeft();
         leftAxis.setTypeface(mTfLight);
         leftAxis.setTextColor(Color.WHITE);
-        leftAxis.setAxisMaximum(100f);
-        leftAxis.setAxisMinimum(0f);
+        leftAxis.setAxisMaximum(100);
+        leftAxis.setAxisMinimum(0);
         leftAxis.setDrawGridLines(true);
 
         YAxis rightAxis = mChart.getAxisRight();
@@ -130,7 +130,7 @@ public class RealtimeLineChartActivity extends DemoBase implements
                 data.addDataSet(set);
             }
 
-            data.addEntry(new Entry(set.getEntryCount(), (float) (Math.random() * 40) + 30f), 0);
+            data.addEntry(new Entry(set.getEntryCount(), (Math.random() * 40) + 30), 0);
             data.notifyDataChanged();
 
             // let the chart know it's data has changed
@@ -144,7 +144,7 @@ public class RealtimeLineChartActivity extends DemoBase implements
             mChart.moveViewToX(data.getEntryCount());
 
             // this automatically refreshes the chart (calls invalidate())
-            // mChart.moveViewTo(data.getXValCount()-7, 55f,
+            // mChart.moveViewTo(data.getXValCount()-7, 55,
             // AxisDependency.LEFT);
         }
     }
@@ -155,13 +155,13 @@ public class RealtimeLineChartActivity extends DemoBase implements
         set.setAxisDependency(AxisDependency.LEFT);
         set.setColor(ColorTemplate.getHoloBlue());
         set.setCircleColor(Color.WHITE);
-        set.setLineWidth(2f);
-        set.setCircleRadius(4f);
+        set.setLineWidth(2);
+        set.setCircleRadius(4);
         set.setFillAlpha(65);
         set.setFillColor(ColorTemplate.getHoloBlue());
         set.setHighLightColor(Color.rgb(244, 117, 117));
         set.setValueTextColor(Color.WHITE);
-        set.setValueTextSize(9f);
+        set.setValueTextSize(9);
         set.setDrawValues(false);
         return set;
     }

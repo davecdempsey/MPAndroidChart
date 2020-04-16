@@ -11,14 +11,14 @@ public final class FSize extends ObjectPool.Poolable{
 
     // TODO : Encapsulate width & height
 
-    public float width;
-    public float height;
+    public double width;
+    public double height;
 
     private static ObjectPool<FSize> pool;
 
     static {
         pool = ObjectPool.create(256, new FSize(0,0));
-        pool.setReplenishPercentage(0.5f);
+        pool.setReplenishPercentage(0.5);
     }
 
 
@@ -26,7 +26,7 @@ public final class FSize extends ObjectPool.Poolable{
         return new FSize(0,0);
     }
 
-    public static FSize getInstance(final float width, final float height){
+    public static FSize getInstance(final double width, final double height){
         FSize result = pool.get();
         result.width = width;
         result.height = height;
@@ -44,7 +44,7 @@ public final class FSize extends ObjectPool.Poolable{
     public FSize() {
     }
 
-    public FSize(final float width, final float height) {
+    public FSize(final double width, final double height) {
         this.width = width;
         this.height = height;
     }
@@ -74,6 +74,6 @@ public final class FSize extends ObjectPool.Poolable{
      */
     @Override
     public int hashCode() {
-        return Float.floatToIntBits(width) ^ Float.floatToIntBits(height);
+        return Double.doubleToIntBits(width) ^ Double.doubleToIntBits(height);
     }
 }

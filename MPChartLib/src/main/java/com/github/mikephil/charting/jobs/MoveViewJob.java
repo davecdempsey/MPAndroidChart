@@ -16,10 +16,10 @@ public class MoveViewJob extends ViewPortJob {
 
     static {
         pool = ObjectPool.create(2, new MoveViewJob(null,0,0,null,null));
-        pool.setReplenishPercentage(0.5f);
+        pool.setReplenishPercentage(0.5);
     }
 
-    public static MoveViewJob getInstance(ViewPortHandler viewPortHandler, float xValue, float yValue, Transformer trans, View v){
+    public static MoveViewJob getInstance(ViewPortHandler viewPortHandler, double xValue, double yValue, Transformer trans, View v){
         MoveViewJob result = pool.get();
         result.mViewPortHandler = viewPortHandler;
         result.xValue = xValue;
@@ -33,7 +33,7 @@ public class MoveViewJob extends ViewPortJob {
         pool.recycle(instance);
     }
 
-    public MoveViewJob(ViewPortHandler viewPortHandler, float xValue, float yValue, Transformer trans, View v) {
+    public MoveViewJob(ViewPortHandler viewPortHandler, double xValue, double yValue, Transformer trans, View v) {
         super(viewPortHandler, xValue, yValue, trans, v);
     }
 
